@@ -1,0 +1,386 @@
+/*
+
+    NAME.CSS v1.0
+    Description
+    http://gomakethings.com
+
+
+    Licensed under WTFPL.
+    http://www.wtfpl.net/
+    
+
+*/
+
+/*  RESPONSIVE RESET */
+/*  Replace with your own */
+
+@-webkit-viewport { width: device-width; zoom: 1.0; }
+   @-moz-viewport { width: device-width; zoom: 1.0; }
+    @-ms-viewport { width: device-width; zoom: 1.0; }
+     @-o-viewport { width: device-width; zoom: 1.0; }
+        @viewport { width: device-width; zoom: 1.0; }
+
+html { overflow-y: auto; }
+
+img, audio, video, canvas { max-width: 100%; }
+
+
+
+
+
+/*  DROP JUMBO */
+/*  Jumbo dropdown styling */
+
+/*  Display a caret after each dropdown link.
+ *  You can remove this or change it to a different symbol. 
+ *  (For example, a "+" symbol.) */
+.dropdown > a:after {
+    content: " \25bc";
+    font-size: .8em;
+}
+
+/*  When a dropdown is active, display a caret pointing up instead.
+ *  You can remove this or change it to a different symbol. 
+ *  (For example, a "-" symbol.) */
+.dropdown > a.active:after {
+    content: " \25b2";
+}
+
+/*  Styling for the dropdown content.
+ *  Hides the content by default. */
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    float: left;
+    right: 0;
+    width: 100%;
+    margin-top: .470588235em;
+    text-align: left;
+    background-color: #f4f4f4;
+    z-index: 1000;
+}
+
+/*  When a dropdown is active, display it. */
+.dropdown-menu.active {
+    display: block;
+    padding-top: 1.529411765em;
+    padding-bottom: 1.529411765em; 
+}
+
+/*  Optional small screen styling for use
+ *  with collapse-and-toggle navigation menus.
+ *  Learn more - http://cferdinandi.github.com/astro/ */
+@media (max-width: 40em) {
+
+    /*  Switch dropdown content to relative positioning.
+     *  Add a border-radius. */
+    .dropdown-menu {
+        position: relative;
+        float: none;
+        border-radius: .235294118em;
+    }
+
+    /*  Add padding to active dropdown content */
+    .dropdown-menu.active {
+        padding: .470588235em;
+    }
+
+    /*  If using the .container class for 
+     *  dropdown content, give it a width of 100%. */
+    .dropdown-menu .container {
+        width: 100%;
+    }
+    
+}
+
+
+
+
+
+/*  THE GRID */
+/*  Origami.css - http://cferdinandi.github.com/origami/
+ *  Provides structure for dropdown content.
+ *  Not required. Feel free to use your own.
+ */
+
+/*  Mobile-first. Single-column layout by default
+ *  Container sets the maximum page width. Adjust as needed. */
+.container { 
+    max-width: 40em;
+    width: 88%;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+/*  Still mostly single-column.
+ *  Grid-third, grid-half, and grid-img 
+ *  provide sub-gridding on smaller screens.  */
+@media (min-width: 30em) {
+
+	.row {
+        margin-left: -1.515151515152%;
+        margin-right: -1.515151515152%;
+	}
+
+    [class^="grid-"], 
+    [class*=" grid-"] {
+        float: left;
+        width:96.969696969697%;
+        margin-left: 1.515151515152%;
+        margin-right: 1.515151515152%;
+    }
+
+    .grid-third {
+        width: 30.30303030303%;
+    }
+
+    .grid-half,
+    .grid-img {
+        width: 46.969696969697%;
+    }
+
+    /*  Reverses order of grid for content choreography */
+    .grid-flip {
+        float: right;
+    }
+
+}
+
+
+/*  6-column grid  */
+@media (min-width: 40em) {
+
+    .grid-1 {
+        width: 13.636363636364%;
+    }
+
+    .grid-2,
+    .grid-third,
+    .grid-img {
+        width: 30.30303030303%;
+    }
+
+    .grid-3,
+    .grid-half { 
+        width: 46.969696969697%;
+    }
+
+    .grid-4 { 
+        width: 63.636363636364%;
+    }
+
+    .grid-5 { 
+        width: 80.30303030303%;
+    }
+
+    .grid-6,
+    .grid-full { 
+        width: 96.969696969697%;
+    }
+
+
+    /*  Offets let you shift grid elements to the right 
+     *  but stay aligned to the grid. */
+    .offset-1 {
+        margin-left: 18.181818181818%;
+    }
+
+    .offset-2 {
+        margin-left: 34.848484848485%;
+    }
+
+    .offset-3 {
+        margin-left: 51.515151515152%;
+    }
+
+    .offset-4 {
+        margin-left: 68.181818181818%;
+    }
+
+    .offset-5 {
+        margin-left: 84.848484848485%;
+    }
+
+}
+
+
+/*  Additional gridding for grid-img on bigger screens.
+ *  Adjust as needed. */
+@media (min-width: 40em) {
+    .grid-img {
+        width: 13.636363636364%;
+    }
+}
+
+
+/*  Clearfix */
+
+.tabs:before, .tabs:after,
+.container:before, .container:after, 
+.row:before, .row:after { 
+    display: table; 
+    content: ""; 
+    zoom: 1; 
+}
+
+.tabs:after,
+.container:after, 
+.row:after { 
+    clear: both; 
+}
+
+
+
+
+
+/*  NAVIGATION STYLING */
+/*  Astro - http://cferdinandi.github.com/astro/
+ *  Provides styling for navigation menu
+ *  Not required. Feel free to use your own.
+ */
+
+/*  Center all navigation elements */
+.nav-wrap {
+    text-align: center;
+}
+
+/*  For text-based logo, override default link styling.
+ *  If .logo and .nav don't align properly,
+ *  adjust the .logo line-height. */
+.logo {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1.2;
+    color: #272727;
+    margin-bottom: .470588235em;
+    text-decoration: none;
+}
+
+/*  For text-based logo, override default link hover styling */
+.logo:hover {
+    color: #272727;
+    text-decoration: none; 
+}
+
+/*  Remove default list styling for navigation list */
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*  Display navigation items as inline-block elements.
+ *  Add slight margin between each navigation item. */
+.nav > li {
+    display: inline-block;
+    float: none;
+    margin-left: .470588235em;
+    margin-right: .470588235em;
+}
+
+/*  Remove margin-left on first navigation item */
+.nav > li:first-child {
+    margin-left: 0;
+}
+
+/*  Remove margin-right on last navigation item */
+.nav >li:last-child {
+    margin-right: 0;
+}
+
+/*  Hide the navigation toggle menu button by default.
+ *  Only needed for expand-and-collapse option. */
+.nav-toggle {
+    display: none;
+}
+
+
+/*  Expand-and-Collapse styling for smaller screens.
+ *  Remove if not using.
+ *  Change max-width to fit your project. */
+@media (max-width: 40em) {
+
+    /*  .js prefix ensure content is only hidden when JavaScript is supported.
+     *  This requires on the included js-accessibility.js script. */
+
+    /*  Align text to the left when javascript is supported */
+    .js .nav-wrap {
+        text-align: left;
+    }
+
+    /*  Float logo to the left when javascript is supported */
+    .js .logo {
+        float: left;
+    }
+
+    /*  Display navigation toggle button if javascript is supported */
+    .js .nav-toggle {
+        display: block;
+        float: right;
+    }
+
+    /*  Hide navigation items if javascript is supported */
+    .js .nav-collapse {
+        max-height: 0;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        /*  CSS3 animation for when menu content expands */
+        -webkit-transition: all 0.35s ease-in;
+           -moz-transition: all 0.35s ease-in;
+            -ms-transition: all 0.35s ease-in;
+             -o-transition: all 0.35s ease-in;
+                transition: all 0.35s ease-in;
+    }
+
+    /*  When collapsed element has the .active class, show it 
+     *  Uses max-height instead of display: none to allow for 
+     *  CSS3 animations, which don't work on display values. */
+    .js .nav-collapse.active {
+        max-height: 600em;
+    }
+
+    .js .nav {
+        text-align: left;
+    }
+
+    /*  Display navigation items as full-width, stacked blocks when javascript supported */
+    .js .nav-collapse li {
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: .235294118em;
+        padding-bottom: .235294118em;
+    }
+
+}
+
+
+/*  Styling for Bigger Screens.
+ *  (Astro is built mobile-first.)
+ *  Change min-width to fit your project. */
+@media (min-width: 40em) {
+
+    /*  Align text to the left */
+    .nav-wrap {
+        text-align: left;
+    }
+
+    /*  Float logo to the left and remove margin-bottom */
+    .logo {
+        float: left;
+    }
+
+    /*  Align navigation elements to the right */
+    .nav {
+        text-align: right;
+    }
+}
