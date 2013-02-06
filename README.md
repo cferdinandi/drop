@@ -13,5 +13,8 @@ Getting started with Drop is really easy. [View the online tutorial](http://cfer
 * 2/6/2013
   * Initial release.
 
+## Roadmap
+* Convert jQuery to vanilla JavaScript.
+
 ## License
 Drop is licensed under [WTFPL](http://www.wtfpl.net/).
