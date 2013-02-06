@@ -111,7 +111,7 @@ img, audio, video, canvas { max-width: 100%; }
 
     /*  Switch dropdown content to relative positioning.
      *  Remove styling. */
-    .dropdown-menu {
+    .js .dropdown-menu {
         position: relative;
         float: none;
         min-width: 100%;
