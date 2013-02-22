@@ -9,7 +9,7 @@ $(function () {
     $('.dropdown > a').click(function(e) {
         e.preventDefault();
         $(this).toggleClass('active').next($('.dropdown-menu')).toggleClass('active');
-        $(this).parent().siblings('.dropdown').removeClass('current').children('a').removeClass('active').next($('.dropdown-menu')).removeClass('active');
+        $(this).parent().siblings('.dropdown').removeClass('active').children('a').removeClass('active').next($('.dropdown-menu')).removeClass('active');
         $(this).parent('.dropdown').toggleClass('active');
     });
 });
