@@ -51,6 +51,7 @@ img, audio, video, canvas { max-width: 100%; }
 .dropdown-menu {
     position: absolute;
     display: none;
+    visibility: hidden;
     float: left;
     right: 0;
     width: 100%;
@@ -63,6 +64,7 @@ img, audio, video, canvas { max-width: 100%; }
 /*  When a dropdown is active, display it. */
 .dropdown-menu.active {
     display: block;
+    visibility: visible;
     padding-top: 1.529411765em;
     padding-bottom: 1.529411765em; 
 }
@@ -293,6 +295,7 @@ img, audio, video, canvas { max-width: 100%; }
  *  Only needed for expand-and-collapse option. */
 .nav-toggle {
     display: none;
+    visibility: hidden;
 }
 
 
@@ -317,6 +320,7 @@ img, audio, video, canvas { max-width: 100%; }
     /*  Display navigation toggle button if javascript is supported */
     .js .nav-toggle {
         display: block;
+        visibility: visible;
         float: right;
     }
 
