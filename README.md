@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the `index.html` files.
 
 ## Changelog
+* 3/29/2013
+  * Removed changed in arrow direction on active state.
 * 2/13/2013
   * Renamed `example.html` to `index.html`.
   * Removed "Convert to Vanilla JS" from the roadmap.
