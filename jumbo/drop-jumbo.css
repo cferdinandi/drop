@@ -1,18 +1,15 @@
-/*
+/* =============================================================
+    Drop v.13
+    Simple, progressively enhanced dropdown menus.
+    Script by Chris Ferdinandi - http://gomakethings.com
+    Licensed under WTFPL - http://www.wtfpl.net
+ * ============================================================= */
 
-    NAME.CSS v1.0
-    Description
-    http://gomakethings.com
 
-
-    Licensed under WTFPL.
-    http://www.wtfpl.net/
-    
-
-*/
-
-/*  RESPONSIVE RESET */
-/*  Replace with your own */
+/* =============================================================
+    RESPONSIVE RESET
+    Replace with your own.
+ * ============================================================= */
 
 @-webkit-viewport { width: device-width; zoom: 1.0; }
    @-moz-viewport { width: device-width; zoom: 1.0; }
@@ -28,8 +25,10 @@ img, audio, video, canvas { max-width: 100%; }
 
 
 
-/*  DROP JUMBO */
-/*  Jumbo dropdown styling */
+/* =============================================================
+    DROP JUMBO
+    Jumbo dropdown styling.
+ * ============================================================= */
 
 /*  Display a caret after each dropdown link.
  *  You can remove this or change it to a different symbol. 
@@ -92,11 +91,12 @@ img, audio, video, canvas { max-width: 100%; }
 
 
 
-/*  THE GRID */
-/*  Origami.css - http://cferdinandi.github.com/origami/
- *  Provides structure for dropdown content.
- *  Not required. Feel free to use your own.
- */
+/* =============================================================
+    THE GRID
+    Origami.css - http://cferdinandi.github.com/origami/
+    Provides structure for dropdown content.
+    Not required. Feel free to use your own.
+ * ============================================================= */
 
 /*  Mobile-first. Single-column layout by default
  *  Container sets the maximum page width. Adjust as needed. */
@@ -229,11 +229,12 @@ img, audio, video, canvas { max-width: 100%; }
 
 
 
-/*  NAVIGATION STYLING */
-/*  Astro - http://cferdinandi.github.com/astro/
- *  Provides styling for navigation menu
- *  Not required. Feel free to use your own.
- */
+/* =============================================================
+    NAVIGATION STYLING
+    Astro - http://cferdinandi.github.com/astro/
+    Provides styling for navigation menu
+    Not required. Feel free to use your own.
+ * ============================================================= */
 
 /*  Center all navigation elements */
 .nav-wrap {

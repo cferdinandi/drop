@@ -1,8 +1,8 @@
 /* =============================================================
- * drop.js
- * Simple, progressively enhanced dropdown menus.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net
+    Drop v1.3
+    Simple, progressively enhanced dropdown menus.
+    Script by Chris Ferdinandi - http://gomakethings.com
+    Licensed under WTFPL - http://www.wtfpl.net
  * ============================================================= */
 
 (function($) {
@@ -35,10 +35,10 @@
 
 
 /* =============================================================
- * js-accessibility.js
- * Adds .js class to <body> for progressive enhancement.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net
+    js-accessibility.js
+    Adds .js class to <body> for progressive enhancement.
+    Script by Chris Ferdinandi - http://gomakethings.com
+    Licensed under WTFPL - http://www.wtfpl.net
  * ============================================================= */
 
 (function($) {

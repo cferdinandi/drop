@@ -1,7 +1,7 @@
 /* =============================================================
- * SCRIPTS USED FOR NAVIGATION MENU EXPAND-AND-COLLAPSE.
- * Not required for Dropdown Menus.
- * Learn more about Astro - http://cferdinandi.github.com/astro/
+    SCRIPTS USED FOR NAVIGATION MENU EXPAND-AND-COLLAPSE.
+    Not required for Dropdown Menus.
+    Learn more about Astro - http://cferdinandi.github.com/astro/
  * ============================================================= */
 
 
@@ -9,10 +9,10 @@
 
 
 /* =============================================================
- * astro.js
- * Mobile-first navigation patterns.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net/
+    Astro v1.0
+    Mobile-first navigation patterns.
+    Script by Chris Ferdinandi - http://gomakethings.com
+    Licensed under WTFPL - http://www.wtfpl.net/
  * ============================================================= */
 
 (function($) {
@@ -32,22 +32,5 @@
                 $(hrefID).toggleClass('active'); // Add or remove the .active class from the element whose ID matches the href value
             }
         });
-    });
-})(jQuery);
-
-
-
-
-
-/* =============================================================
- * js-accessibility.js
- * Adds .js class to <body> for progressive enhancement.
- * Script by Chris Ferdinandi - http://gomakethings.com
- * Licensed under WTFPL - http://www.wtfpl.net
- * ============================================================= */
-
-(function($) {
-    $(function () {
-        $('body').addClass('js'); // On page load, add the .js class to the <body> element.
     });
 })(jQuery);

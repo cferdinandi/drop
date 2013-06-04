@@ -10,12 +10,14 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the `index.html` files.
 
 ## Changelog
-* 3/29/2013
+* Version 1.3 (May 20, 2013)
+  * Dropdown menus now close if user clicks outside of them.
+* Version 1.2 (March 29, 2013)
   * Removed changed in arrow direction on active state.
-* 2/13/2013
+* Version 1.1 (February 13, 2013)
   * Renamed `example.html` to `index.html`.
   * Removed "Convert to Vanilla JS" from the roadmap.
-* 2/6/2013
+* Version 1.0 (February 6, 2013)
   * Initial release.
 
 ## License
