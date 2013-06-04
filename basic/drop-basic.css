@@ -81,10 +81,10 @@ img, audio, video, canvas { max-width: 100%; }
     border-radius: .294117647em;
     box-shadow: 0 .294117647em .588235294em rgba(0, 0, 0, 0.2);
     -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
+       -moz-box-sizing: border-box;
             box-sizing: border-box;
     -webkit-background-clip: padding-box;
-        -moz-background-clip: padding;
+       -moz-background-clip: padding;
             background-clip: padding-box;
 }
 
