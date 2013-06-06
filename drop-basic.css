@@ -1,0 +1,128 @@
+/* =============================================================
+
+    Drop Basic v1.3
+    Simple, progressively enhanced dropdown menus by Chris Ferdinandi.
+    http://gomakethings.com
+
+    Licensed under WTFPL.
+    http://www.wtfpl.net/
+    
+ * ============================================================= */
+
+
+/* =============================================================
+    RESPONSIVE RESET
+    Replace with your own.
+ * ============================================================= */
+
+@-webkit-viewport { width: device-width; zoom: 1.0; }
+   @-moz-viewport { width: device-width; zoom: 1.0; }
+    @-ms-viewport { width: device-width; zoom: 1.0; }
+     @-o-viewport { width: device-width; zoom: 1.0; }
+        @viewport { width: device-width; zoom: 1.0; }
+
+html { overflow-y: auto; }
+
+img, audio, video, canvas { max-width: 100%; }
+
+/*  Sets body width */
+.container { 
+    max-width: 40em;
+    width: 88%;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+
+
+
+/* =============================================================
+    DROP BASIC
+    Basic dropdown styling.
+ * ============================================================= */
+
+/*  Sets dropdown link to relative positioning */
+.dropdown {
+    position: relative;
+}
+
+/*  Display a caret after each dropdown link when JavaScript is supported.
+ *  You can remove this or change it to a different symbol. 
+ *  (For example, a "+" symbol.) */
+.js .dropdown > a:after {
+    content: " \25bc";
+    font-size: .8em;
+}
+
+/*  When a dropdown is active, display a caret pointing up instead.
+ *  You can remove this or change it to a different symbol. 
+ *  (For example, a "-" symbol.) */
+.js .dropdown > a.active:after {
+    content: " \25b2";
+}
+
+/*  Styling for the dropdown content.
+ *  Hides the content by default. */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    display: none;
+    visibility: hidden;
+    float: left;
+    min-width: 10em;
+    margin-top: .470588235em;
+    margin-left: 0;
+    text-align: left;
+    border: .071428571em solid #b8b8b8;
+    background-color: #ffffff;
+    z-index: 1000;
+    border-radius: .294117647em;
+    box-shadow: 0 .294117647em .588235294em rgba(0, 0, 0, 0.2);
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;
+}
+
+/*  Remove list-style and margin-left 
+ *  from dropdown menu lists */
+.dropdown-menu ul,
+.dropdown-menu ol {
+    margin-left: 0; 
+    list-style: none; 
+}
+
+/*  When a dropdown is active, display it. */
+.dropdown-menu.active {
+    display: block;
+    visibility: visible;
+    padding: .470588235em;
+}
+
+/*  If dropdown link is near the right edge of the screen,
+ *  shift the dropdown menu position to avoid content clipping. */
+.dropdown-menu.dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+/*  Optional small screen styling for use
+ *  with collapse-and-toggle navigation menus.
+ *  Learn more - http://cferdinandi.github.com/astro/ */
+@media (max-width: 40em) {
+
+    /*  Switch dropdown content to relative positioning.
+     *  Remove styling. */
+    .js .dropdown-menu {
+        position: relative;
+        float: none;
+        min-width: 100%;
+        background-color: #f4f4f4;
+        border: none;
+        box-shadow: none;
+    }
+    
+}
