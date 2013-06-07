@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v1.3 (June 7, 2013)
+  * Switched to MIT license.
 * v1.3 (May 20, 2013)
   * Dropdown menus now close if user clicks outside of them.
 * v1.2 (March 29, 2013)
@@ -21,4 +23,4 @@ Getting started with Drop is really easy. [View the online tutorial](http://cfer
   * Initial release.
 
 ## License
-Drop is licensed under [WTFPL](http://www.wtfpl.net/).
+Drop is free to use under the [MIT License](http://gomakethings.com/mit/).
