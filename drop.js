@@ -22,9 +22,10 @@
         $('.dropdown > a').click(function(e) {
             e.stopPropagation(); // Stop the "close all dropdowns" function
             e.preventDefault(); // Prevent the default link action
-            $(this).toggleClass('active').next($('.dropdown-menu')).toggleClass('active'); // If the dropdown menu is hidden, show it. Otherwise, hide it.
-            $(this).parent('.dropdown').toggleClass('active'); // Add/remove '.active' class to the dropdown list item
-            $(this).parent().siblings('.dropdown').removeClass('active').children('a').removeClass('active').next($('.dropdown-menu')).removeClass('active'); // Hide all other dropdown menus
+            var toggle = $(this);
+            toggle.toggleClass('active').next($('.dropdown-menu')).toggleClass('active'); // If the dropdown menu is hidden, show it. Otherwise, hide it.
+            toggle.parent('.dropdown').toggleClass('active'); // Add/remove '.active' class to the dropdown list item
+            toggle.parent().siblings('.dropdown').removeClass('active').children('a').removeClass('active').next($('.dropdown-menu')).removeClass('active'); // Hide all other dropdown menus
         });
 
         // When click inside a dropdown menu

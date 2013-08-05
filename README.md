@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v1.4 (August 5, 2013)
+  * Created a variable for `$(this)` (better performance).
 * v1.3 (June 7, 2013)
   * Switched to MIT license.
 * v1.3 (May 20, 2013)
