@@ -1,6 +1,6 @@
 /* =============================================================
 
-    Drop v1.3
+    Drop v1.4
     Simple, progressively enhanced dropdown menus by Chris Ferdinandi.
     http://gomakethings.com
 
