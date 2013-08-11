@@ -4,9 +4,17 @@
     <meta charset="utf-8">
     <title>Drop Jumbo - Simple Dropdown Menus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- stylesheets -->
     <link rel="stylesheet" href="drop-jumbo.css" type="text/css">
     <link rel="stylesheet" href="astro/astro-navbar.css" type="text/css">
+
+    <!-- Feature Test -->
+    <script>
+        if ( 'querySelector' in document && 'addEventListener' in window ) {
+            document.documentElement.className += 'js';
+        }
+    </script>
 
     <!-- HTML5 Shim for IE -->
     <!--[if IE]>
@@ -37,6 +45,14 @@
                             </div>
                         </div>
                     </li>
+                    <li class="dropdown">
+                        <a href="url.com">Another Dropdown</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                More content goes here.
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -45,9 +61,8 @@
 
 
     <!-- Javascript -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="drop.js"></script>
-    <script src="astro/astro.js"></script>
+    <script src="astro/astro-plus.js"></script>
 
 </body>
 </html>
