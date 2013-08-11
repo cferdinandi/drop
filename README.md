@@ -10,6 +10,9 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v2.0 (August 11, 2013)
+  * Converted to vanilla JS.
+  * Removed dependency on jQuery.
 * v1.4 (August 5, 2013)
   * Created a variable for `$(this)` (better performance).
 * v1.3 (June 7, 2013)
