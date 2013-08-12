@@ -64,7 +64,7 @@ var getSiblings = function (elem) {
 
 
 /* =============================================================
-    ASTRO FUNCTIONS
+    DROP FUNCTIONS
     Toggle the navigation menu.
  * ============================================================= */
 
