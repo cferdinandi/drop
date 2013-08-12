@@ -1,6 +1,6 @@
 /* =============================================================
 
-    Astro v3.0
+    Astro v3.1
     Mobile-first navigation patterns by Chris Ferdinandi.
     http://gomakethings.com
 
@@ -54,7 +54,7 @@ var toggleClass = function (elem, className) {
     Toggle the navigation menu.
  * ============================================================= */
 
-// "Cut the Mustard" Feature Test
+// Feature Test
 if ( 'querySelector' in document && 'addEventListener' in window ) {
 
     // Get all '.nav-toggle' elements
@@ -70,7 +70,7 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
             e.preventDefault();
 
             // Get target navigation menu
-            var dataID = this.dataset.target;
+            var dataID = this.getAttribute('data-target');
             var dataTarget = document.querySelector(dataID);
 
             // Toggle the '.active' class on the menu
