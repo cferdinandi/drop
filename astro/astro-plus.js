@@ -1,6 +1,6 @@
 /* =============================================================
 
-    Astro v3.1
+    Astro v3.2
     Mobile-first navigation patterns by Chris Ferdinandi.
     http://gomakethings.com
 
@@ -57,24 +57,32 @@ var toggleClass = function (elem, className) {
 // Feature Test
 if ( 'querySelector' in document && 'addEventListener' in window ) {
 
-    // Get all '.nav-toggle' elements
+    // Function to toggle navigation menu
+    var toggleNav = function (toggle) {
+
+        // Get target navigation menu
+        var dataID = toggle.getAttribute('data-target');
+        var dataTarget = document.querySelector(dataID);
+
+        // Toggle the '.active' class on the menu
+        toggleClass(dataTarget, 'active');
+
+    }
+
+    // Define the nav toggle
     var navToggle = document.querySelectorAll('.nav-toggle');
 
-    // For each '.nav-toggle'
+    // For each nav toggle
     [].forEach.call(navToggle, function (toggle) {
 
-        // When '.nav-toggle' clicked
+        // When nav toggle is clicked
         toggle.addEventListener('click', function(e) {
 
-            // Prevent the default action from occurring
+            // Prevent the default link behavior
             e.preventDefault();
 
-            // Get target navigation menu
-            var dataID = this.getAttribute('data-target');
-            var dataTarget = document.querySelector(dataID);
-
-            // Toggle the '.active' class on the menu
-            toggleClass(dataTarget, 'active');
+            // Toggle the navigation menu
+            toggleNav(toggle);
             
         }, false);
     });
