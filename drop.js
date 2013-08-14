@@ -71,14 +71,35 @@ var getSiblings = function (elem) {
 // Feature Test
 if ( 'querySelector' in document && 'addEventListener' in window ) {
 
-    // Define the dropdown toggle element, wrapper and content
-    var dropToggle = document.querySelectorAll('.dropdown > a');
-    var dropWrapper = document.querySelectorAll('.dropdown');
-    var dropContent = document.querySelectorAll('.dropdown-menu');
+    // Function to toggle dropdowns
+    var toggleDrop = function (toggle) {
+    
+        // Define the dropdown menu content, parent element, and siblings
+        var toggleMenu = toggle.nextElementSibling;
+        var toggleParent = toggle.parentNode;
+        var toggleSiblings = getSiblings(toggleParent);
 
+        // Add/remove '.active' class from dropdown item
+        toggleClass(toggle, 'active');
+        toggleClass(toggleMenu, 'active');
+        toggleClass(toggleParent, 'active');
 
-    // When body is clicked, close all dropdowns
-    document.addEventListener('click', function(e) {
+        // Remove '.active' class from all sibling elements
+        [].forEach.call(toggleSiblings, function (sibling) {
+            var siblingContent = sibling.children;
+            removeClass(sibling, 'active');
+
+            // Remove '.active' class from all siblings child elements
+            [].forEach.call(siblingContent, function (content) {
+                removeClass(content, 'active');
+            });
+
+        });
+            
+    }
+
+    // Function to close all dropdowns
+    var closeDrops = function (dropToggle, dropWrapper, dropContent) {
 
         // For each dropdown toggle, remove '.active' class
         [].forEach.call(dropToggle, function (toggle) {
@@ -95,6 +116,20 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
             removeClass(content, 'active');
         });
 
+    }
+
+    // Define the dropdown toggle element, wrapper and content
+    var dropToggle = document.querySelectorAll('.dropdown > a');
+    var dropWrapper = document.querySelectorAll('.dropdown');
+    var dropContent = document.querySelectorAll('.dropdown-menu');
+
+
+    // When body is clicked, close all dropdowns
+    document.addEventListener('click', function(e) {
+
+        // Close dropdowns
+        closeDrops(dropToggle, dropWrapper, dropContent);
+
     }, false);
 
 
@@ -110,27 +145,8 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
             // Prevent default link action
             e.preventDefault();
 
-            // Define the dropdown menu content, parent element, and siblings
-            var toggleMenu = toggle.nextElementSibling;
-            var toggleParent = toggle.parentNode;
-            var toggleSiblings = getSiblings(toggleParent);
-
-            // Add/remove '.active' class from dropdown item
-            toggleClass(toggle, 'active');
-            toggleClass(toggleMenu, 'active');
-            toggleClass(toggleParent, 'active');
-
-            // Remove '.active' class from all sibling elements
-            [].forEach.call(toggleSiblings, function (sibling) {
-                var siblingContent = sibling.children;
-                removeClass(sibling, 'active');
-
-                // Remove '.active' class from all siblings child elements
-                [].forEach.call(siblingContent, function (content) {
-                    removeClass(content, 'active');
-                });
-
-            });
+            // Toggle dropdown menu
+            toggleDrop(toggle);
 
         }, false);
     });
