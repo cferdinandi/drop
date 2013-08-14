@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v2.1 (August 14, 2013)
+  * Moved functions outside of forEach loops for better performance.
 * v2.0 (August 11, 2013)
   * Converted to vanilla JS.
   * Removed dependency on jQuery.
