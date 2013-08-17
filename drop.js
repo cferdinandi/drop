@@ -69,7 +69,7 @@ var getSiblings = function (elem) {
  * ============================================================= */
 
 // Feature Test
-if ( 'querySelector' in document && 'addEventListener' in window ) {
+if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
     // Function to toggle dropdowns
     var toggleDrop = function (toggle) {
