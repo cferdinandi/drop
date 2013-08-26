@@ -11,6 +11,7 @@ Getting started with Drop is really easy. [View the online tutorial](http://cfer
 
 ## Changelog
 * v2.2 (August 26, 2013)
+  * Converted to an IIFE pattern.
   * Added Buoy vanilla JS micro-library.
 * v2.1 (August 14, 2013)
   * Moved functions outside of forEach loops for better performance.
