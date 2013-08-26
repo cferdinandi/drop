@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v2.2 (August 26, 2013)
+  * Added Buoy vanilla JS micro-library.
 * v2.1 (August 14, 2013)
   * Moved functions outside of forEach loops for better performance.
 * v2.0 (August 11, 2013)
