@@ -12,6 +12,7 @@ Getting started with Drop is really easy. [View the online tutorial](http://cfer
 ## Changelog
 * v2.3 (August 27, 2013)
   * Added missing semicolons.
+  * Activated strict mode.
 * v2.2 (August 26, 2013)
   * Converted to an IIFE pattern.
   * Added Buoy vanilla JS micro-library.
