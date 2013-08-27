@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v2.3 (August 27, 2013)
+  * Added missing semicolons.
 * v2.2 (August 26, 2013)
   * Converted to an IIFE pattern.
   * Added Buoy vanilla JS micro-library.

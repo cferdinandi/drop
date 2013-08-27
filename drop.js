@@ -1,6 +1,6 @@
 /* =============================================================
 
-    Drop v2.2
+    Drop v2.3
     Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
     http://gomakethings.com
 
@@ -39,7 +39,7 @@
 
             });
                 
-        }
+        };
 
         // Function to close all dropdowns
         var closeDrops = function (dropToggle, dropWrapper, dropContent) {
@@ -59,7 +59,7 @@
                 buoy.removeClass(content, 'active');
             });
 
-        }
+        };
 
         // Define the dropdown toggle element, wrapper and content
         var dropToggle = document.querySelectorAll('.dropdown > a');
