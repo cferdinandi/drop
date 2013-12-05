@@ -1,48 +1,50 @@
 /* =============================================================
 
-    Astro v3.4
-    Mobile-first navigation patterns by Chris Ferdinandi.
-    http://gomakethings.com
+	Astro v3.5
+	Mobile-first navigation patterns by Chris Ferdinandi.
+	http://gomakethings.com
 
-    Free to use under the MIT License.
-    http://gomakethings.com/mit/
-    
+	Free to use under the MIT License.
+	http://gomakethings.com/mit/
+
  * ============================================================= */
 
 (function() {
 
-    // Feature Test
-    if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+	'use strict';
 
-        // Function to toggle navigation menu
-        var toggleNav = function (toggle) {
+	// Feature Test
+	if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
-            // Get target navigation menu
-            var dataID = toggle.getAttribute('data-target');
-            var dataTarget = document.querySelector(dataID);
+		// Function to toggle navigation menu
+		var toggleNav = function (toggle) {
 
-            // Toggle the '.active' class on the menu
-            buoy.toggleClass(dataTarget, 'active');
+			// Get target navigation menu
+			var dataID = toggle.getAttribute('data-target');
+			var dataTarget = document.querySelector(dataID);
 
-        };
+			// Toggle the '.active' class on the menu
+			buoy.toggleClass(dataTarget, 'active');
 
-        // Define the nav toggle
-        var navToggle = document.querySelectorAll('.nav-toggle');
+		};
 
-        // For each nav toggle
-        [].forEach.call(navToggle, function (toggle) {
+		// Define the nav toggle
+		var navToggle = document.querySelectorAll('.nav-toggle');
 
-            // When nav toggle is clicked
-            toggle.addEventListener('click', function(e) {
+		// For each nav toggle
+		[].forEach.call(navToggle, function (toggle) {
 
-                // Prevent the default link behavior
-                e.preventDefault();
+			// When nav toggle is clicked
+			toggle.addEventListener('click', function(e) {
 
-                // Toggle the navigation menu
-                toggleNav(toggle);
-                
-            }, false);
-        });
-    }
+				// Prevent the default link behavior
+				e.preventDefault();
+
+				// Toggle the navigation menu
+				toggleNav(toggle);
+
+			}, false);
+		});
+	}
 
 })();

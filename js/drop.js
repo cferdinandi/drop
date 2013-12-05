@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Drop v2.3
+	Drop v2.4
 	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
 	http://gomakethings.com
 
