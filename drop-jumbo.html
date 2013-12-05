@@ -19,9 +19,9 @@
 	</style>
 
 	<!-- stylesheets -->
-	<link rel="stylesheet" href="drop-jumbo.css" type="text/css">
-	<link rel="stylesheet" href="kraken-grid.css" type="text/css">
-	<link rel="stylesheet" href="astro/astro-navbar.css" type="text/css">
+	<link rel="stylesheet" href="css/drop-jumbo-css.css" type="text/css">
+	<link rel="stylesheet" href="astro/astro-navbar-plus-css.css" type="text/css">
+	<link rel="stylesheet" href="kraken-grid/kraken-grid.css" type="text/css">
 
 	<!-- Feature Test -->
 	<script>
@@ -55,7 +55,14 @@
 						<a href="url.com">Dropdown</a>
 						<div class="dropdown-menu">
 							<div class="container">
-								Content goes here.
+								<div class="row">
+									<div class="grid-half">
+										Content
+									</div>
+									<div class="grid-half">
+										Other Content
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -63,7 +70,17 @@
 						<a href="url.com">Another Dropdown</a>
 						<div class="dropdown-menu">
 							<div class="container">
-								More content goes here.
+								<div class="row">
+									<div class="grid-third">
+										Different Content
+									</div>
+									<div class="grid-third">
+										Other Different Content
+									</div>
+									<div class="grid-third">
+										Even More Content
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -75,8 +92,8 @@
 
 
 	<!-- Javascript -->
-	<script src="buoy.js"></script>
-	<script src="drop.js"></script>
+	<script src="js/buoy.js"></script>
+	<script src="js/drop.js"></script>
 	<script src="astro/astro-plus.js"></script>
 
 </body>

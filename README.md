@@ -10,6 +10,8 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v2.4 (December 4, 2013)
+  * Added Sass support.
 * v2.3 (August 27, 2013)
   * Added missing semicolons.
   * Activated strict mode.
