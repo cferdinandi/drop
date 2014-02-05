@@ -72,27 +72,27 @@
  *  Remove if not using.
  *  Change max-width to fit your project. */
 @media (max-width: 40em) {
-  /*  .js prefix ensure content is only hidden when JavaScript is supported.
-   *  This requires on the included js-accessibility.js script. */
+  /*  .js-astro prefix ensure content is only hidden when JavaScript is supported.
+   *  This requires on the included js-accessibility.js-astro script. */
   /*  Align text to the left when javascript is supported */
-  .js .nav-wrap {
+  .js-astro .nav-wrap {
     text-align: left;
   }
 
   /*  Float logo to the left when javascript is supported */
-  .js .logo {
+  .js-astro .logo {
     float: left;
   }
 
   /*  Display navigation toggle button if javascript is supported */
-  .js .nav-toggle {
+  .js-astro .nav-toggle {
     display: block;
     visibility: visible;
     float: right;
   }
 
   /*  Hide navigation items if javascript is supported */
-  .js .nav-collapse {
+  .js-astro .nav-collapse {
     max-height: 0;
     overflow: hidden;
     display: block;
@@ -111,16 +111,16 @@
   /*  When collapsed element has the .active class, show it
    *  Uses max-height instead of display: none to allow for
    *  CSS3 animations, which don't work on display values. */
-  .js .nav-collapse.active {
+  .js-astro .nav-collapse.active {
     max-height: 999em;
   }
 
-  .js .nav {
+  .js-astro .nav {
     text-align: left;
   }
 
   /*  Display navigation items as full-width, stacked blocks when javascript supported */
-  .js .nav-collapse li {
+  .js-astro .nav-collapse li {
     display: block;
     width: 100%;
     -webkit-box-sizing: border-box;

@@ -45,6 +45,10 @@
 
 			}, false);
 		});
+
+		// Add class to HTML element to activate conditional CSS
+		buoy.addClass(document.documentElement, 'js-astro');
+
 	}
 
 })();
