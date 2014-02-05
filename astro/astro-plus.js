@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Astro v3.5
+	Astro v3.6
 	Mobile-first navigation patterns by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -9,46 +9,44 @@
 
  * ============================================================= */
 
-(function() {
+ window.astro = (function (window, document, undefined) {
 
 	'use strict';
 
 	// Feature Test
 	if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
-		// Function to toggle navigation menu
-		var toggleNav = function (toggle) {
+		// SELECTORS
 
-			// Get target navigation menu
-			var dataID = toggle.getAttribute('data-target');
+		var navToggle = document.querySelectorAll('[data-nav-toggle]');
+
+
+		// METHODS
+
+		// Show and hide the navigation menu
+		var toggleNav = function (event) {
+
+			// SELECTORS
+			var dataID = this.getAttribute('data-target');
 			var dataTarget = document.querySelector(dataID);
 
-			// Toggle the '.active' class on the menu
-			buoy.toggleClass(dataTarget, 'active');
+			// EVENTS, LISTENERS, AND INITS
+			event.preventDefault(); // Prevent the default link behavior
+			buoy.toggleClass(dataTarget, 'active'); // Toggle the '.active' class on the menu
 
 		};
 
-		// Define the nav toggle
-		var navToggle = document.querySelectorAll('.nav-toggle');
 
-		// For each nav toggle
-		[].forEach.call(navToggle, function (toggle) {
-
-			// When nav toggle is clicked
-			toggle.addEventListener('click', function(e) {
-
-				// Prevent the default link behavior
-				e.preventDefault();
-
-				// Toggle the navigation menu
-				toggleNav(toggle);
-
-			}, false);
-		});
+		// EVENTS, LISTENERS, AND INITS
 
 		// Add class to HTML element to activate conditional CSS
 		buoy.addClass(document.documentElement, 'js-astro');
 
+		// When a nav toggle is clicked, show or hide the nav
+		Array.prototype.forEach.call(navToggle, function (toggle) {
+			toggle.addEventListener('click', toggleNav, false);
+		});
+
 	}
 
-})();
+})(window, document);
