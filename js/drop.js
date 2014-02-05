@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Drop v2.4
+	Drop v2.5
 	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -9,104 +9,94 @@
 
  * ============================================================= */
 
-(function (window, document, undefined) {
+window.drop = (function (window, document, undefined) {
 
 	'use strict';
 
 	// Feature Test
 	if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
-		// Function to toggle dropdowns
-		var toggleDrop = function (toggle) {
+		// SELECTORS
 
-			// Define the dropdown menu content, parent element, and siblings
-			var toggleMenu = toggle.nextElementSibling;
-			var toggleParent = toggle.parentNode;
-			var toggleSiblings = buoy.getSiblings(toggleParent);
-
-			// Add/remove '.active' class from dropdown item
-			buoy.toggleClass(toggle, 'active');
-			buoy.toggleClass(toggleMenu, 'active');
-			buoy.toggleClass(toggleParent, 'active');
-
-			// Remove '.active' class from all sibling elements
-			[].forEach.call(toggleSiblings, function (sibling) {
-				var siblingContent = sibling.children;
-				buoy.removeClass(sibling, 'active');
-
-				// Remove '.active' class from all siblings child elements
-				[].forEach.call(siblingContent, function (content) {
-					buoy.removeClass(content, 'active');
-				});
-
-			});
-
-		};
-
-		// Function to close all dropdowns
-		var closeDrops = function (dropToggle, dropWrapper, dropContent) {
-
-			// For each dropdown toggle, remove '.active' class
-			[].forEach.call(dropToggle, function (toggle) {
-				buoy.removeClass(toggle, 'active');
-			});
-
-			// For each dropdown toggle, remove '.active' class
-			[].forEach.call(dropWrapper, function (wrapper) {
-				buoy.removeClass(wrapper, 'active');
-			});
-
-			// For each dropdown toggle, remove '.active' class
-			[].forEach.call(dropContent, function (content) {
-				buoy.removeClass(content, 'active');
-			});
-
-		};
-
-		// Define the dropdown toggle element, wrapper and content
 		var dropToggle = document.querySelectorAll('.dropdown > a');
 		var dropWrapper = document.querySelectorAll('.dropdown');
 		var dropContent = document.querySelectorAll('.dropdown-menu');
 
 
+		// METHODS
+
+		// Toggle a dropdown menu
+		var toggleDrop = function (event) {
+
+			// SELECTORS
+			var toggleMenu = this.nextElementSibling;
+			var toggleParent = this.parentNode;
+			var toggleSiblings = buoy.getSiblings(toggleParent);
+
+			// EVENTS, LISTENERS, AND INITS
+
+			// Prevent defaults
+			event.stopPropagation();
+			event.preventDefault();
+
+			// Add/remove '.active' class from dropdown item
+			buoy.toggleClass(this, 'active');
+			buoy.toggleClass(toggleMenu, 'active');
+			buoy.toggleClass(toggleParent, 'active');
+
+			// Remove '.active' class from all sibling elements and their child elements
+			Array.prototype.forEach.call(toggleSiblings, function (sibling, index) {
+				var siblingContent = sibling.children;
+				buoy.removeClass(sibling, 'active');
+				Array.prototype.forEach.call(siblingContent, function (content, index) {
+					buoy.removeClass(content, 'active');
+				});
+			});
+
+		};
+
+		// Close all dropdown menus
+		var closeDrops = function (event) {
+
+			// For each dropdown toggle, remove '.active' class
+			Array.prototype.forEach.call(dropToggle, function (toggle, index) {
+				buoy.removeClass(toggle, 'active');
+			});
+
+			// For each dropdown toggle, remove '.active' class
+			Array.prototype.forEach.call(dropWrapper, function (wrapper, index) {
+				buoy.removeClass(wrapper, 'active');
+			});
+
+			// For each dropdown toggle, remove '.active' class
+			Array.prototype.forEach.call(dropContent, function (content, index) {
+				buoy.removeClass(content, 'active');
+			});
+
+		};
+
+		// Don't close dropdown menus when clicking on content within them
+		var handleDropdownClick = function (event) {
+			event.stopPropagation();
+		};
+
+
+		// EVENTS, LISTENERS, AND INITS
+
+		// Add class to HTML element to activate conditional CSS
+		buoy.addClass(document.documentElement, 'js-drop');
+
 		// When body is clicked, close all dropdowns
-		document.addEventListener('click', function(e) {
+		document.addEventListener('click', closeDrops, false);
 
-			// Close dropdowns
-			closeDrops(dropToggle, dropWrapper, dropContent);
-
-		}, false);
-
-
-		// For each toggle
-		[].forEach.call(dropToggle, function (toggle) {
-
-			// When the toggle is clicked
-			toggle.addEventListener('click', function(e) {
-
-				// Prevent the "close all dropdowns" function
-				e.stopPropagation();
-
-				// Prevent default link action
-				e.preventDefault();
-
-				// Toggle dropdown menu
-				toggleDrop(toggle);
-
-			}, false);
+		// When a toggle is clicked, show/hide dropdown menu
+		Array.prototype.forEach.call(dropToggle, function (toggle, index) {
+			toggle.addEventListener('click', toggleDrop, false);
 		});
 
-
-		// For each dropdown menu
-		[].forEach.call(dropContent, function (content) {
-
-			// When the menu is clicked
-			content.addEventListener('click', function(e) {
-
-				// Prevent the "close all dropdowns" function
-				e.stopPropagation();
-
-			}, false);
+		// When dropdown menu content is clicked, don't close the menu
+		Array.prototype.forEach.call(dropContent, function (content, index) {
+			content.addEventListener('click', handleDropdownClick, false);
 		});
 
 	}
