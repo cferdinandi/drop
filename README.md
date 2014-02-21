@@ -10,6 +10,10 @@ Pick the one that best fits your project.
 Getting started with Drop is really easy. [View the online tutorial](http://cferdinandi.github.com/drop/) or dig through the sample HTML files.
 
 ## Changelog
+* v3.0 (February 21, 2014)
+  * Better public/private method namespacing.
+  * Require `init()` call to run.
+  * Better documentation (noting what's returned on functions).
 * v2.5 (February 5, 2014)
   * Added namespacing to IIFE.
   * Moved feature test to script itself for better progressive enhancement.
