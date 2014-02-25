@@ -83,7 +83,13 @@
 	<script src="js/drop.js"></script>
 	<script src="astro/astro-plus.js"></script>
 	<script>
-		drop.init();
+		drop.init({
+			toggleActiveClass: 'active',
+			contentActiveClass: 'active',
+			initClass: 'js-drop',
+			callbackBefore: function () {},
+			callbackAfter: function () {}
+		});
 		astro.init();
 	</script>
 
