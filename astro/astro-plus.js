@@ -13,33 +13,67 @@
 
 	'use strict';
 
+	// Default settings
+	// Private method
+	// Returns an {object}
+	var _defaults = function () {
+		return {
+			toggleActiveClass: 'active',
+			navActiveClass: 'active',
+			initClass: 'js-astro',
+			callbackBefore: function () {},
+			callbackAfter: function () {}
+		};
+	};
+
+	// Merge default settings with user options
+	// Private method
+	// Returns an {object}
+	var _mergeObjects = function ( original, updates ) {
+		for (var key in updates) {
+			original[key] = updates[key];
+		}
+		return original;
+	};
+
 	// Show and hide the navigation menu
 	// Private method
-	var _toggleNav = function (event) {
+	// Run functions
+	var toggleNav = function ( toggle, navID, options, event ) {
 
-		// SELECTORS
-		var dataID = this.getAttribute('data-target');
-		var dataTarget = document.querySelector(dataID);
+		// Selectors and variables
+		options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+		var nav = document.querySelector(navID);
 
-		// EVENTS, LISTENERS, AND INITS
-		event.preventDefault(); // Prevent the default link behavior
-		buoy.toggleClass(dataTarget, 'active'); // Toggle the '.active' class on the menu
+
+		// If a link, prevent default click event
+		if ( toggle && toggle.tagName === 'A' && event ) {
+			event.preventDefault();
+		}
+
+		options.callbackBefore(); // Run callbacks before toggling nav
+		buoy.toggleClass(nav, options.navActiveClass); // Toggle the '.active' class on the menu
+		options.callbackBefore(); // Run callbacks after toggling nav
 
 	};
 
 	// Initialize Astro
 	// Public method
-	var init = function () {
+	// Runs functions
+	var init = function ( options ) {
 
 		// Feature test before initializing
 		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
+			// Selectors and variables
+			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
 			var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
-			buoy.addClass(document.documentElement, 'js-astro'); // Add class to HTML element to activate conditional CSS
+
+			buoy.addClass(document.documentElement, options.initClass); // Add class to HTML element to activate conditional CSS
 
 			// When a nav toggle is clicked, show or hide the nav
 			Array.prototype.forEach.call(navToggle, function (toggle) {
-				toggle.addEventListener('click', _toggleNav, false);
+				toggle.addEventListener('click', toggleNav.bind( null, toggle, toggle.getAttribute('data-nav-toggle'), options ), false);
 			});
 
 		}
@@ -48,7 +82,8 @@
 
 	// Return public methods
 	return {
-		init: init
+		init: init,
+		toggleNav: toggleNav
 	};
 
 })(window, document);
