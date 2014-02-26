@@ -46,7 +46,7 @@
 
 		<nav class="nav-wrap">
 			<a class="logo" href="#">My Brand</a>
-			<a class="nav-toggle" data-nav-toggle data-target="#nav-menu" href="#">Menu &#9660;</a>
+			<a class="nav-toggle" data-nav-toggle="#nav-menu" href="#">Menu &#9660;</a>
 			<div class="nav-collapse" id="nav-menu">
 				<ul class="nav">
 					<li><a href="#">Home</a></li>
@@ -82,6 +82,18 @@
 	<script src="js/buoy.js"></script>
 	<script src="js/drop.js"></script>
 	<script src="astro/astro-plus.js"></script>
+	<script>
+		drop.init({
+			toggleSelector: '.dropdown',
+			contentSelector: '.dropdown-menu',
+			toggleActiveClass: 'active',
+			contentActiveClass: 'active',
+			initClass: 'js-drop',
+			callbackBefore: function () {},
+			callbackAfter: function () {}
+		});
+		astro.init();
+	</script>
 
 </body>
 </html>
