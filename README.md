@@ -1,18 +1,15 @@
 # Drop
-Simple, mobile-friendly dropdown menus, by [Chris Ferdinandi](http://gomakethings.com). Drop features two dropdown menu options powered by vanilla JavaScript:
+Simple, mobile-friendly dropdown menus. [View the demo](http://cferdinandi.github.io/drop/).
 
-1. Basic, a simple, single-column menu.
-2. Jumbo, a full-screen, multi-column option.
-
-[View the Demo](http://cferdinandi.github.io/drop/)
+**In This Documentation**
 
 1. [Getting Started](#getting-started)
-2. [Browser Compatability](#browser-compatability)
 3. [Using Both Patterns](#using-both-patterns)
-3. [Options & Settings](#options-and-settings)
-4. [Changelog](#changelog)
-5. [License](#license)
-6. [Older Docs](#older-docs)
+4. [Options & Settings](#options-and-settings)
+2. [Browser Compatibility](#browser-compatibility)
+6. [License](#license)
+5. [Changelog](#changelog)
+7. [Older Docs](#older-docs)
 
 
 
@@ -20,10 +17,12 @@ Simple, mobile-friendly dropdown menus, by [Chris Ferdinandi](http://gomakething
 
 ### 1. Include Drop on your site.
 
-	<!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
-	<link rel="stylesheet" href="css/drop-*-css.css">
-	<script src="js/drop.js"></script>
-	<script src="buoy.js"></script>
+```html
+<!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
+<link rel="stylesheet" href="css/drop-*-css.css">
+<script src="js/drop.js"></script>
+<script src="buoy.js"></script>
+```
 
 Drop is [built with Sass](http://sass-lang.com/) for easy customization. If you don't use Sass, that's ok. The `css` folder contains compiled vanilla CSS.
 
@@ -33,29 +32,31 @@ Drop also requires [Buoy](http://cferdinandi.github.io/buoy/), a vanilla JS micr
 
 ### 2. Add the markup to your HTML.
 
-	...
-		<li class="dropdown">
-			<a href="FALLBACK-URL.com">Dropdown 1</a>
-			<div class="dropdown-menu dropdown-right">
-				<ul>
-					<li><a href="#">Item 1</a></li>
-					<li><a href="#">Item 2</a></li>
-					<li><a href="#">Item 3</a></li>
-				</ul>
-			</div>
-		</li>
+```html
+...
+	<li class="dropdown">
+		<a href="FALLBACK-URL.com">Dropdown 1</a>
+		<div class="dropdown-menu dropdown-right">
+			<ul>
+				<li><a href="#">Item 1</a></li>
+				<li><a href="#">Item 2</a></li>
+				<li><a href="#">Item 3</a></li>
+			</ul>
+		</div>
+	</li>
 
-		<li class="dropdown">
-			<a href="FALLBACK-URL.com">Dropdown 2</a>
-			<div class="dropdown-menu dropdown-right">
-				<ul>
-					<li><a href="#">Item 1</a></li>
-					<li><a href="#">Item 2</a></li>
-					<li><a href="#">Item 3</a></li>
-				</ul>
-			</div>
-		</li>
-	...
+	<li class="dropdown">
+		<a href="FALLBACK-URL.com">Dropdown 2</a>
+		<div class="dropdown-menu dropdown-right">
+			<ul>
+				<li><a href="#">Item 1</a></li>
+				<li><a href="#">Item 2</a></li>
+				<li><a href="#">Item 3</a></li>
+			</ul>
+		</div>
+	</li>
+...
+```
 
 With Drop Basic, if a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping. In Drop Jumbo, you can wrap `dropdown-menu` content in whatever grid system you'd like. Not sure where to start? Try using [Kraken](http://cferdinandi.github.io/kraken/).
 
@@ -67,9 +68,11 @@ Specifying a backup URL ensures that people can always access your content, even
 
 ### 3. Initialize Drop.
 
-	<script>
-		drop.init();
-	</script>
+```html
+<script>
+	drop.init();
+</script>
+```
 
 In the footer of your page, after the content, initialize Drop. And that's it, you're done. Nice work!
 
@@ -91,15 +94,17 @@ Drop includes smart defaults and works right out of the box. But if you want to 
 
 You can pass options and callbacks into Drop through the `init()` function:
 
-	drop.init({
-		toggleSelector: '.dropdown', // Class used for the dropdown <li> element
-		contentSelector: '.dropdown-menu', // Class used for the dropdown content <div>
-		toggleActiveClass: 'active', // Class added to active dropdown toggles
-		contentActiveClass: 'active', // Class added to active dropdown content
-		initClass: 'js-drop', // Class added to `<html>` element when initiated
-		callbackBefore: function () {}, // Function that's run before a dropdown is toggled
-		callbackAfter: function () {} // Function that's run after a dropdown is toggled
-	});
+```javascript
+drop.init({
+	toggleSelector: '.dropdown', // Class used for the dropdown <li> element
+	contentSelector: '.dropdown-menu', // Class used for the dropdown content <div>
+	toggleActiveClass: 'active', // Class added to active dropdown toggles
+	contentActiveClass: 'active', // Class added to active dropdown content
+	initClass: 'js-drop', // Class added to `<html>` element when initiated
+	callbackBefore: function () {}, // Function that's run before a dropdown is toggled
+	callbackAfter: function () {} // Function that's run after a dropdown is toggled
+});
+```
 
 `toggleSelector` and `contentSelector` are particularly useful if you're using both Drop Basic and Drop Jumbo. Simply call `drop.init()` twice, changing your selectors accordingly.
 
@@ -107,14 +112,16 @@ You can pass options and callbacks into Drop through the `init()` function:
 
 You can also call Drop's toggle dropdown event in your own scripts:
 
-	drop.toggleDrop(
-		toggle, // Node that toggles the dropdown action. ex. document.querySelector('#toggle')
-		options, // Classes and callbacks. Same options as those passed into the init() function.
-		event // Optional, if a DOM event was triggered.
-	);
+```javascript
+drop.toggleDrop(
+	toggle, // Node that toggles the dropdown action. ex. document.querySelector('#toggle')
+	options, // Classes and callbacks. Same options as those passed into the init() function.
+	event // Optional, if a DOM event was triggered.
+);
+```
 
 
-## Browser Compatability
+## Browser Compatibility
 
 Drop works in all modern browsers, and IE 9 and above.
 
@@ -122,47 +129,48 @@ Drop is built with modern JavaScript APIs, and uses progressive enhancement. If 
 
 
 
-## Changelog
-* v3.0 (February 24, 2014)
-  * Better public/private method namespacing.
-  * Require `init()` call to run.
-  * New API exposes additional methods for use in your own scripts.
-  * Better documentation.
-* v2.5 (February 5, 2014)
-  * Added namespacing to IIFE.
-  * Moved feature test to script itself for better progressive enhancement.
-  * Updated looping method.
-* v2.4 (December 4, 2013)
-  * Added Sass support.
-* v2.3 (August 27, 2013)
-  * Added missing semicolons.
-  * Activated strict mode.
-* v2.2 (August 26, 2013)
-  * Converted to an IIFE pattern.
-  * Added Buoy vanilla JS micro-library.
-* v2.1 (August 14, 2013)
-  * Moved functions outside of forEach loops for better performance.
-* v2.0 (August 11, 2013)
-  * Converted to vanilla JS.
-  * Removed dependency on jQuery.
-* v1.4 (August 5, 2013)
-  * Created a variable for `$(this)` (better performance).
-* v1.3 (June 7, 2013)
-  * Switched to MIT license.
-* v1.3 (May 20, 2013)
-  * Dropdown menus now close if user clicks outside of them.
-* v1.2 (March 29, 2013)
-  * Removed changed in arrow direction on active state.
-* v1.1 (February 13, 2013)
-  * Renamed `example.html` to `index.html`.
-  * Removed "Convert to Vanilla JS" from the roadmap.
-* v1.0 (February 6, 2013)
-  * Initial release.
-
-
-
 ## License
 Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
+
+
+
+## Changelog
+
+* v3.0 - February 24, 2014
+	* Better public/private method namespacing.
+	* Require `init()` call to run.
+	* New API exposes additional methods for use in your own scripts.
+	* Better documentation.
+* v2.5 - February 5, 2014
+	* Added namespacing to IIFE.
+	* Moved feature test to script itself for better progressive enhancement.
+	* Updated looping method.
+* v2.4 - December 4, 2013
+	* Added Sass support.
+* v2.3 - August 27, 2013
+	* Added missing semicolons.
+	* Activated strict mode.
+* v2.2 - August 26, 2013
+	* Converted to an IIFE pattern.
+	* Added Buoy vanilla JS micro-library.
+* v2.1 - August 14, 2013
+	* Moved functions outside of forEach loops for better performance.
+* v2.0 - August 11, 2013
+	* Converted to vanilla JS.
+	* Removed dependency on jQuery.
+* v1.4 - August 5, 2013
+	* Created a variable for `$(this)` (better performance).
+* v1.3 - June 7, 2013
+	* Switched to MIT license.
+* v1.3 - May 20, 2013
+	* Dropdown menus now close if user clicks outside of them.
+* v1.2 - March 29, 2013
+	* Removed changed in arrow direction on active state.
+* v1.1 - February 13, 2013
+	* Renamed `example.html` to `index.html`.
+	* Removed "Convert to Vanilla JS" from the roadmap.
+* v1.0 - February 6, 2013
+	* Initial release.
 
 
 
