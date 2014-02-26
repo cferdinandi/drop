@@ -60,7 +60,7 @@ Drop also requires [Buoy](http://cferdinandi.github.io/buoy/), a vanilla JS micr
 
 With Drop Basic, if a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping. In Drop Jumbo, you can wrap `dropdown-menu` content in whatever grid system you'd like. Not sure where to start? Try using [Kraken](http://cferdinandi.github.io/kraken/).
 
-**Fallback URLs**
+#### Fallback URLs
 
 Drop uses modern JavaScript API's that aren't supported by older browsers (including IE 8 and lower). If a browser lacks support, the dropdown menu won't work.
 
