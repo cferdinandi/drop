@@ -18,6 +18,8 @@ window.drop = (function (window, document, undefined) {
 	// Returns an {object}
 	var _defaults = function () {
 		return {
+			toggleSelector: '.dropdown',
+			contentSelector: '.dropdown-menu',
 			toggleActiveClass: 'active',
 			contentActiveClass: 'active',
 			initClass: 'js-drop',
@@ -79,9 +81,9 @@ window.drop = (function (window, document, undefined) {
 	var _closeDrops = function ( options ) {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll('.dropdown > a.' + options.toggleActiveClass);
-		var dropWrapper = document.querySelectorAll('.dropdown.' + options.toggleActiveClass);
-		var dropContent = document.querySelectorAll('.dropdown-menu.' + options.contentActiveClass);
+		var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a.' + options.toggleActiveClass);
+		var dropWrapper = document.querySelectorAll(options.toggleSelector + options.toggleActiveClass);
+		var dropContent = document.querySelectorAll(options.contentSelector + options.contentActiveClass);
 
 		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent > 0 ) {
 
@@ -125,9 +127,9 @@ window.drop = (function (window, document, undefined) {
 
 			// Selectors and variables
 			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
-			var dropToggle = document.querySelectorAll('.dropdown > a');
-			var dropWrapper = document.querySelectorAll('.dropdown');
-			var dropContent = document.querySelectorAll('.dropdown-menu');
+			var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a');
+			var dropWrapper = document.querySelectorAll(options.toggleSelector);
+			var dropContent = document.querySelectorAll(options.contentSelector);
 
 			// Add class to HTML element to activate conditional CSS
 			buoy.addClass(document.documentElement, options.initClass);
