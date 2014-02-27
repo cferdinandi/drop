@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Drop v3.0
+	Drop v3.1
 	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -16,16 +16,14 @@ window.drop = (function (window, document, undefined) {
 	// Default settings
 	// Private method
 	// Returns an {object}
-	var _defaults = function () {
-		return {
-			toggleSelector: '.dropdown',
-			contentSelector: '.dropdown-menu',
-			toggleActiveClass: 'active',
-			contentActiveClass: 'active',
-			initClass: 'js-drop',
-			callbackBefore: function () {},
-			callbackAfter: function () {}
-		};
+	var _defaults = {
+		toggleSelector: '.dropdown',
+		contentSelector: '.dropdown-menu',
+		toggleActiveClass: 'active',
+		contentActiveClass: 'active',
+		initClass: 'js-drop',
+		callbackBefore: function () {},
+		callbackAfter: function () {}
 	};
 
 	// Merge default settings with user options
@@ -44,7 +42,7 @@ window.drop = (function (window, document, undefined) {
 	var toggleDrop = function ( toggle, options, event ) {
 
 		// Selectors and variables
-		options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 		var toggleMenu = toggle.nextElementSibling;
 		var toggleParent = toggle.parentNode;
 		var toggleSiblings = buoy.getSiblings(toggleParent);
@@ -126,7 +124,7 @@ window.drop = (function (window, document, undefined) {
 		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
 			// Selectors and variables
-			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 			var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a');
 			var dropWrapper = document.querySelectorAll(options.toggleSelector);
 			var dropContent = document.querySelectorAll(options.contentSelector);

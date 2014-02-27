@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Astro v4.0
+	Astro v4.1
 	Mobile-first navigation patterns by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -14,16 +14,13 @@
 	'use strict';
 
 	// Default settings
-	// Private method
-	// Returns an {object}
-	var _defaults = function () {
-		return {
-			toggleActiveClass: 'active',
-			navActiveClass: 'active',
-			initClass: 'js-astro',
-			callbackBefore: function () {},
-			callbackAfter: function () {}
-		};
+	// Private {object} variable
+	var _defaults = {
+		toggleActiveClass: 'active',
+		navActiveClass: 'active',
+		initClass: 'js-astro',
+		callbackBefore: function () {},
+		callbackAfter: function () {}
 	};
 
 	// Merge default settings with user options
@@ -42,7 +39,7 @@
 	var toggleNav = function ( toggle, navID, options, event ) {
 
 		// Selectors and variables
-		options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 		var nav = document.querySelector(navID);
 
 
@@ -66,7 +63,7 @@
 		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
 
 			// Selectors and variables
-			options = _mergeObjects( _defaults(), options || {} ); // Merge user options with defaults
+			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 			var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
 
 			buoy.addClass(document.documentElement, options.initClass); // Add class to HTML element to activate conditional CSS
