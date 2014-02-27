@@ -120,6 +120,13 @@ drop.toggleDrop(
 );
 ```
 
+**Example**
+
+```javascript
+var toggle = document.querySelector('#toggle');
+drop.toggleDrop( toggle );
+```
+
 
 ## Browser Compatibility
 
