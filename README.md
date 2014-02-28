@@ -114,7 +114,7 @@ You can also call Drop's toggle dropdown event in your own scripts:
 
 ```javascript
 drop.toggleDrop(
-	toggle, // Node that toggles the dropdown action. ex. document.querySelector('#toggle')
+	toggle, // Link node that toggles the dropdown action. ex. document.querySelector('#toggle')
 	options, // Classes and callbacks. Same options as those passed into the init() function.
 	event // Optional, if a DOM event was triggered.
 );
