@@ -4,12 +4,13 @@ Simple, mobile-friendly dropdown menus. [View the demo](http://cferdinandi.githu
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
-3. [Using Both Patterns](#using-both-patterns)
-4. [Options & Settings](#options-and-settings)
-2. [Browser Compatibility](#browser-compatibility)
+2. [Using Both Patterns](#using-both-patterns)
+3. [Options & Settings](#options-and-settings)
+4. [Browser Compatibility](#browser-compatibility)
+5. [How to Contribute](#how-to-contribute)
 6. [License](#license)
-5. [Changelog](#changelog)
-7. [Older Docs](#older-docs)
+7. [Changelog](#changelog)
+8. [Older Docs](#older-docs)
 
 
 
@@ -133,6 +134,12 @@ drop.toggleDrop( toggle );
 Drop works in all modern browsers, and IE 9 and above.
 
 Drop is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, users will get a basic link instead of a drop-down menu. If you need to support older browsers, you can still [download the jQuery version of Drop on GitHub](https://github.com/cferdinandi/drop/tree/archive-v1).
+
+
+
+## How to Contribute
+
+In lieu of a formal style guide, take care to maintain the existing coding style. Don't forget to update the version number, the changelog (in the `readme.md` file), and when applicable, the documentation.
 
 
 
