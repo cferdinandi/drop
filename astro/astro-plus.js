@@ -48,9 +48,9 @@
 			event.preventDefault();
 		}
 
-		options.callbackBefore(); // Run callbacks before toggling nav
+		options.callbackBefore( toggle, navID ); // Run callbacks before toggling nav
 		buoy.toggleClass(nav, options.navActiveClass); // Toggle the '.active' class on the menu
-		options.callbackBefore(); // Run callbacks after toggling nav
+		options.callbackBefore( toggle, navID ); // Run callbacks after toggling nav
 
 	};
 

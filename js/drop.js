@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Drop v3.1
+	Drop v3.2
 	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -53,7 +53,7 @@ window.drop = (function (window, document, undefined) {
 			event.preventDefault();
 		}
 
-		options.callbackBefore(); // Run callbacks before drop toggle
+		options.callbackBefore( toggle ); // Run callbacks before drop toggle
 
 		// Add/remove '.active' class from dropdown item
 		buoy.toggleClass(toggle, options.toggleActiveClass);
@@ -69,7 +69,7 @@ window.drop = (function (window, document, undefined) {
 			});
 		});
 
-		options.callbackAfter(); // Run callbacks after drop toggle
+		options.callbackAfter( toggle ); // Run callbacks after drop toggle
 
 	};
 

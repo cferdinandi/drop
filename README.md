@@ -101,8 +101,8 @@ drop.init({
 	toggleActiveClass: 'active', // Class added to active dropdown toggles
 	contentActiveClass: 'active', // Class added to active dropdown content
 	initClass: 'js-drop', // Class added to `<html>` element when initiated
-	callbackBefore: function () {}, // Function that's run before a dropdown is toggled
-	callbackAfter: function () {} // Function that's run after a dropdown is toggled
+	callbackBefore: function ( toggle ) {}, // Function that's run before a dropdown is toggled
+	callbackAfter: function ( toggle ) {} // Function that's run after a dropdown is toggled
 });
 ```
 
