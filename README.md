@@ -143,6 +143,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v3.2 - March 19, 2014
+	* Passed arguments into callback functions.
 * v3.1 - February 27, 2014
 	* Converted `_defaults` to a literal object
 * v3.0 - February 24, 2014
