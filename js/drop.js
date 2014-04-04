@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Drop v3.2
+	Drop v3.3
 	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -80,8 +80,8 @@ window.drop = (function (window, document, undefined) {
 
 		// Selectors and variables
 		var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a.' + options.toggleActiveClass);
-		var dropWrapper = document.querySelectorAll(options.toggleSelector + options.toggleActiveClass);
-		var dropContent = document.querySelectorAll(options.contentSelector + options.contentActiveClass);
+		var dropWrapper = document.querySelectorAll(options.toggleSelector + '.' + options.toggleActiveClass);
+		var dropContent = document.querySelectorAll(options.contentSelector + '.' + options.contentActiveClass);
 
 		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent > 0 ) {
 
