@@ -1,6 +1,6 @@
 /* =============================================================
 
-	Astro v4.1
+	Astro v5.0
 	Mobile-first navigation patterns by Chris Ferdinandi.
 	http://gomakethings.com
 
@@ -49,7 +49,8 @@
 		}
 
 		options.callbackBefore( toggle, navID ); // Run callbacks before toggling nav
-		buoy.toggleClass(nav, options.navActiveClass); // Toggle the '.active' class on the menu
+		toggle.classList.toggle( options.toggleActiveClass ); // Toggle the '.active' class on the toggle element
+		nav.classList.toggle( options.navActiveClass ); // Toggle the '.active' class on the menu
 		options.callbackBefore( toggle, navID ); // Run callbacks after toggling nav
 
 	};
@@ -66,7 +67,7 @@
 			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 			var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
 
-			buoy.addClass(document.documentElement, options.initClass); // Add class to HTML element to activate conditional CSS
+			document.documentElement.classList.add( options.initClass ); // Add class to HTML element to activate conditional CSS
 
 			// When a nav toggle is clicked, show or hide the nav
 			Array.prototype.forEach.call(navToggle, function (toggle) {

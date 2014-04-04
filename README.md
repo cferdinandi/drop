@@ -150,6 +150,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.0 - April 4, 2014
+	* Converted from Buoy class helpers to `classList` with polyfill.
 * v3.3 - April 4, 2014
 	* Fixed bug that stopped dropdowns from closing when clicking outside of a dropdown.
 * v3.2 - March 19, 2014
