@@ -36,6 +36,21 @@ window.drop = (function (window, document, undefined) {
 		return original;
 	};
 
+	// Get siblings of an element
+	// Private method
+	// Returns array of nodes
+	var _getSiblings = function (elem) {
+		var siblings = [];
+		var sibling = elem.parentNode.firstChild;
+		var skipMe = elem;
+		for ( ; sibling; sibling = sibling.nextSibling ) {
+			if ( sibling.nodeType == 1 && sibling != elem ) {
+				siblings.push( sibling );
+			}
+		}
+		return siblings;
+	};
+
 	// Toggle a dropdown menu
 	// Public method
 	// Runs functions
@@ -45,7 +60,7 @@ window.drop = (function (window, document, undefined) {
 		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
 		var toggleMenu = toggle.nextElementSibling;
 		var toggleParent = toggle.parentNode;
-		var toggleSiblings = buoy.getSiblings(toggleParent);
+		var toggleSiblings = _getSiblings(toggleParent);
 
 		// Prevent defaults
 		if ( event ) {
@@ -56,16 +71,16 @@ window.drop = (function (window, document, undefined) {
 		options.callbackBefore( toggle ); // Run callbacks before drop toggle
 
 		// Add/remove '.active' class from dropdown item
-		buoy.toggleClass(toggle, options.toggleActiveClass);
-		buoy.toggleClass(toggleMenu, options.toggleActiveClass);
-		buoy.toggleClass(toggleParent, options.toggleActiveClass);
+		toggle.classList.toggle( options.toggleActiveClass );
+		toggleMenu.classList.toggle( options.toggleActiveClass );
+		toggleParent.classList.toggle( options.toggleActiveClass );
 
 		// Remove '.active' class from all sibling elements and their child elements
 		Array.prototype.forEach.call(toggleSiblings, function (sibling, index) {
 			var siblingContent = sibling.children;
-			buoy.removeClass(sibling, options.toggleActiveClass);
+			sibling.classList.remove( options.toggleActiveClass );
 			Array.prototype.forEach.call(siblingContent, function (content, index) {
-				buoy.removeClass(content, options.contentActiveClass);
+				content.classList.remove( options.contentActiveClass );
 			});
 		});
 
@@ -89,17 +104,17 @@ window.drop = (function (window, document, undefined) {
 
 			// For each dropdown toggle, remove '.active' class
 			Array.prototype.forEach.call(dropToggle, function (toggle, index) {
-				buoy.removeClass(toggle, options.toggleActiveClass);
+				toggle.classList.remove( options.toggleActiveClass );
 			});
 
 			// For each dropdown toggle wrapper, remove '.active' class
 			Array.prototype.forEach.call(dropWrapper, function (wrapper, index) {
-				buoy.removeClass(wrapper, options.toggleActiveClass);
+				wrapper.classList.remove( options.toggleActiveClass );
 			});
 
 			// For each dropdown content area, remove '.active' class
 			Array.prototype.forEach.call(dropContent, function (content, index) {
-				buoy.removeClass(content, options.contentActiveClass);
+				content.classList.remove( options.contentActiveClass );
 			});
 
 			options.callbackAfter(); // Run callbacks after drop close
@@ -130,7 +145,7 @@ window.drop = (function (window, document, undefined) {
 			var dropContent = document.querySelectorAll(options.contentSelector);
 
 			// Add class to HTML element to activate conditional CSS
-			buoy.addClass(document.documentElement, options.initClass);
+			document.documentElement.classList.add( options.initClass );
 
 			// When body is clicked, close all dropdowns
 			document.addEventListener('click', _closeDrops.bind( null, options ), false);
