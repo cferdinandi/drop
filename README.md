@@ -198,5 +198,6 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Older Docs
 
+* [Version 4](https://github.com/cferdinandi/drop/tree/archive-v4)
 * [Version 2](http://cferdinandi.github.io/drop/archive/v2/)
 * [Version 1](https://github.com/cferdinandi/drop/tree/archive-v1)
