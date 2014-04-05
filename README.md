@@ -1,5 +1,7 @@
 # Drop
-Simple, mobile-friendly dropdown menus. [View the demo](http://cferdinandi.github.io/drop/).
+Simple, mobile-friendly dropdown menus.
+
+[Download Drop 4](https://github.com/cferdinandi/drop/archive/master.zip) / [View the demo](http://cferdinandi.github.io/drop/)
 
 **In This Documentation**
 
