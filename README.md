@@ -6,6 +6,7 @@ Simple, mobile-friendly dropdown menus.
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
+2. [Installing with Package Managers](#installing-with-package-managers)
 2. [Using Both Patterns](#using-both-patterns)
 3. [Options & Settings](#options-and-settings)
 4. [Browser Compatibility](#browser-compatibility)
@@ -23,15 +24,15 @@ Simple, mobile-friendly dropdown menus.
 ```html
 <!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
 <link rel="stylesheet" href="css/drop-*-css.css">
+<script src="classList.js"></script>
 <script src="js/drop.js"></script>
-<script src="buoy.js"></script>
 ```
 
 Drop is [built with Sass](http://sass-lang.com/) for easy customization. If you don't use Sass, that's ok. The `css` folder contains compiled vanilla CSS.
 
 The `_config.scss` and `_mixins.scss` files are the same ones used in [Kraken](http://cferdinandi.github.io/kraken/), so you can drop the `_drop-basic.css` and `_drop-jumbo.css` files right into Kraken without making any updates. Or, adjust the variables to suit your own project.
 
-Drop also requires [Buoy](http://cferdinandi.github.io/buoy/), a simple `classList` polyfill that makes working with classes in vanilla JS a little bit easier.
+Drop also requires [classList.js](https://github.com/eligrey/classList.js), a `classList` polyfill that extends `classList` support back to IE8.
 
 ### 2. Add the markup to your HTML.
 
@@ -78,6 +79,16 @@ Specifying a backup URL ensures that people can always access your content, even
 ```
 
 In the footer of your page, after the content, initialize Drop. And that's it, you're done. Nice work!
+
+
+
+## Installing with Package Managers
+
+You can install Drop with your favorite package manager.
+
+* **NPM:** `npm install cferdinandi/drop`
+* **Bower:** `bower install https://github.com/cferdinandi/drop.git`
+* **Component:** `component install install cferdinandi/drop`
 
 
 
@@ -152,6 +163,16 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.1.0 - June 7, 2014
+	* Added UMD support.
+	* Moved public APIs to exports variable.
+	* Improved feature test.
+	* Replaced Array.prototype.forEach hack with proper forEach function.
+	* Added a more well supported trim function.
+	* General code optimizations for better minification and performance.
+	* Updated to JSDoc documentation (sort of).
+	* Updated to three number versioning system.
+	* Added package manager installation info.
 * v4.0 - April 4, 2014
 	* Converted from Buoy class helpers to `classList` with polyfill.
 * v3.3 - April 4, 2014

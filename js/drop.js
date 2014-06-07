@@ -1,22 +1,35 @@
-/* =============================================================
+/**
+ *
+ * Drop v4.1.0
+ * Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
+ * http://github.com/cferdinandi/drop
+ *
+ * Free to use under the MIT License.
+ * http://gomakethings.com/mit/
+ *
+ */
 
-	Drop v3.3
-	Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
-	http://gomakethings.com
-
-	Free to use under the MIT License.
-	http://gomakethings.com/mit/
-
- * ============================================================= */
-
-window.drop = (function (window, document, undefined) {
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define(factory);
+	} else if ( typeof exports === 'object' ) {
+		module.exports = factory;
+	} else {
+		root.drop = factory(root);
+	}
+})(this, function (root) {
 
 	'use strict';
 
+	//
+	// Variables
+	//
+
+	var exports = {}; // Object for public APIs
+	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+
 	// Default settings
-	// Private method
-	// Returns an {object}
-	var _defaults = {
+	var defaults = {
 		toggleSelector: '.dropdown',
 		contentSelector: '.dropdown-menu',
 		toggleActiveClass: 'active',
@@ -26,20 +39,55 @@ window.drop = (function (window, document, undefined) {
 		callbackAfter: function () {}
 	};
 
-	// Merge default settings with user options
-	// Private method
-	// Returns an {object}
-	var _mergeObjects = function ( original, updates ) {
-		for (var key in updates) {
-			original[key] = updates[key];
+
+	//
+	// Methods
+	//
+
+	/**
+	 * Merge defaults with user options
+	 * @private
+	 * @param {Object} defaults Default settings
+	 * @param {Object} options User options
+	 * @returns {Object} Merged values of defaults and options
+	 */
+	var extend = function ( defaults, options ) {
+		for ( var key in options ) {
+			if (Object.prototype.hasOwnProperty.call(options, key)) {
+				defaults[key] = options[key];
+			}
 		}
-		return original;
+		return defaults;
 	};
 
-	// Get siblings of an element
-	// Private method
-	// Returns array of nodes
-	var _getSiblings = function (elem) {
+	/**
+	 * A simple forEach() implementation for Arrays, Objects and NodeLists
+	 * @private
+	 * @param {Array|Object|NodeList} collection Collection of items to iterate
+	 * @param {Function} callback Callback function for each iteration
+	 * @param {Array|Object|NodeList} scope Object/NodeList/Array that forEach is iterating over (aka `this`)
+	 */
+	var forEach = function (collection, callback, scope) {
+		if (Object.prototype.toString.call(collection) === '[object Object]') {
+			for (var prop in collection) {
+				if (Object.prototype.hasOwnProperty.call(collection, prop)) {
+					callback.call(scope, collection[prop], prop, collection);
+				}
+			}
+		} else {
+			for (var i = 0, len = collection.length; i < len; i++) {
+				callback.call(scope, collection[i], i, collection);
+			}
+		}
+	};
+
+	/**
+	 * Get siblings of an element
+	 * @private
+	 * @param  {Element} elem
+	 * @return {Array}
+	 */
+	var getSiblings = function (elem) {
 		var siblings = [];
 		var sibling = elem.parentNode.firstChild;
 		var skipMe = elem;
@@ -51,16 +99,20 @@ window.drop = (function (window, document, undefined) {
 		return siblings;
 	};
 
-	// Toggle a dropdown menu
-	// Public method
-	// Runs functions
-	var toggleDrop = function ( toggle, options, event ) {
+	/**
+	 * Toggle a dropdown menu
+	 * @public
+	 * @param  {Element} toggle Element that triggered the expand or collapse
+	 * @param  {Object} settings
+	 * @param  {Event} event
+	 */
+	exports.toggleDrop = function ( toggle, settings, event ) {
 
 		// Selectors and variables
-		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
+		settings = extend( defaults, settings || {} ); // Merge user options with defaults
 		var toggleMenu = toggle.nextElementSibling;
 		var toggleParent = toggle.parentNode;
-		var toggleSiblings = _getSiblings(toggleParent);
+		var toggleSiblings = getSiblings(toggleParent);
 
 		// Prevent defaults
 		if ( event ) {
@@ -68,106 +120,111 @@ window.drop = (function (window, document, undefined) {
 			event.preventDefault();
 		}
 
-		options.callbackBefore( toggle ); // Run callbacks before drop toggle
+		settings.callbackBefore( toggle ); // Run callbacks before drop toggle
 
 		// Add/remove '.active' class from dropdown item
-		toggle.classList.toggle( options.toggleActiveClass );
-		toggleMenu.classList.toggle( options.toggleActiveClass );
-		toggleParent.classList.toggle( options.toggleActiveClass );
+		toggle.classList.toggle( settings.toggleActiveClass );
+		toggleMenu.classList.toggle( settings.toggleActiveClass );
+		toggleParent.classList.toggle( settings.toggleActiveClass );
 
-		// Remove '.active' class from all sibling elements and their child elements
-		Array.prototype.forEach.call(toggleSiblings, function (sibling, index) {
+		// For each toggle, remove the active class
+		forEach(toggleSiblings, function (sibling) {
 			var siblingContent = sibling.children;
-			sibling.classList.remove( options.toggleActiveClass );
-			Array.prototype.forEach.call(siblingContent, function (content, index) {
-				content.classList.remove( options.contentActiveClass );
+			sibling.classList.remove( settings.toggleActiveClass );
+			forEach(siblingContent, function (content) {
+				content.classList.remove( settings.contentActiveClass );
 			});
 		});
 
-		options.callbackAfter( toggle ); // Run callbacks after drop toggle
+		settings.callbackAfter( toggle ); // Run callbacks after drop toggle
 
 	};
 
-	// Close all dropdown menus
-	// Private method
-	// Runs functions
-	var _closeDrops = function ( options ) {
+	/**
+	 * Close all dropdown menus
+	 * @private
+	 * @param  {Object} settings
+	 */
+	var closeDrops = function ( settings ) {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a.' + options.toggleActiveClass);
-		var dropWrapper = document.querySelectorAll(options.toggleSelector + '.' + options.toggleActiveClass);
-		var dropContent = document.querySelectorAll(options.contentSelector + '.' + options.contentActiveClass);
+		var dropToggle = document.querySelectorAll(settings.toggleSelector + ' > a.' + settings.toggleActiveClass);
+		var dropWrapper = document.querySelectorAll(settings.toggleSelector + '.' + settings.toggleActiveClass);
+		var dropContent = document.querySelectorAll(settings.contentSelector + '.' + settings.contentActiveClass);
 
 		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent > 0 ) {
 
-			options.callbackBefore(); // Run callbacks before drop close
+			settings.callbackBefore(); // Run callbacks before drop close
 
 			// For each dropdown toggle, remove '.active' class
-			Array.prototype.forEach.call(dropToggle, function (toggle, index) {
-				toggle.classList.remove( options.toggleActiveClass );
+			forEach(dropToggle, function (toggle) {
+				toggle.classList.remove( settings.toggleActiveClass );
 			});
 
 			// For each dropdown toggle wrapper, remove '.active' class
-			Array.prototype.forEach.call(dropWrapper, function (wrapper, index) {
-				wrapper.classList.remove( options.toggleActiveClass );
+			forEach(dropWrapper, function (wrapper) {
+				wrapper.classList.remove( settings.toggleActiveClass );
 			});
 
 			// For each dropdown content area, remove '.active' class
-			Array.prototype.forEach.call(dropContent, function (content, index) {
-				content.classList.remove( options.contentActiveClass );
+			forEach(dropContent, function (content) {
+				content.classList.remove( settings.contentActiveClass );
 			});
 
-			options.callbackAfter(); // Run callbacks after drop close
+			settings.callbackAfter(); // Run callbacks after drop close
 
 		}
 
 	};
 
-	// Don't close dropdown menus when clicking on content within them
-	// Private method
-	// Runs functions
-	var _handleDropdownClick = function ( event ) {
+	/**
+	 * Don't close dropdown menus when clicking on content within them
+	 * @private
+	 * @param  {Event} event
+	 */
+	var handleDropdownClick = function ( event ) {
 		event.stopPropagation();
 	};
 
-	// Initialize Drop
-	// Public method
-	// Runs functions
-	var init = function ( options ) {
+	/**
+	 * Initialize Smooth Scroll
+	 * @public
+	 * @param {Object} options User settings
+	 */
+	exports.init = function ( options ) {
 
-		// Feature test before initializing
-		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+		// feature test
+		if ( !supports ) return;
 
-			// Selectors and variables
-			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
-			var dropToggle = document.querySelectorAll(options.toggleSelector + ' > a');
-			var dropWrapper = document.querySelectorAll(options.toggleSelector);
-			var dropContent = document.querySelectorAll(options.contentSelector);
+		// Selectors and variables
+		var settings = extend( defaults, options || {} ); // Merge user options with defaults
+		var dropToggle = document.querySelectorAll(settings.toggleSelector + ' > a');
+		var dropWrapper = document.querySelectorAll(settings.toggleSelector);
+		var dropContent = document.querySelectorAll(settings.contentSelector);
 
-			// Add class to HTML element to activate conditional CSS
-			document.documentElement.classList.add( options.initClass );
+		// Add class to HTML element to activate conditional CSS
+		document.documentElement.classList.add( settings.initClass );
 
-			// When body is clicked, close all dropdowns
-			document.addEventListener('click', _closeDrops.bind( null, options ), false);
+		// When body is clicked, close all dropdowns
+		document.addEventListener('click', closeDrops.bind( null, settings ), false);
 
-			// When a toggle is clicked, show/hide dropdown menu
-			Array.prototype.forEach.call(dropToggle, function (toggle, index) {
-				toggle.addEventListener('click', toggleDrop.bind( null, toggle, options ), false);
-			});
+		// When a toggle is clicked, show/hide dropdown menu
+		forEach(dropToggle, function (toggle) {
+			toggle.addEventListener('click', exports.toggleDrop.bind( null, toggle, settings ), false);
+		});
 
-			// When dropdown menu content is clicked, don't close the menu
-			Array.prototype.forEach.call(dropContent, function (content, index) {
-				content.addEventListener('click', _handleDropdownClick, false);
-			});
-
-		}
+		// When dropdown menu content is clicked, don't close the menu
+		forEach(dropContent, function (content) {
+			content.addEventListener('click', handleDropdownClick, false);
+		});
 
 	};
 
-	// Return public methods
-	return {
-		init: init,
-		toggleDrop: toggleDrop
-	};
 
-})(window, document);
+	//
+	// Public APIs
+	//
+
+	return exports;
+
+});
