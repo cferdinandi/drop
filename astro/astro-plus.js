@@ -1,21 +1,35 @@
-/* =============================================================
+/**
+ *
+ * Astro v5.1.0
+ * Mobile-first navigation patterns by Chris Ferdinandi.
+ * http://github.com/cferdinandi/astro
+ *
+ * Free to use under the MIT License.
+ * http://gomakethings.com/mit/
+ *
+ */
 
-	Astro v5.0
-	Mobile-first navigation patterns by Chris Ferdinandi.
-	http://gomakethings.com
-
-	Free to use under the MIT License.
-	http://gomakethings.com/mit/
-
- * ============================================================= */
-
- window.astro = (function (window, document, undefined) {
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define(factory);
+	} else if ( typeof exports === 'object' ) {
+		module.exports = factory;
+	} else {
+		root.astro = factory(root);
+	}
+})(this, function (root) {
 
 	'use strict';
 
+	//
+	// Variables
+	//
+
+	var exports = {}; // Object for public APIs
+	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+
 	// Default settings
-	// Private {object} variable
-	var _defaults = {
+	var defaults = {
 		toggleActiveClass: 'active',
 		navActiveClass: 'active',
 		initClass: 'js-astro',
@@ -23,23 +37,60 @@
 		callbackAfter: function () {}
 	};
 
-	// Merge default settings with user options
-	// Private method
-	// Returns an {object}
-	var _mergeObjects = function ( original, updates ) {
-		for (var key in updates) {
-			original[key] = updates[key];
+
+	//
+	// Methods
+	//
+
+	/**
+	 * Merge defaults with user options
+	 * @private
+	 * @param {Object} defaults Default settings
+	 * @param {Object} options User options
+	 * @returns {Object} Merged values of defaults and options
+	 */
+	var extend = function ( defaults, options ) {
+		for ( var key in options ) {
+			if (Object.prototype.hasOwnProperty.call(options, key)) {
+				defaults[key] = options[key];
+			}
 		}
-		return original;
+		return defaults;
 	};
 
-	// Show and hide the navigation menu
-	// Private method
-	// Run functions
-	var toggleNav = function ( toggle, navID, options, event ) {
+	/**
+	 * A simple forEach() implementation for Arrays, Objects and NodeLists
+	 * @private
+	 * @param {Array|Object|NodeList} collection Collection of items to iterate
+	 * @param {Function} callback Callback function for each iteration
+	 * @param {Array|Object|NodeList} scope Object/NodeList/Array that forEach is iterating over (aka `this`)
+	 */
+	var forEach = function (collection, callback, scope) {
+		if (Object.prototype.toString.call(collection) === '[object Object]') {
+			for (var prop in collection) {
+				if (Object.prototype.hasOwnProperty.call(collection, prop)) {
+					callback.call(scope, collection[prop], prop, collection);
+				}
+			}
+		} else {
+			for (var i = 0, len = collection.length; i < len; i++) {
+				callback.call(scope, collection[i], i, collection);
+			}
+		}
+	};
+
+	/**
+	 * Show and hide navigation menu
+	 * @public
+	 * @param  {Element} toggle Element that triggered the toggle
+	 * @param  {String} navID The ID of the navigation element to toggle
+	 * @param  {Object} settings
+	 * @param  {Event} event
+	 */
+	exports.toggleNav = function ( toggle, navID, settings, event ) {
 
 		// Selectors and variables
-		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
+		settings = extend( defaults, settings || {} ); // Merge user options with defaults
 		var nav = document.querySelector(navID);
 
 
@@ -48,40 +99,41 @@
 			event.preventDefault();
 		}
 
-		options.callbackBefore( toggle, navID ); // Run callbacks before toggling nav
-		toggle.classList.toggle( options.toggleActiveClass ); // Toggle the '.active' class on the toggle element
-		nav.classList.toggle( options.navActiveClass ); // Toggle the '.active' class on the menu
-		options.callbackBefore( toggle, navID ); // Run callbacks after toggling nav
+		settings.callbackBefore( toggle, navID ); // Run callbacks before toggling nav
+		toggle.classList.toggle( settings.toggleActiveClass ); // Toggle the '.active' class on the toggle element
+		nav.classList.toggle( settings.navActiveClass ); // Toggle the '.active' class on the menu
+		settings.callbackBefore( toggle, navID ); // Run callbacks after toggling nav
 
 	};
 
-	// Initialize Astro
-	// Public method
-	// Runs functions
-	var init = function ( options ) {
+	/**
+	 * Initialize Astro
+	 * @public
+	 * @param {Object} options User settings
+	 */
+	exports.init = function ( options ) {
 
-		// Feature test before initializing
-		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+		// feature test
+		if ( !supports ) return;
 
-			// Selectors and variables
-			options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
-			var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
+		// Selectors and variables
+		options = extend( defaults, options || {} ); // Merge user options with defaults
+		var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
 
-			document.documentElement.classList.add( options.initClass ); // Add class to HTML element to activate conditional CSS
+		document.documentElement.classList.add( options.initClass ); // Add class to HTML element to activate conditional CSS
 
-			// When a nav toggle is clicked, show or hide the nav
-			Array.prototype.forEach.call(navToggle, function (toggle) {
-				toggle.addEventListener('click', toggleNav.bind( null, toggle, toggle.getAttribute('data-nav-toggle'), options ), false);
-			});
-
-		}
+		// When a nav toggle is clicked, show or hide the nav
+		forEach(navToggle, function (toggle) {
+			toggle.addEventListener('click', exports.toggleNav.bind( null, toggle, toggle.getAttribute('data-nav-toggle'), options ), false);
+		});
 
 	};
 
-	// Return public methods
-	return {
-		init: init,
-		toggleNav: toggleNav
-	};
 
-})(window, document);
+	//
+	// Public APIs
+	//
+
+	return exports;
+
+});
