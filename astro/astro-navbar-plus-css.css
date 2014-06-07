@@ -1,13 +1,13 @@
-/* =============================================================
-
-	Astro Navbar Plus v5.0
-	Mobile-first navigation patterns by Chris Ferdinandi.
-	http://gomakethings.com
-
-	Free to use under the MIT License.
-	http://gomakethings.com/mit/
-
- * ============================================================= */
+/**
+ *
+ * Astro Navbar Plus v5.1.0
+ * Mobile-first navigation patterns by Chris Ferdinandi.
+ * http://github.com/cferdinandi/astro
+ *
+ * Free to use under the MIT License.
+ * http://gomakethings.com/mit/
+ *
+ */
 /*  Center all navigation elements */
 .nav-wrap {
   text-align: center;

@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "16877",
+"creatorBuild": "17018",
 "files": {
 	"\/astro\/astro-navbar-plus-css.css": {
 		"fileType": 16,
@@ -8,6 +8,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/astro\/astro-navbar-plus-css.css",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/astro\/astro-plus.js": {
@@ -16,6 +17,7 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/astro\/astro-plus.js",
 		"outputAbbreviatedPath": "\/astro\/min\/astro-plus.min.js",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
@@ -29,6 +31,7 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/astro\/README.md",
 		"outputAbbreviatedPath": "\/README.html",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/css\/drop-basic-css.css": {
@@ -37,6 +40,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/drop-basic-css.css",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/css\/drop-jumbo-css.css": {
@@ -45,30 +49,43 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/drop-jumbo-css.css",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/drop-basic.html": {
+	"\/demos\/drop-basic.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/drop-basic.html",
+		"inputAbbreviatedPath": "\/demos\/drop-basic.html",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/drop-jumbo.html": {
+	"\/demos\/drop-jumbo.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/drop-jumbo.html",
+		"inputAbbreviatedPath": "\/demos\/drop-jumbo.html",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/js\/buoy.js": {
+	"\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/js\/classList.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/js\/buoy.js",
-		"outputAbbreviatedPath": "\/js\/min\/buoy.min.js",
+		"inputAbbreviatedPath": "\/js\/classList.js",
+		"outputAbbreviatedPath": "\/js\/min\/classList.min.js",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
@@ -79,6 +96,7 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/drop.js",
 		"outputAbbreviatedPath": "\/js\/min\/drop.min.js",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
@@ -89,6 +107,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kraken-grid\/kraken-grid.css",
 		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/kraken-grid\/README.md": {
@@ -100,6 +119,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kraken-grid\/README.md",
 		"outputAbbreviatedPath": "\/README.html",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/README.md": {
@@ -111,6 +131,7 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/README.md",
 		"outputAbbreviatedPath": "\/README.html",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
 	"\/sass\/_config.scss": {
@@ -122,6 +143,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/_config.scss",
 		"outputAbbreviatedPath": "\/css\/_config.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -137,6 +159,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/_drop-basic.scss",
 		"outputAbbreviatedPath": "\/css\/_drop-basic.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -152,6 +175,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/_drop-jumbo.scss",
 		"outputAbbreviatedPath": "\/css\/_drop-jumbo.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -167,6 +191,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/_mixins.scss",
 		"outputAbbreviatedPath": "\/css\/_mixins.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -182,6 +207,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/drop-basic-css.scss",
 		"outputAbbreviatedPath": "\/css\/drop-basic-css.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -197,6 +223,7 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/sass\/drop-jumbo-css.scss",
 		"outputAbbreviatedPath": "\/css\/drop-jumbo-css.css",
+		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"shouldRunAutoprefixer": 1,
@@ -272,12 +299,16 @@
 			"active": 0,
 			"flagValue": 3
 			},
-		"no-unnecessary_fat_arrows": {
+		"no_backticks": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"no_backticks": {
+		"no_debugger": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_empty_functions": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_empty_param_list": {
@@ -289,6 +320,10 @@
 			"flagValue": -1
 			},
 		"no_implicit_parens": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"no_interpolation_in_single_quotes": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -313,6 +348,14 @@
 			"flagValue": -1
 			},
 		"no_trailing_whitespace": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"no_unnecessary_double_quotes": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"no_unnecessary_fat_arrows": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -434,10 +477,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"gcl": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"globalstrict": {
 			"active": 0,
 			"flagValue": -1
@@ -550,10 +589,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"onevar": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"phantom": {
 			"active": 0,
 			"flagValue": -1
@@ -590,10 +625,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"smarttabs": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"strict": {
 			"active": 0,
 			"flagValue": -1
@@ -606,10 +637,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"trailing": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"typed": {
 			"active": 0,
 			"flagValue": -1
@@ -620,10 +647,6 @@
 			},
 		"unused": {
 			"active": 1,
-			"flagValue": -1
-			},
-		"white": {
-			"active": 0,
 			"flagValue": -1
 			},
 		"withstmt": {
