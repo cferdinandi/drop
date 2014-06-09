@@ -85,7 +85,7 @@
 	 * Get siblings of an element
 	 * @private
 	 * @param  {Element} elem
-	 * @return {Array}
+	 * @return {NodeList}
 	 */
 	var getSiblings = function (elem) {
 		var siblings = [];
@@ -187,7 +187,7 @@
 	};
 
 	/**
-	 * Initialize Smooth Scroll
+	 * Initialize Drop
 	 * @public
 	 * @param {Object} options User settings
 	 */
