@@ -1,6 +1,6 @@
 /**
  *
- * Astro v5.1.0
+ * Astro v5.1.1
  * Mobile-first navigation patterns by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
  *
@@ -11,9 +11,9 @@
 
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
-		define(factory);
+		define('astro', factory(root));
 	} else if ( typeof exports === 'object' ) {
-		module.exports = factory;
+		module.exports = factory(root);
 	} else {
 		root.astro = factory(root);
 	}
@@ -95,7 +95,7 @@
 
 
 		// If a link, prevent default click event
-		if ( toggle && toggle.tagName === 'A' && event ) {
+		if ( toggle && toggle.tagName.toLowerCase() === 'a' && event ) {
 			event.preventDefault();
 		}
 

@@ -88,7 +88,7 @@ You can install Drop with your favorite package manager.
 
 * **NPM:** `npm install cferdinandi/drop`
 * **Bower:** `bower install https://github.com/cferdinandi/drop.git`
-* **Component:** `component install install cferdinandi/drop`
+* **Component:** `component install cferdinandi/drop`
 
 
 
@@ -163,6 +163,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.1.1 - June 19, 2014
+	* Fixed factory/root/UMD definition.
 * v4.1.0 - June 7, 2014
 	* Added UMD support.
 	* Moved public APIs to exports variable.

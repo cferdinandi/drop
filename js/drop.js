@@ -11,9 +11,9 @@
 
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
-		define(factory);
+		define('drop', factory(root));
 	} else if ( typeof exports === 'object' ) {
-		module.exports = factory;
+		module.exports = factory(root);
 	} else {
 		root.drop = factory(root);
 	}
