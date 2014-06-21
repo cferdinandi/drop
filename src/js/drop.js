@@ -1,14 +1,3 @@
-/**
- *
- * Drop v4.1.0
- * Simple, mobile-friendly dropdown menus by Chris Ferdinandi.
- * http://github.com/cferdinandi/drop
- *
- * Free to use under the MIT License.
- * http://gomakethings.com/mit/
- *
- */
-
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define('drop', factory(root));
