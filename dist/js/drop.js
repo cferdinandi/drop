@@ -1,6 +1,6 @@
 /**
- * Drop v4.2.0
- * Simple, mobile-friendly dropdown menus., by Chris Ferdinandi.
+ * Drop v4.2.1
+ * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
  * Free to use under the MIT License.
@@ -25,6 +25,7 @@
 
 	var exports = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+	var settings;
 
 	// Default settings
 	var defaults = {
@@ -41,22 +42,6 @@
 	//
 	// Methods
 	//
-
-	/**
-	 * Merge defaults with user options
-	 * @private
-	 * @param {Object} defaults Default settings
-	 * @param {Object} options User options
-	 * @returns {Object} Merged values of defaults and options
-	 */
-	var extend = function ( defaults, options ) {
-		for ( var key in options ) {
-			if (Object.prototype.hasOwnProperty.call(options, key)) {
-				defaults[key] = options[key];
-			}
-		}
-		return defaults;
-	};
 
 	/**
 	 * A simple forEach() implementation for Arrays, Objects and NodeLists
@@ -77,6 +62,24 @@
 				callback.call(scope, collection[i], i, collection);
 			}
 		}
+	};
+
+	/**
+	 * Merge defaults with user options
+	 * @private
+	 * @param {Object} defaults Default settings
+	 * @param {Object} options User options
+	 * @returns {Object} Merged values of defaults and options
+	 */
+	var extend = function ( defaults, options ) {
+		var extended = {};
+		forEach(defaults, function (value, prop) {
+			extended[prop] = defaults[prop];
+		});
+		forEach(options, function (value, prop) {
+			extended[prop] = options[prop];
+		});
+		return extended;
 	};
 
 	/**
@@ -104,10 +107,10 @@
 	 * @param  {Object} settings
 	 * @param  {Event} event
 	 */
-	exports.toggleDrop = function ( toggle, settings, event ) {
+	exports.toggleDrop = function ( toggle, options, event ) {
 
 		// Selectors and variables
-		settings = extend( defaults, settings || {} ); // Merge user options with defaults
+		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
 		var toggleMenu = toggle.nextElementSibling;
 		var toggleParent = toggle.parentNode;
 		var toggleSiblings = getSiblings(toggleParent);
@@ -195,7 +198,7 @@
 		if ( !supports ) return;
 
 		// Selectors and variables
-		var settings = extend( defaults, options || {} ); // Merge user options with defaults
+		settings = extend( defaults, options || {} ); // Merge user options with defaults
 		var dropToggle = document.querySelectorAll(settings.toggleSelector + ' > a');
 		var dropWrapper = document.querySelectorAll(settings.toggleSelector);
 		var dropContent = document.querySelectorAll(settings.contentSelector);
