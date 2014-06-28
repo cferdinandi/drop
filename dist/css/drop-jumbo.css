@@ -1,6 +1,6 @@
 /**
  * Drop v4.2.1
- * Simple, mobile-friendly dropdown menus., by Chris Ferdinandi.
+ * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
  * Free to use under the MIT License.
