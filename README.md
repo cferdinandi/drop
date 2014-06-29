@@ -126,7 +126,10 @@ drop.init({
 
 ### Use Drop events in your own scripts
 
-You can also call Drop's toggle dropdown event in your own scripts:
+You can also call Drop's toggle dropdown event in your own scripts.
+
+#### toggleDrop()
+Expand or collapse a dropdown menu.
 
 ```javascript
 drop.toggleDrop(
@@ -141,6 +144,13 @@ drop.toggleDrop(
 ```javascript
 var toggle = document.querySelector('#toggle');
 drop.toggleDrop( toggle );
+```
+
+#### destroy()
+Destroy the current `drop.init()`.
+
+```javascript
+drop.destroy();
 ```
 
 
@@ -165,6 +175,9 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.3.0 - June 28, 2014
+	* Added `destroy()` method.
+	* Updated unit tests.
 * v4.2.1 - June 28, 2014
 	* Fixed `extend()` function.
 * v4.2.0 - June 20, 2014

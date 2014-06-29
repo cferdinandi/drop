@@ -1,5 +1,5 @@
 /**
- * Drop v4.2.1
+ * Drop v4.3.0
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -25,7 +25,11 @@
 
 	var exports = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
-	var settings;
+	var eventListeners = { //Listener arrays
+		toggle: [],
+		menu: []
+	};
+	var settings, toggles, menus;
 
 	// Default settings
 	var defaults = {
@@ -125,7 +129,7 @@
 
 		// Add/remove '.active' class from dropdown item
 		toggle.classList.toggle( settings.toggleActiveClass );
-		toggleMenu.classList.toggle( settings.toggleActiveClass );
+		toggleMenu.classList.toggle( settings.contentActiveClass );
 		toggleParent.classList.toggle( settings.toggleActiveClass );
 
 		// For each toggle, remove the active class
@@ -188,6 +192,31 @@
 	};
 
 	/**
+	 * Destroy the current initialization.
+	 * @public
+	 */
+	exports.destroy = function () {
+		if ( !settings ) return;
+		document.documentElement.classList.remove( settings.initClass );
+		document.removeEventListener('click', closeDrops, false);
+		if ( toggles ) {
+			forEach( toggles, function ( toggle, index ) {
+				toggle.removeEventListener( 'click', eventListeners.toggle[index], false );
+			});
+			eventListeners.toggle = [];
+		}
+		if ( menus ) {
+			forEach( menus, function ( menu, index ) {
+				menu.removeEventListener( 'click', eventListeners.menu[index], false );
+			});
+			eventListeners.menu = [];
+		}
+		settings = null;
+		toggles = null;
+		menus = null;
+	};
+
+	/**
 	 * Initialize Drop
 	 * @public
 	 * @param {Object} options User settings
@@ -197,11 +226,13 @@
 		// feature test
 		if ( !supports ) return;
 
+		// Destroy any existing initializations
+		exports.destroy();
+
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		var dropToggle = document.querySelectorAll(settings.toggleSelector + ' > a');
-		var dropWrapper = document.querySelectorAll(settings.toggleSelector);
-		var dropContent = document.querySelectorAll(settings.contentSelector);
+		toggles = document.querySelectorAll(settings.toggleSelector + ' > a');
+		menus = document.querySelectorAll(settings.contentSelector);
 
 		// Add class to HTML element to activate conditional CSS
 		document.documentElement.classList.add( settings.initClass );
@@ -210,13 +241,15 @@
 		document.addEventListener('click', closeDrops.bind( null, settings ), false);
 
 		// When a toggle is clicked, show/hide dropdown menu
-		forEach(dropToggle, function (toggle) {
-			toggle.addEventListener('click', exports.toggleDrop.bind( null, toggle, settings ), false);
+		forEach(toggles, function (toggle, index) {
+			eventListeners.toggle[index] = exports.toggleDrop.bind( null, toggle, settings );
+			toggle.addEventListener('click', eventListeners.toggle[index], false);
 		});
 
 		// When dropdown menu content is clicked, don't close the menu
-		forEach(dropContent, function (content) {
-			content.addEventListener('click', handleDropdownClick, false);
+		forEach(menus, function (menu, index) {
+			eventListeners.menu[index] = handleDropdownClick;
+			menu.addEventListener('click', eventListeners.menu[index], false);
 		});
 
 	};

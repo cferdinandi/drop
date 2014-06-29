@@ -1,8 +1,8 @@
 /**
- * Astro v5.2.1
+ * Astro v6.3.0
  * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
- * 
+ *
  * Free to use under the MIT License.
  * http://gomakethings.com/mit/
  */
@@ -25,6 +25,8 @@
 
 	var exports = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
+	var eventListeners = []; //Listeners array
+	var settings, toggles;
 
 	// Default settings
 	var defaults = {
@@ -39,22 +41,6 @@
 	//
 	// Methods
 	//
-
-	/**
-	 * Merge defaults with user options
-	 * @private
-	 * @param {Object} defaults Default settings
-	 * @param {Object} options User options
-	 * @returns {Object} Merged values of defaults and options
-	 */
-	var extend = function ( defaults, options ) {
-		for ( var key in options ) {
-			if (Object.prototype.hasOwnProperty.call(options, key)) {
-				defaults[key] = options[key];
-			}
-		}
-		return defaults;
-	};
 
 	/**
 	 * A simple forEach() implementation for Arrays, Objects and NodeLists
@@ -78,6 +64,24 @@
 	};
 
 	/**
+	 * Merge defaults with user options
+	 * @private
+	 * @param {Object} defaults Default settings
+	 * @param {Object} options User options
+	 * @returns {Object} Merged values of defaults and options
+	 */
+	var extend = function ( defaults, options ) {
+		var extended = {};
+		forEach(defaults, function (value, prop) {
+			extended[prop] = defaults[prop];
+		});
+		forEach(options, function (value, prop) {
+			extended[prop] = options[prop];
+		});
+		return extended;
+	};
+
+	/**
 	 * Show and hide navigation menu
 	 * @public
 	 * @param  {Element} toggle Element that triggered the toggle
@@ -85,10 +89,10 @@
 	 * @param  {Object} settings
 	 * @param  {Event} event
 	 */
-	exports.toggleNav = function ( toggle, navID, settings, event ) {
+	exports.toggleNav = function ( toggle, navID, options, event ) {
 
 		// Selectors and variables
-		settings = extend( defaults, settings || {} ); // Merge user options with defaults
+		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
 		var nav = document.querySelector(navID);
 
 
@@ -100,8 +104,25 @@
 		settings.callbackBefore( toggle, navID ); // Run callbacks before toggling nav
 		toggle.classList.toggle( settings.toggleActiveClass ); // Toggle the '.active' class on the toggle element
 		nav.classList.toggle( settings.navActiveClass ); // Toggle the '.active' class on the menu
-		settings.callbackBefore( toggle, navID ); // Run callbacks after toggling nav
+		settings.callbackAfter( toggle, navID ); // Run callbacks after toggling nav
 
+	};
+
+	/**
+	 * Destroy the current initialization.
+	 * @public
+	 */
+	exports.destroy = function () {
+		if ( !settings ) return;
+		document.documentElement.classList.remove( settings.initClass );
+		if ( toggles ) {
+			forEach( toggles, function ( toggle, index ) {
+				toggle.removeEventListener( 'click', eventListeners[index], false );
+			});
+			eventListeners = [];
+		}
+		settings = null;
+		toggles = null;
 	};
 
 	/**
@@ -114,15 +135,19 @@
 		// feature test
 		if ( !supports ) return;
 
-		// Selectors and variables
-		options = extend( defaults, options || {} ); // Merge user options with defaults
-		var navToggle = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
+		// Destroy any existing initializations
+		exports.destroy();
 
-		document.documentElement.classList.add( options.initClass ); // Add class to HTML element to activate conditional CSS
+		// Selectors and variables
+		settings = extend( defaults, options || {} ); // Merge user options with defaults
+		toggles = document.querySelectorAll('[data-nav-toggle]'); // Get all nav toggles
+
+		document.documentElement.classList.add( settings.initClass ); // Add class to HTML element to activate conditional CSS
 
 		// When a nav toggle is clicked, show or hide the nav
-		forEach(navToggle, function (toggle) {
-			toggle.addEventListener('click', exports.toggleNav.bind( null, toggle, toggle.getAttribute('data-nav-toggle'), options ), false);
+		forEach(toggles, function (toggle, index) {
+			eventListeners[index] = exports.toggleNav.bind( null, toggle, toggle.getAttribute('data-nav-toggle'), settings );
+			toggle.addEventListener('click', eventListeners[index], false);
 		});
 
 	};
