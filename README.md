@@ -25,16 +25,17 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 
 ```html
 <!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
-<link rel="stylesheet" href="css/drop-*-css.css">
-<script src="classList.js"></script>
-<script src="js/drop.js"></script>
+<link rel="stylesheet" href="dist/css/drop-*-css.css">
+<script src="dist/js/classList.js"></script>
+<script src="dist/js/bind-polyfill.js"></script>
+<script src="dist/js/drop.js"></script>
 ```
 
 Drop is [built with Sass](http://sass-lang.com/) for easy customization. If you don't use Sass, that's ok. The `css` folder contains compiled vanilla CSS.
 
 The `_config.scss` and `_mixins.scss` files are the same ones used in [Kraken](http://cferdinandi.github.io/kraken/), so you can drop the `_drop-basic.css` and `_drop-jumbo.css` files right into Kraken without making any updates. Or, adjust the variables to suit your own project.
 
-Drop also requires [classList.js](https://github.com/eligrey/classList.js), a polyfill that extends `classList` support back to IE8.
+Drop also requires [classList.js](https://github.com/eligrey/classList.js) and `bind-polyfill.js`, polyfills that extend ECMAScript 5 API support to more browsers.
 
 ### 2. Add the markup to your HTML.
 
@@ -175,6 +176,9 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.3.1 - August 8, 2014
+	* Added polyfill for `Functions.prototype.bind`.
+	* Removed Sass paths from `gulpfile.js`.
 * v4.3.0 - June 28, 2014
 	* Added `destroy()` method.
 	* Updated unit tests.

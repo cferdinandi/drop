@@ -1,5 +1,5 @@
 /**
- * Drop v4.3.0
+ * Drop v4.3.1
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
