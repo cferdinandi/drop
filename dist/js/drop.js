@@ -1,5 +1,5 @@
 /**
- * Drop v4.3.1
+ * Drop v4.3.2
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -23,7 +23,7 @@
 	// Variables
 	//
 
-	var exports = {}; // Object for public APIs
+	var drop = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 	var eventListeners = { //Listener arrays
 		toggle: [],
@@ -111,7 +111,7 @@
 	 * @param  {Object} settings
 	 * @param  {Event} event
 	 */
-	exports.toggleDrop = function ( toggle, options, event ) {
+	drop.toggleDrop = function ( toggle, options, event ) {
 
 		// Selectors and variables
 		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
@@ -195,7 +195,7 @@
 	 * Destroy the current initialization.
 	 * @public
 	 */
-	exports.destroy = function () {
+	drop.destroy = function () {
 		if ( !settings ) return;
 		document.documentElement.classList.remove( settings.initClass );
 		document.removeEventListener('click', closeDrops, false);
@@ -221,13 +221,13 @@
 	 * @public
 	 * @param {Object} options User settings
 	 */
-	exports.init = function ( options ) {
+	drop.init = function ( options ) {
 
 		// feature test
 		if ( !supports ) return;
 
 		// Destroy any existing initializations
-		exports.destroy();
+		drop.destroy();
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
@@ -242,7 +242,7 @@
 
 		// When a toggle is clicked, show/hide dropdown menu
 		forEach(toggles, function (toggle, index) {
-			eventListeners.toggle[index] = exports.toggleDrop.bind( null, toggle, settings );
+			eventListeners.toggle[index] = drop.toggleDrop.bind( null, toggle, settings );
 			toggle.addEventListener('click', eventListeners.toggle[index], false);
 		});
 
@@ -259,6 +259,6 @@
 	// Public APIs
 	//
 
-	return exports;
+	return drop;
 
 });

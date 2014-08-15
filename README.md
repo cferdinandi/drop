@@ -176,6 +176,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 ## Changelog
 
+* v4.3.2 - August 15, 2014
+	* Fixed UMD structure bug.
 * v4.3.1 - August 8, 2014
 	* Added polyfill for `Functions.prototype.bind`.
 	* Removed Sass paths from `gulpfile.js`.

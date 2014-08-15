@@ -1,12 +1,3 @@
-/**
- * Astro v6.3.0
- * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
- * http://github.com/cferdinandi/astro
- *
- * Free to use under the MIT License.
- * http://gomakethings.com/mit/
- */
-
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define('astro', factory(root));
