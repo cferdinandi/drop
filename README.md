@@ -113,8 +113,8 @@ You can pass options and callbacks into Drop through the `init()` function:
 
 ```javascript
 drop.init({
-	toggleSelector: '.dropdown', // Class used for the dropdown <li> element
-	contentSelector: '.dropdown-menu', // Class used for the dropdown content <div>
+	toggleClass: 'dropdown', // Class used for the dropdown <li> element
+	contentClass: 'dropdown-menu', // Class used for the dropdown content <div>
 	toggleActiveClass: 'active', // Class added to active dropdown toggles
 	contentActiveClass: 'active', // Class added to active dropdown content
 	initClass: 'js-drop', // Class added to `<html>` element when initiated
@@ -145,6 +145,13 @@ drop.toggleDrop(
 ```javascript
 var toggle = document.querySelector('#toggle');
 drop.toggleDrop( toggle );
+```
+
+#### closeDrops()
+Close all open dropdown menus.
+
+```javascript
+drop.closeDrops();
 ```
 
 #### destroy()
@@ -178,6 +185,12 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v5.0.0 - August 20, 2014
+	* Switched to Ruby Sass.
+	* Fixed test paths.
+	* Converted to event bubbling for event listeners.
+	* Updated selector options, breaking backwards compatibility.
+	* Exposed `closeDrops()` as a public API.
 * v4.3.2 - August 15, 2014
 	* Fixed UMD structure bug.
 * v4.3.1 - August 8, 2014

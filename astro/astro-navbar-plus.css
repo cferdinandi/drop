@@ -1,5 +1,5 @@
 /**
- * Astro v5.2.1
+ * Astro v5.4.0
  * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
  * 
@@ -9,7 +9,8 @@
 
 /*  Center all navigation elements */
 .nav-wrap {
-  text-align: center; }
+  text-align: center;
+}
 
 /*  For text-based logo, override default link styling.
  *  If .logo and .nav don't align properly,
@@ -20,18 +21,21 @@
   line-height: 1.2;
   color: #272727;
   margin-bottom: 0.5em;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 /*  For text-based logo, override default link hover styling */
 .logo:hover {
   color: #272727;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 /*  Remove default list styling for navigation list */
 .nav {
   list-style: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*  Display navigation items as inline-block elements.
  *  Add slight margin between each navigation item. */
@@ -39,15 +43,18 @@
   display: inline-block;
   float: none;
   margin-left: 0.5em;
-  margin-right: 0.5em; }
+  margin-right: 0.5em;
+}
 
 /*  Remove margin-left on first navigation item */
 .nav > li:first-child {
-  margin-left: 0; }
+  margin-left: 0;
+}
 
 /*  Remove margin-right on last navigation item */
 .nav > li:last-child {
-  margin-right: 0; }
+  margin-right: 0;
+}
 
 /*  Placeholder for active link styling */
 /*  .nav > li.active > a { */
@@ -57,30 +64,33 @@
  *  Only needed for expand-and-collapse option. */
 .nav-toggle {
   display: none;
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*  Expand-and-Collapse styling for smaller screens.
  *  Remove if not using.
  *  Change max-width to fit your project. */
 @media (max-width: 40em) {
   /*  .js-astro prefix ensure content is only hidden when JavaScript is supported.
-	 *  This requires on the included js-accessibility.js-astro script. */
+   *  This requires on the included js-accessibility.js-astro script. */
   /*  Align text to the left when javascript is supported */
-  /*  Float logo to the left when javascript is supported */
-  /*  Display navigation toggle button if javascript is supported */
-  /*  Hide navigation items if javascript is supported */
-  /*  When collapsed element has the .active class, show it
-	 *  Uses max-height instead of display: none to allow for
-	 *  CSS3 animations, which don't work on display values. */
-  /*  Display navigation items as full-width, stacked blocks when javascript supported */
   .js-astro .nav-wrap {
-    text-align: left; }
+    text-align: left;
+  }
+
+  /*  Float logo to the left when javascript is supported */
   .js-astro .logo {
-    float: left; }
+    float: left;
+  }
+
+  /*  Display navigation toggle button if javascript is supported */
   .js-astro .nav-toggle {
     display: block;
     visibility: visible;
-    float: right; }
+    float: right;
+  }
+
+  /*  Hide navigation items if javascript is supported */
   .js-astro .nav-collapse {
     max-height: 0;
     overflow: hidden;
@@ -91,11 +101,21 @@
     box-sizing: border-box;
     /*  CSS3 animation for when menu content expands */
     -webkit-transition: all 0.35s ease-in;
-    transition: all 0.35s ease-in; }
+    transition: all 0.35s ease-in;
+  }
+
+  /*  When collapsed element has the .active class, show it
+   *  Uses max-height instead of display: none to allow for
+   *  CSS3 animations, which don't work on display values. */
   .js-astro .nav-collapse.active {
-    max-height: 999em; }
+    max-height: 999em;
+  }
+
   .js-astro .nav {
-    text-align: left; }
+    text-align: left;
+  }
+
+  /*  Display navigation items as full-width, stacked blocks when javascript supported */
   .js-astro .nav-collapse li {
     display: block;
     width: 100%;
@@ -105,27 +125,35 @@
     padding-bottom: 0.25em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; } }
-
+    box-sizing: border-box;
+  }
+}
 /*  Styling for Bigger Screens.
  *  (Astro is built mobile-first.)
  *  Change min-width to fit your project. */
 @media (min-width: 40em) {
   /*  Align text to the left */
-  /*  Float logo to the left and remove margin-bottom */
-  /*  Align navigation elements to the right */
   .nav-wrap {
-    text-align: left; }
-  .logo {
-    float: left; }
-  .nav {
-    text-align: right; } }
+    text-align: left;
+  }
 
+  /*  Float logo to the left and remove margin-bottom */
+  .logo {
+    float: left;
+  }
+
+  /*  Align navigation elements to the right */
+  .nav {
+    text-align: right;
+  }
+}
 /*  Clearfix */
 .nav-wrap:before, .nav-wrap:after {
   display: table;
   content: "";
-  *zoom: 1; }
+  *zoom: 1;
+}
 
 .nav-wrap:after {
-  clear: both; }
+  clear: both;
+}
