@@ -24,8 +24,8 @@
 
 	// Default settings
 	var defaults = {
-		toggleSelector: '.dropdown',
-		contentSelector: '.dropdown-menu',
+		toggleClass: 'dropdown',
+		contentClass: 'dropdown-menu',
 		toggleActiveClass: 'active',
 		contentActiveClass: 'active',
 		initClass: 'js-drop',
@@ -96,6 +96,21 @@
 	};
 
 	/**
+	 * Get closest DOM element up the tree that contains a class or data attribute
+	 * @param  {Element} elem The base element
+	 * @param  {String} selector The class or data attribute to look for
+	 * @return {Boolean|Element} False if no match
+	 */
+	var getClosest = function (elem, selector) {
+		for ( ; elem && elem !== document; elem = elem.parentNode ) {
+			if ( elem.classList.contains( selector ) || elem.hasAttribute( selector ) ) {
+				return elem;
+			}
+		}
+		return false;
+	};
+
+	/**
 	 * Toggle a dropdown menu
 	 * @public
 	 * @param  {Element} toggle Element that triggered the expand or collapse
@@ -109,12 +124,6 @@
 		var toggleMenu = toggle.nextElementSibling;
 		var toggleParent = toggle.parentNode;
 		var toggleSiblings = getSiblings(toggleParent);
-
-		// Prevent defaults
-		if ( event ) {
-			event.stopPropagation();
-			event.preventDefault();
-		}
 
 		settings.callbackBefore( toggle ); // Run callbacks before drop toggle
 
@@ -138,15 +147,15 @@
 
 	/**
 	 * Close all dropdown menus
-	 * @private
+	 * @public
 	 * @param  {Object} settings
 	 */
-	var closeDrops = function ( settings ) {
+	drop.closeDrops = function () {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll(settings.toggleSelector + ' > a.' + settings.toggleActiveClass);
-		var dropWrapper = document.querySelectorAll(settings.toggleSelector + '.' + settings.toggleActiveClass);
-		var dropContent = document.querySelectorAll(settings.contentSelector + '.' + settings.contentActiveClass);
+		var dropToggle = document.querySelectorAll('.' + settings.toggleClass + ' > a.' + settings.toggleActiveClass);
+		var dropWrapper = document.querySelectorAll('.' + settings.toggleClass + '.' + settings.toggleActiveClass);
+		var dropContent = document.querySelectorAll('.' + settings.contentClass + '.' + settings.contentActiveClass);
 
 		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent > 0 ) {
 
@@ -174,12 +183,23 @@
 	};
 
 	/**
-	 * Don't close dropdown menus when clicking on content within them
+	 * Handle toggle and document click events
 	 * @private
-	 * @param  {Event} event
 	 */
-	var handleDropdownClick = function ( event ) {
-		event.stopPropagation();
+	var eventHandler = function () {
+		var toggle = event.target;
+		var menu = getClosest(toggle, settings.contentClass);
+		if ( menu ) {
+			// If dropdown menu, do nothing
+			return;
+		} else if ( toggle !== document.documentElement && toggle.parentNode.classList.contains( settings.toggleClass ) ) {
+			// If dropdown toggle element, toggle dropdown menu
+			event.preventDefault();
+			drop.toggleDrop(toggle, settings);
+		} else {
+			// If document body, close open dropdown menus
+			drop.closeDrops();
+		}
 	};
 
 	/**
@@ -189,22 +209,9 @@
 	drop.destroy = function () {
 		if ( !settings ) return;
 		document.documentElement.classList.remove( settings.initClass );
-		document.removeEventListener('click', closeDrops, false);
-		if ( toggles ) {
-			forEach( toggles, function ( toggle, index ) {
-				toggle.removeEventListener( 'click', eventListeners.toggle[index], false );
-			});
-			eventListeners.toggle = [];
-		}
-		if ( menus ) {
-			forEach( menus, function ( menu, index ) {
-				menu.removeEventListener( 'click', eventListeners.menu[index], false );
-			});
-			eventListeners.menu = [];
-		}
+		document.removeEventListener('click', eventHandler, false);
+		drop.closeDrops();
 		settings = null;
-		toggles = null;
-		menus = null;
 	};
 
 	/**
@@ -222,26 +229,12 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-		toggles = document.querySelectorAll(settings.toggleSelector + ' > a');
-		menus = document.querySelectorAll(settings.contentSelector);
 
 		// Add class to HTML element to activate conditional CSS
 		document.documentElement.classList.add( settings.initClass );
 
-		// When body is clicked, close all dropdowns
-		document.addEventListener('click', closeDrops.bind( null, settings ), false);
-
-		// When a toggle is clicked, show/hide dropdown menu
-		forEach(toggles, function (toggle, index) {
-			eventListeners.toggle[index] = drop.toggleDrop.bind( null, toggle, settings );
-			toggle.addEventListener('click', eventListeners.toggle[index], false);
-		});
-
-		// When dropdown menu content is clicked, don't close the menu
-		forEach(menus, function (menu, index) {
-			eventListeners.menu[index] = handleDropdownClick;
-			menu.addEventListener('click', eventListeners.menu[index], false);
-		});
+		// Listen for all click events
+		document.addEventListener('click', eventHandler, false);
 
 	};
 
