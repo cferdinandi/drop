@@ -189,7 +189,7 @@
 	var eventHandler = function (event) {
 		var toggle = event.target;
 		var menu = getClosest(toggle, settings.contentClass);
-		if ( menu ) {
+		if ( menu && toggle !== document.documentElement && !toggle.parentNode.classList.contains( settings.toggleClass ) ) {
 			// If dropdown menu, do nothing
 			return;
 		} else if ( toggle !== document.documentElement && toggle.parentNode.classList.contains( settings.toggleClass ) ) {

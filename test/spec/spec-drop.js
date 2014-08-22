@@ -215,7 +215,7 @@ describe('Drop', function () {
 			expect(toggles[0].classList.contains('active')).toBe(true);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
 			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);
-			trigger('click', document.querySelector('.dropdown-menu'));
+			trigger('click', document.querySelector('.dropdown-menu li'));
 			expect(toggles[0].classList.contains('active')).toBe(true);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
 			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);

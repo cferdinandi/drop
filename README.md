@@ -1,7 +1,7 @@
 # Drop [![Build Status](https://travis-ci.org/cferdinandi/drop.svg)](https://travis-ci.org/cferdinandi/drop)
 Simple, mobile-friendly dropdown menus.
 
-[Download Drop 4](https://github.com/cferdinandi/drop/archive/master.zip) / [View the demo](http://cferdinandi.github.io/drop/)
+[Download Drop](https://github.com/cferdinandi/drop/archive/master.zip) / [View the demo](http://cferdinandi.github.io/drop/)
 
 **In This Documentation**
 
@@ -185,6 +185,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v5.0.2 - August 22, 2014
+	* Updated script to allow for dropdowns within dropdowns.
 * v5.0.1 - August 22, 2014
 	* Fixed `eventHandler` function `event` variable reference.
 * v5.0.0 - August 20, 2014
