@@ -186,7 +186,7 @@
 	 * Handle toggle and document click events
 	 * @private
 	 */
-	var eventHandler = function () {
+	var eventHandler = function (event) {
 		var toggle = event.target;
 		var menu = getClosest(toggle, settings.contentClass);
 		if ( menu ) {

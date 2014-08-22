@@ -1,5 +1,5 @@
 /**
- * Drop v5.0.0
+ * Drop v5.0.1
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -195,7 +195,7 @@
 	 * Handle toggle and document click events
 	 * @private
 	 */
-	var eventHandler = function () {
+	var eventHandler = function (event) {
 		var toggle = event.target;
 		var menu = getClosest(toggle, settings.contentClass);
 		if ( menu ) {

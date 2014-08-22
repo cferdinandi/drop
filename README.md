@@ -185,6 +185,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v5.0.1 - August 22, 2014
+	* Fixed `eventHandler` function `event` variable reference.
 * v5.0.0 - August 20, 2014
 	* Switched to Ruby Sass.
 	* Fixed test paths.

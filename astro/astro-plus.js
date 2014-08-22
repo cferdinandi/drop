@@ -1,5 +1,5 @@
 /**
- * Astro v5.4.0
+ * Astro v5.4.1
  * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
  * 
@@ -105,7 +105,7 @@
 	 * Handle click event methods
 	 * @private
 	 */
-	var eventHandler = function () {
+	var eventHandler = function (event) {
 		var toggle = event.target;
 		if ( toggle.hasAttribute('data-nav-toggle') ) {
 			// Prevent default click event
