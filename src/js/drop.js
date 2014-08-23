@@ -16,11 +16,7 @@
 
 	var drop = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
-	var eventListeners = { //Listener arrays
-		toggle: [],
-		menu: []
-	};
-	var settings, toggles, menus;
+	var settings;
 
 	// Default settings
 	var defaults = {

@@ -1,5 +1,5 @@
 /**
- * Drop v5.0.2
+ * Drop v5.0.3
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -25,11 +25,7 @@
 
 	var drop = {}; // Object for public APIs
 	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
-	var eventListeners = { //Listener arrays
-		toggle: [],
-		menu: []
-	};
-	var settings, toggles, menus;
+	var settings;
 
 	// Default settings
 	var defaults = {

@@ -185,6 +185,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v5.0.3 - August 22, 2014
+	* Removed unused variables.
 * v5.0.2 - August 22, 2014
 	* Updated script to allow for dropdowns within dropdowns.
 * v5.0.1 - August 22, 2014
