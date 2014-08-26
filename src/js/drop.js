@@ -82,7 +82,6 @@
 	var getSiblings = function (elem) {
 		var siblings = [];
 		var sibling = elem.parentNode.firstChild;
-		var skipMe = elem;
 		for ( ; sibling; sibling = sibling.nextSibling ) {
 			if ( sibling.nodeType == 1 && sibling != elem ) {
 				siblings.push( sibling );
