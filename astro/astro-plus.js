@@ -1,5 +1,5 @@
 /**
- * Astro v5.4.2
+ * Astro v5.4.3
  * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
  * 
@@ -15,7 +15,7 @@
 	} else {
 		root.astro = factory(root);
 	}
-})(this, function (root) {
+})(window || this, function (root) {
 
 	'use strict';
 
