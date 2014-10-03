@@ -6,7 +6,7 @@
 	} else {
 		root.drop = factory(root);
 	}
-})(this, function (root) {
+})(window || this, function (root) {
 
 	'use strict';
 
