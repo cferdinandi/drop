@@ -40,9 +40,9 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js), a po
 
 ```html
 ...
-	<li class="dropdown-*">
+	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">Dropdown 1</a>
-		<div class="dropdown-menu-*">
+		<div class="dropdown-menu-*" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -51,9 +51,9 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js), a po
 		</div>
 	</li>
 
-	<li class="dropdown-*">
+	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">Dropdown 2</a>
-		<div class="dropdown-menu-* dropdown-right">
+		<div class="dropdown-menu-* dropdown-right" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
