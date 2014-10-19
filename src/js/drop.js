@@ -20,8 +20,6 @@
 
 	// Default settings
 	var defaults = {
-		toggleClass: 'dropdown',
-		contentClass: 'dropdown-menu',
 		toggleActiveClass: 'active',
 		contentActiveClass: 'active',
 		initClass: 'js-drop',
@@ -97,12 +95,28 @@
 	 * @return {Boolean|Element} False if no match
 	 */
 	var getClosest = function (elem, selector) {
+
+		var firstChar = selector.charAt(0);
+
+		// Get closest match
 		for ( ; elem && elem !== document; elem = elem.parentNode ) {
-			if ( elem.classList.contains( selector ) || elem.hasAttribute( selector ) ) {
-				return elem;
+			if ( firstChar === '.' ) {
+				if ( elem.classList.contains( selector.substr(1) ) ) {
+					return elem;
+				}
+			} else if ( firstChar === '#' ) {
+				if ( elem.id === selector.substr(1) ) {
+					return elem;
+				}
+			} else if ( firstChar === '[' ) {
+				if ( elem.hasAttribute( selector.substr(1, selector.length - 2) ) ) {
+					return elem;
+				}
 			}
 		}
-		return false;
+
+		return null;
+
 	};
 
 	/**
@@ -148,11 +162,11 @@
 	drop.closeDrops = function () {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll('.' + settings.toggleClass + ' > a.' + settings.toggleActiveClass);
-		var dropWrapper = document.querySelectorAll('.' + settings.toggleClass + '.' + settings.toggleActiveClass);
-		var dropContent = document.querySelectorAll('.' + settings.contentClass + '.' + settings.contentActiveClass);
+		var dropToggle = document.querySelectorAll('[data-dropdown] > a.' + settings.toggleActiveClass);
+		var dropWrapper = document.querySelectorAll('[data-dropdown].' + settings.toggleActiveClass);
+		var dropContent = document.querySelectorAll('[data-dropdown-menu].' + settings.contentActiveClass);
 
-		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent > 0 ) {
+		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent.length > 0 ) {
 
 			settings.callbackBefore(); // Run callbacks before drop close
 
@@ -183,11 +197,11 @@
 	 */
 	var eventHandler = function (event) {
 		var toggle = event.target;
-		var menu = getClosest(toggle, settings.contentClass);
-		if ( menu && toggle !== document.documentElement && !toggle.parentNode.classList.contains( settings.toggleClass ) ) {
+		var menu = getClosest(toggle, '[data-dropdown-menu]');
+		if ( menu && toggle !== document.documentElement && !toggle.parentNode.hasAttribute( 'data-dropdown' ) ) {
 			// If dropdown menu, do nothing
 			return;
-		} else if ( toggle !== document.documentElement && toggle.parentNode.classList.contains( settings.toggleClass ) ) {
+		} else if ( toggle !== document.documentElement && toggle.parentNode.hasAttribute( 'data-dropdown' ) ) {
 			// If dropdown toggle element, toggle dropdown menu
 			event.preventDefault();
 			drop.toggleDrop(toggle, settings);
