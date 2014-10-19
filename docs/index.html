@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Drop</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="dist/css/drop-basic.css" type="text/css">
+		<link rel="stylesheet" href="dist/css/drop-jumbo.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/astro-navbar.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+	</head>
+
+	<body>
+
+		<main class="container">
+
+			<nav>
+				<h1>Drop</h1>
+				<p><a href="https://github.com/cferdinandi/drop">GitHub</a></p>
+				<hr>
+			</nav>
+
+			<section>
+	<h2>Drop Basic</h2>
+
+	<nav class="nav-wrap-navbar nav-collapse">
+		<a class="logo-navbar" href="#">Drop Basic</a>
+		<a class="nav-toggle-navbar" data-nav-toggle="#nav-basic" href="#">Menu &#9660;</a>
+		<div class="nav-menu-navbar" id="nav-basic">
+			<ul class="nav-navbar">
+				<li><a href="#">Home</a></li>
+				<li class="dropdown-basic" data-dropdown>
+					<a href="FALLBACK-URL.com">Dropdown 1</a>
+					<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
+						<ul>
+							<li><a href="#">Item 1</a></li>
+							<li><a href="#">Item 2</a></li>
+							<li><a href="#">Item 3</a></li>
+							<li><a href="#">Item 4</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a href="#">About</a></li>
+				<li class="dropdown-basic" data-dropdown>
+					<a href="url.com">Contact</a>
+					<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
+						<ul>
+							<li><a href="#">Item 1</a></li>
+							<li><a href="#">Item 2</a></li>
+							<li><a href="#">Item 3</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<br><br><br>
+
+	<h2>Drop Jumbo</h2>
+
+	<nav class="nav-wrap-navbar nav-collapse">
+		<a class="logo-navbar" href="#">Drop Jumbo</a>
+		<a class="nav-toggle-navbar" data-nav-toggle="#nav-jumbo" href="#">Menu &#9660;</a>
+		<div class="nav-menu-navbar" id="nav-jumbo">
+			<ul class="nav-navbar">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li class="dropdown-jumbo" data-dropdown>
+					<a href="url.com">Dropdown</a>
+					<div class="dropdown-menu-jumbo" data-dropdown-menu>
+						<div class="container">
+							<div class="row">
+								<div class="grid-half">
+									Content
+								</div>
+								<div class="grid-half">
+									Other Content
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="dropdown-jumbo" data-dropdown>
+					<a href="url.com">Another Dropdown</a>
+					<div class="dropdown-menu-jumbo" data-dropdown-menu>
+						<div class="container">
+							<div class="row">
+								<div class="grid-third">
+									Different Content
+								</div>
+								<div class="grid-third">
+									Other Different Content
+								</div>
+								<div class="grid-third">
+									Even More Content
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<br><br><br>
+			</section>
+		</main>
+
+		<!-- Javascript -->
+		<script src="dist/js/classList.js"></script>
+		<script src="dist/js/drop.js"></script>
+		<script src="assets/js/astro.js"></script>
+		<script>
+			drop.init({
+				toggleClass: 'dropdown',
+				contentClass: 'dropdown-menu',
+				toggleActiveClass: 'active',
+				contentActiveClass: 'active',
+				initClass: 'js-drop',
+				callbackBefore: function () {},
+				callbackAfter: function () {}
+			});
+			astro.init();
+		</script>
+
+
+	</body>
+</html>

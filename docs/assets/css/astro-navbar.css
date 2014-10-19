@@ -1,5 +1,5 @@
 /**
- * Astro v5.4.3
+ * Astro v6.0.0
  * A collection of mobile-first navigation patterns., by Chris Ferdinandi.
  * http://github.com/cferdinandi/astro
  * 
@@ -8,14 +8,14 @@
  */
 
 /*  Center all navigation elements */
-.nav-wrap {
+.nav-wrap-navbar {
   text-align: center;
 }
 
 /*  For text-based logo, override default link styling.
  *  If .logo and .nav don't align properly,
  *  adjust the .logo line-height. */
-.logo {
+.logo-navbar {
   display: inline-block;
   font-size: 1.2em;
   line-height: 1.2;
@@ -25,13 +25,13 @@
 }
 
 /*  For text-based logo, override default link hover styling */
-.logo:hover {
+.logo-navbar:hover {
   color: #272727;
   text-decoration: none;
 }
 
 /*  Remove default list styling for navigation list */
-.nav {
+.nav-navbar {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -39,7 +39,7 @@
 
 /*  Display navigation items as inline-block elements.
  *  Add slight margin between each navigation item. */
-.nav > li {
+.nav-navbar > li {
   display: inline-block;
   float: none;
   margin-left: 0.5em;
@@ -47,22 +47,22 @@
 }
 
 /*  Remove margin-left on first navigation item */
-.nav > li:first-child {
+.nav-navbar > li:first-child {
   margin-left: 0;
 }
 
 /*  Remove margin-right on last navigation item */
-.nav > li:last-child {
+.nav-navbar > li:last-child {
   margin-right: 0;
 }
 
 /*  Placeholder for active link styling */
-/*  .nav > li.active > a { */
+/*  .nav-navbar > li.active > a { */
 /*      Add your styles here */
 /*  } */
 /*  Hide the navigation toggle menu button by default.
  *  Only needed for expand-and-collapse option. */
-.nav-toggle {
+.nav-toggle-navbar {
   display: none;
   visibility: hidden;
 }
@@ -74,24 +74,24 @@
   /*  .js-astro prefix ensure content is only hidden when JavaScript is supported.
    *  This requires on the included js-accessibility.js-astro script. */
   /*  Align text to the left when javascript is supported */
-  .js-astro .nav-wrap {
+  .js-astro .nav-collapse .nav-wrap-navbar {
     text-align: left;
   }
 
   /*  Float logo to the left when javascript is supported */
-  .js-astro .logo {
+  .js-astro .nav-collapse .logo-navbar {
     float: left;
   }
 
   /*  Display navigation toggle button if javascript is supported */
-  .js-astro .nav-toggle {
+  .js-astro .nav-collapse .nav-toggle-navbar {
     display: block;
     visibility: visible;
     float: right;
   }
 
   /*  Hide navigation items if javascript is supported */
-  .js-astro .nav-collapse {
+  .js-astro .nav-collapse .nav-menu-navbar {
     max-height: 0;
     overflow: hidden;
     display: block;
@@ -107,16 +107,16 @@
   /*  When collapsed element has the .active class, show it
    *  Uses max-height instead of display: none to allow for
    *  CSS3 animations, which don't work on display values. */
-  .js-astro .nav-collapse.active {
+  .js-astro .nav-collapse .nav-menu-navbar.active {
     max-height: 999em;
   }
 
-  .js-astro .nav {
+  .js-astro .nav-collapse .nav-navbar {
     text-align: left;
   }
 
   /*  Display navigation items as full-width, stacked blocks when javascript supported */
-  .js-astro .nav-collapse li {
+  .js-astro .nav-collapse .nav-menu-navbar li {
     display: block;
     width: 100%;
     margin-left: 0;
@@ -133,27 +133,27 @@
  *  Change min-width to fit your project. */
 @media (min-width: 40em) {
   /*  Align text to the left */
-  .nav-wrap {
+  .nav-wrap-navbar {
     text-align: left;
   }
 
   /*  Float logo to the left and remove margin-bottom */
-  .logo {
+  .logo-navbar {
     float: left;
   }
 
   /*  Align navigation elements to the right */
-  .nav {
+  .nav-navbar {
     text-align: right;
   }
 }
 /*  Clearfix */
-.nav-wrap:before, .nav-wrap:after {
+.nav-wrap-navbar:before,
+.nav-wrap-navbar:after {
   display: table;
   content: "";
-  *zoom: 1;
 }
 
-.nav-wrap:after {
+.nav-wrap-navbar:after {
   clear: both;
 }

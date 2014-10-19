@@ -8,13 +8,12 @@ Simple, mobile-friendly dropdown menus.
 1. [Getting Started](#getting-started)
 2. [Installing with Package Managers](#installing-with-package-managers)
 3. [Working with the Source Files](#working-with-the-source-files)
-4. [Using Both Patterns](#using-both-patterns)
-5. [Options & Settings](#options-and-settings)
-6. [Browser Compatibility](#browser-compatibility)
-7. [How to Contribute](#how-to-contribute)
-8. [License](#license)
-9. [Changelog](#changelog)
-10. [Older Docs](#older-docs)
+4. [Options & Settings](#options-and-settings)
+5. [Browser Compatibility](#browser-compatibility)
+6. [How to Contribute](#how-to-contribute)
+7. [License](#license)
+8. [Changelog](#changelog)
+9. [Older Docs](#older-docs)
 
 
 
@@ -28,7 +27,6 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 <!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
 <link rel="stylesheet" href="dist/css/drop-*-css.css">
 <script src="dist/js/classList.js"></script>
-<script src="dist/js/bind-polyfill.js"></script>
 <script src="dist/js/drop.js"></script>
 ```
 
@@ -36,15 +34,15 @@ Drop is [built with Sass](http://sass-lang.com/) for easy customization. If you 
 
 The `_config.scss` and `_mixins.scss` files are the same ones used in [Kraken](http://cferdinandi.github.io/kraken/), so you can drop the `_drop-basic.css` and `_drop-jumbo.css` files right into Kraken without making any updates. Or, adjust the variables to suit your own project.
 
-Drop also requires [classList.js](https://github.com/eligrey/classList.js) and `bind-polyfill.js`, polyfills that extend ECMAScript 5 API support to more browsers.
+Drop also requires [classList.js](https://github.com/eligrey/classList.js), a polyfill that extends ECMAScript 5 API support to more browsers.
 
 ### 2. Add the markup to your HTML.
 
 ```html
 ...
-	<li class="dropdown">
+	<li class="dropdown-*">
 		<a href="FALLBACK-URL.com">Dropdown 1</a>
-		<div class="dropdown-menu dropdown-right">
+		<div class="dropdown-menu-*">
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -53,9 +51,9 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js) and `
 		</div>
 	</li>
 
-	<li class="dropdown">
+	<li class="dropdown-*">
 		<a href="FALLBACK-URL.com">Dropdown 2</a>
-		<div class="dropdown-menu dropdown-right">
+		<div class="dropdown-menu-* dropdown-right">
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -65,6 +63,8 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js) and `
 	</li>
 ...
 ```
+
+Replace the `*` with `basic` or `jumbo` to match the version of Drop that you're using.
 
 With Drop Basic, if a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping. In Drop Jumbo, you can wrap `dropdown-menu` content in whatever grid system you'd like. Not sure where to start? Try using [Kraken](http://cferdinandi.github.io/kraken/).
 
@@ -98,7 +98,7 @@ You can install Drop with your favorite package manager.
 
 ## Working with the Source Files
 
-If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests.
+If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code, and runs unit tests. It's the same build system that's used by [Kraken](http://cferdinandi.github.io/kraken/), so it includes some unnecessary tasks and Sass variables but can be dropped right in to the boilerplate without any configuration.
 
 ### Dependencies
 Make sure these are installed first.
@@ -106,23 +106,15 @@ Make sure these are installed first.
 * [Node.js](http://nodejs.org)
 * [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
-* [PhantomJS](http://phantomjs.org)
 
 ### Quick Start
 
 1. In bash/terminal/command line, `cd` into your project directory.
 2. Run `npm install` to install required files.
-3. When it's done installing, run `gulp` to get going.
-
-Every time you want to run your tasks, run `gulp`.
-
-
-
-## Using Both Patterns
-
-For simpicity, both dropdown menu options use the same naming conventions.
-
-If you will be using both options on a project, you'll need to change the class names to avoid conflicts. For example, you might change `.dropdown-menu` to `.dropdown-menu-basic` and `.dropdown-menu-jumbo`, respectively.
+3. When it's done installing, run one of the task runners to get going:
+	* `gulp` manually compiles files.
+	* `gulp watch` automatically compiles files when changes are made.
+	* `gulp reload` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
 
 
 
@@ -208,6 +200,10 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v6.0.0 - October 18, 2014
+	* Removed `.bind` dependency and polyfill.
+	* Updated `gulpfile.js` tasks and namespacing.
+	* Changed namespacing to allow for multiple patterns to be used together.
 * v5.0.4 - October 2, 2014
 	* Fixed CommonJS bug.
 	* Updated travis config file.

@@ -10,9 +10,9 @@ describe('Drop', function () {
 	var injectElem = function () {
 		var elem =
 			'<ul>' +
-				'<li class="dropdown">' +
+				'<li class="dropdown" data-dropdown>' +
 					'<a href="#">Dropdown 1</a>' +
-					'<div class="dropdown-menu">' +
+					'<div class="dropdown-menu" data-dropdown-menu>' +
 						'<ul>' +
 							'<li><a href="#">Item 1</a></li>' +
 							'<li><a href="#">Item 2</a></li>' +
@@ -20,9 +20,9 @@ describe('Drop', function () {
 						'</ul>' +
 					'</div>' +
 				'</li>' +
-				'<li class="dropdown">' +
+				'<li class="dropdown" data-dropdown>' +
 					'<a href="#">Dropdown 2</a>' +
-					'<div class="dropdown-menu dropdown-right">' +
+					'<div class="dropdown-menu dropdown-right" data-dropdown-menu>' +
 						'<ul>' +
 							'<li><a href="#">Item 1</a></li>' +
 							'<li><a href="#">Item 2</a></li>' +
@@ -120,7 +120,7 @@ describe('Drop', function () {
 				callbackBefore: function () { document.documentElement.classList.add('callback-before'); },
 				callbackAfter: function () { document.documentElement.classList.add('callback-after'); }
 			});
-			toggle = document.querySelector('.dropdown > a');
+			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
 			menu = toggle.nextElementSibling;
 			doc = document.documentElement;
@@ -150,7 +150,7 @@ describe('Drop', function () {
 		beforeEach(function () {
 			injectElem();
 			drop.init();
-			toggle = document.querySelector('.dropdown > a');
+			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
 			menu = toggle.nextElementSibling;
 		});
@@ -182,7 +182,7 @@ describe('Drop', function () {
 		beforeEach(function () {
 			injectElem();
 			drop.init();
-			toggles = document.querySelectorAll('.dropdown > a');
+			toggles = document.querySelectorAll('[data-dropdown] > a');
 		});
 
 		it('First dropdown should close when second dropdown is clicked', function () {
@@ -234,7 +234,7 @@ describe('Drop', function () {
 
 		beforeEach(function () {
 			injectElem();
-			toggle = document.querySelector('.dropdown > a');
+			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
 			menu = toggle.nextElementSibling;
 			drop.toggleDrop(toggle, null, null);
@@ -265,7 +265,7 @@ describe('Drop', function () {
 		beforeEach(function () {
 			injectElem();
 			drop.init();
-			toggle = document.querySelector('.dropdown > a');
+			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
 			menu = toggle.nextElementSibling;
 			doc = document.documentElement;
