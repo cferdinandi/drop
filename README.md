@@ -41,7 +41,11 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js), a po
 ```html
 ...
 	<li class="dropdown-*" data-dropdown>
-		<a href="FALLBACK-URL.com">Dropdown 1</a>
+		<a href="FALLBACK-URL.com">
+			Dropdown 1
+			<span class="dropdown-show">+</span>
+			<span class="dropdown-hide">-</span>
+		</a>
 		<div class="dropdown-menu-*" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
@@ -52,7 +56,11 @@ Drop also requires [classList.js](https://github.com/eligrey/classList.js), a po
 	</li>
 
 	<li class="dropdown-*" data-dropdown>
-		<a href="FALLBACK-URL.com">Dropdown 2</a>
+		<a href="FALLBACK-URL.com">
+			Dropdown 2
+			<span class="dropdown-show">+</span>
+			<span class="dropdown-hide">-</span>
+		</a>
 		<div class="dropdown-menu-* dropdown-right" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
@@ -200,6 +208,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v6.1.0 - December 22, 2014
+	* Updated expand/collapse styling approach.
 * v6.0.0 - October 18, 2014
 	* Removed `.bind` dependency and polyfill.
 	* Updated `gulpfile.js` tasks and namespacing.

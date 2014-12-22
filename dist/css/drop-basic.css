@@ -1,5 +1,5 @@
 /**
- * Drop v6.0.0
+ * Drop v6.1.0
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -7,29 +7,33 @@
  * http://gomakethings.com/mit/
  */
 
-@charset "UTF-8";
-/*  Sets dropdown link to relative positioning */
+/**
+ * Sets dropdown link to relative positioning
+ */
 .dropdown-basic {
   position: relative;
 }
 
-/*  Display a caret after each dropdown link when JavaScript is supported.
- *  You can remove this or change it to a different symbol.
- *  (For example, a "+" symbol.) */
-.js-drop .dropdown-basic > a:after {
-  content: " +";
-  font-size: .8em;
+/**
+ * Styling for expand/collapse icons
+ */
+.dropdown-basic > a .dropdown-show,
+.dropdown-basic > a .dropdown-hide,
+.js-drop .dropdown-basic > a.active .dropdown-show {
+  display: none;
+  visibility: hidden;
 }
 
-/*  When a dropdown is active, display a caret pointing up instead.
- *  You can remove this or change it to a different symbol.
- *  (For example, a "-" symbol.) */
-.js-drop .dropdown-basic > a.active:after {
-  content: " –";
+.js-drop .dropdown-basic > a .dropdown-show,
+.js-drop .dropdown-basic > a.active .dropdown-hide {
+  display: inline-block;
+  visibility: visible;
 }
 
-/*  Styling for the dropdown content.
- *  Hides the content by default. */
+/**
+ * Styling for the dropdown content.
+ * Hides the content by default.
+ */
 .dropdown-menu-basic {
   position: absolute;
   top: 100%;
@@ -51,34 +55,41 @@
   box-sizing: border-box;
 }
 
-/*  Remove list-style and margin-left
- *  from dropdown menu lists */
+/**
+ * Remove list-style and margin-left from dropdown menu lists
+ */
 .dropdown-menu-basic ul,
 .dropdown-menu-basic ol {
   margin-left: 0;
   list-style: none;
 }
 
-/*  When a dropdown is active, display it. */
+/**
+ * When a dropdown is active, display it.
+ */
 .dropdown-menu-basic.active {
   display: block;
   visibility: visible;
   padding: 0.5em;
 }
 
-/*  If dropdown link is near the right edge of the screen,
- *  shift the dropdown menu position to avoid content clipping. */
+/**
+ * If dropdown link is near the right edge of the screen, shift the dropdown menu position to avoid content clipping.
+ */
 .dropdown-menu-basic.dropdown-right {
   right: 0;
   left: auto;
 }
 
-/*  Optional small screen styling for use
- *  with collapse-and-toggle navigation menus.
- *  Learn more - http://cferdinandi.github.com/astro/ */
+/**
+ * Optional small screen styling for use with collapse-and-toggle navigation menus.
+ * @link http://cferdinandi.github.com/astro/
+ */
 @media (max-width: 40em) {
-  /*  Switch dropdown content to relative positioning.
-   *  Remove styling. */
+  /**
+   * Switch dropdown content to relative positioning.
+   * Remove styling.
+   */
   .js-drop .dropdown-menu-basic {
     position: relative;
     float: none;
