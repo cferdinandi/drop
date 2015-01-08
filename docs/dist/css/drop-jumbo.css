@@ -1,5 +1,5 @@
 /**
- * Drop v6.1.0
+ * Drop v6.1.1
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -10,6 +10,7 @@
 /**
  * Styling for expand/collapse icons
  */
+/* line 4, ../components/_drop-jumbo.scss */
 .dropdown-basic > a .dropdown-show,
 .dropdown-basic > a .dropdown-hide,
 .js-drop .dropdown-basic > a.active .dropdown-show {
@@ -17,6 +18,7 @@
   visibility: hidden;
 }
 
+/* line 11, ../components/_drop-jumbo.scss */
 .js-drop .dropdown-basic > a .dropdown-show,
 .js-drop .dropdown-basic > a.active .dropdown-hide {
   display: inline-block;
@@ -27,6 +29,7 @@
  * Styling for the dropdown content.
  * Hides the content by default.
  */
+/* line 21, ../components/_drop-jumbo.scss */
 .dropdown-menu-jumbo {
   position: absolute;
   display: none;
@@ -43,6 +46,7 @@
 /**
  * When a dropdown is active, display it.
  */
+/* line 37, ../components/_drop-jumbo.scss */
 .dropdown-menu-jumbo.active {
   display: block;
   visibility: visible;
@@ -59,6 +63,7 @@
    * Switch dropdown content to relative positioning.
    * Add a border-radius.
    */
+  /* line 54, ../components/_drop-jumbo.scss */
   .js-drop .dropdown-menu-jumbo {
     position: relative;
     float: none;
@@ -68,6 +73,7 @@
   /**
    * Add padding to active dropdown content
    */
+  /* line 63, ../components/_drop-jumbo.scss */
   .js-drop .dropdown-menu-jumbo.active {
     padding: 0.5em;
   }
@@ -76,6 +82,7 @@
    * For use with the Kraken Grid.
    * If using the .container class for dropdown content, give it a width of 100%.
    */
+  /* line 71, ../components/_drop-jumbo.scss */
   .js-drop .dropdown-menu-jumbo .container {
     width: 100%;
   }

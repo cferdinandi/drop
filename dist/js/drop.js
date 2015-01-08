@@ -1,5 +1,5 @@
 /**
- * Drop v6.1.0
+ * Drop v6.1.1
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -210,7 +210,7 @@
 		if ( menu && toggle !== document.documentElement && !toggle.parentNode.hasAttribute( 'data-dropdown' ) ) {
 			// If dropdown menu, do nothing
 			return;
-		} else if ( toggle !== document.documentElement && toggle.parentNode.hasAttribute( 'data-dropdown' ) ) {
+		} else if ( toggle !== document.documentElement && getClosest(toggle, '[data-dropdown]') ) {
 			// If dropdown toggle element, toggle dropdown menu
 			event.preventDefault();
 			drop.toggleDrop(toggle, settings);

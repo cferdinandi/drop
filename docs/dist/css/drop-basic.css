@@ -1,5 +1,5 @@
 /**
- * Drop v6.1.0
+ * Drop v6.1.1
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -10,6 +10,7 @@
 /**
  * Sets dropdown link to relative positioning
  */
+/* line 4, ../components/_drop-basic.scss */
 .dropdown-basic {
   position: relative;
 }
@@ -17,6 +18,7 @@
 /**
  * Styling for expand/collapse icons
  */
+/* line 11, ../components/_drop-basic.scss */
 .dropdown-basic > a .dropdown-show,
 .dropdown-basic > a .dropdown-hide,
 .js-drop .dropdown-basic > a.active .dropdown-show {
@@ -24,6 +26,7 @@
   visibility: hidden;
 }
 
+/* line 18, ../components/_drop-basic.scss */
 .js-drop .dropdown-basic > a .dropdown-show,
 .js-drop .dropdown-basic > a.active .dropdown-hide {
   display: inline-block;
@@ -34,6 +37,7 @@
  * Styling for the dropdown content.
  * Hides the content by default.
  */
+/* line 28, ../components/_drop-basic.scss */
 .dropdown-menu-basic {
   position: absolute;
   top: 100%;
@@ -58,6 +62,7 @@
 /**
  * Remove list-style and margin-left from dropdown menu lists
  */
+/* line 49, ../components/_drop-basic.scss */
 .dropdown-menu-basic ul,
 .dropdown-menu-basic ol {
   margin-left: 0;
@@ -67,6 +72,7 @@
 /**
  * When a dropdown is active, display it.
  */
+/* line 58, ../components/_drop-basic.scss */
 .dropdown-menu-basic.active {
   display: block;
   visibility: visible;
@@ -76,6 +82,7 @@
 /**
  * If dropdown link is near the right edge of the screen, shift the dropdown menu position to avoid content clipping.
  */
+/* line 67, ../components/_drop-basic.scss */
 .dropdown-menu-basic.dropdown-right {
   right: 0;
   left: auto;
@@ -90,6 +97,7 @@
    * Switch dropdown content to relative positioning.
    * Remove styling.
    */
+  /* line 82, ../components/_drop-basic.scss */
   .js-drop .dropdown-menu-basic {
     position: relative;
     float: none;

@@ -208,6 +208,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v6.1.1 - January 7, 2014
+	* Fixed event listener bug.
 * v6.1.0 - December 22, 2014
 	* Updated expand/collapse styling approach.
 * v6.0.0 - October 18, 2014
