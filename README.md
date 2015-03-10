@@ -207,6 +207,8 @@ Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
 Drop uses [semantic versioning](http://semver.org/).
 
+* v6.1.3 - March 9, 2015
+	* REALLY fixed UMD wrapper.
 * v6.1.2 - March 6, 2015
 	* Fixed AMD wrapper window variable.
 * v6.1.1 - January 7, 2014

@@ -1,5 +1,5 @@
 /**
- * Drop v6.1.2
+ * Drop v6.1.3
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -9,13 +9,13 @@
 
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
-		define([], factory);
+		define([], factory(root));
 	} else if ( typeof exports === 'object' ) {
-		module.exports = factory;
+		module.exports = factory(root);
 	} else {
 		root.drop = factory(root);
 	}
-})(this, function (window) {
+})(this, function (root) {
 
 	'use strict';
 
@@ -24,7 +24,7 @@
 	//
 
 	var drop = {}; // Object for public APIs
-	var supports = !!document.querySelector && !!window.addEventListener; // Feature test
+	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 	var settings;
 
 	// Default settings
