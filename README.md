@@ -12,8 +12,7 @@ Simple, mobile-friendly dropdown menus.
 5. [Browser Compatibility](#browser-compatibility)
 6. [How to Contribute](#how-to-contribute)
 7. [License](#license)
-8. [Changelog](#changelog)
-9. [Older Docs](#older-docs)
+8. [Older Docs](#older-docs)
 
 
 
@@ -200,113 +199,6 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 ## License
 Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
-
-
-
-## Changelog
-
-Drop uses [semantic versioning](http://semver.org/).
-
-* v6.1.4 - May 13, 2015
-	* Fixed Browserify `window` bug.
-* v6.1.3 - March 9, 2015
-	* REALLY fixed UMD wrapper.
-* v6.1.2 - March 6, 2015
-	* Fixed AMD wrapper window variable.
-* v6.1.1 - January 7, 2014
-	* Fixed event listener bug.
-* v6.1.0 - December 22, 2014
-	* Updated expand/collapse styling approach.
-* v6.0.0 - October 18, 2014
-	* Removed `.bind` dependency and polyfill.
-	* Updated `gulpfile.js` tasks and namespacing.
-	* Changed namespacing to allow for multiple patterns to be used together.
-* v5.0.4 - October 2, 2014
-	* Fixed CommonJS bug.
-	* Updated travis config file.
-	* Added lazypipe to `gulpfile.js`.
-* v5.0.3 - August 22, 2014
-	* Removed unused variables.
-* v5.0.2 - August 22, 2014
-	* Updated script to allow for dropdowns within dropdowns.
-* v5.0.1 - August 22, 2014
-	* Fixed `eventHandler` function `event` variable reference.
-* v5.0.0 - August 20, 2014
-	* Switched to Ruby Sass.
-	* Fixed test paths.
-	* Converted to event bubbling for event listeners.
-	* Updated selector options, breaking backwards compatibility.
-	* Exposed `closeDrops()` as a public API.
-* v4.3.2 - August 15, 2014
-	* Fixed UMD structure bug.
-* v4.3.1 - August 8, 2014
-	* Added polyfill for `Functions.prototype.bind`.
-	* Removed Sass paths from `gulpfile.js`.
-* v4.3.0 - June 28, 2014
-	* Added `destroy()` method.
-	* Updated unit tests.
-* v4.2.1 - June 28, 2014
-	* Fixed `extend()` function.
-* v4.2.0 - June 20, 2014
-	* Converted to gulp.js workflow.
-	* Added unit testing.
-	* Updated naming conventions.
-	* Added minified versions of files.
-* v4.1.1 - June 19, 2014
-	* Fixed factory/root/UMD definition.
-* v4.1.0 - June 7, 2014
-	* Added UMD support.
-	* Moved public APIs to exports variable.
-	* Improved feature test.
-	* Replaced Array.prototype.forEach hack with proper forEach function.
-	* Added a more well supported trim function.
-	* General code optimizations for better minification and performance.
-	* Updated to JSDoc documentation (sort of).
-	* Updated to three number versioning system.
-	* Added package manager installation info.
-* v4.0 - April 4, 2014
-	* Converted from Buoy class helpers to `classList` with polyfill.
-* v3.3 - April 4, 2014
-	* Fixed bug that stopped dropdowns from closing when clicking outside of a dropdown.
-* v3.2 - March 19, 2014
-	* Passed arguments into callback functions.
-* v3.1 - February 27, 2014
-	* Converted `_defaults` to a literal object
-* v3.0 - February 24, 2014
-	* Better public/private method namespacing.
-	* Require `init()` call to run.
-	* New API exposes additional methods for use in your own scripts.
-	* Better documentation.
-* v2.5 - February 5, 2014
-	* Added namespacing to IIFE.
-	* Moved feature test to script itself for better progressive enhancement.
-	* Updated looping method.
-* v2.4 - December 4, 2013
-	* Added Sass support.
-* v2.3 - August 27, 2013
-	* Added missing semicolons.
-	* Activated strict mode.
-* v2.2 - August 26, 2013
-	* Converted to an IIFE pattern.
-	* Added Buoy vanilla JS micro-library.
-* v2.1 - August 14, 2013
-	* Moved functions outside of forEach loops for better performance.
-* v2.0 - August 11, 2013
-	* Converted to vanilla JS.
-	* Removed dependency on jQuery.
-* v1.4 - August 5, 2013
-	* Created a variable for `$(this)` (better performance).
-* v1.3 - June 7, 2013
-	* Switched to MIT license.
-* v1.3 - May 20, 2013
-	* Dropdown menus now close if user clicks outside of them.
-* v1.2 - March 29, 2013
-	* Removed changed in arrow direction on active state.
-* v1.1 - February 13, 2013
-	* Renamed `example.html` to `index.html`.
-	* Removed "Convert to Vanilla JS" from the roadmap.
-* v1.0 - February 6, 2013
-	* Initial release.
 
 
 
