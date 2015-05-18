@@ -12,7 +12,6 @@ Simple, mobile-friendly dropdown menus.
 5. [Browser Compatibility](#browser-compatibility)
 6. [How to Contribute](#how-to-contribute)
 7. [License](#license)
-8. [Older Docs](#older-docs)
 
 
 
@@ -198,12 +197,5 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 
 ## License
-Drop is licensed under the [MIT License](http://gomakethings.com/mit/).
 
-
-
-## Older Docs
-
-* [Version 4](https://github.com/cferdinandi/drop/tree/archive-v4)
-* [Version 2](http://cferdinandi.github.io/drop/archive/v2/)
-* [Version 1](https://github.com/cferdinandi/drop/tree/archive-v1)
+The code is available under the [MIT License](LICENSE.md).
