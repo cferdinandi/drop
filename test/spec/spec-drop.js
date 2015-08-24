@@ -117,8 +117,7 @@ describe('Drop', function () {
 				toggleActiveClass: 'toggle-active', // Class added to active dropdown toggles
 				contentActiveClass: 'content-active', // Class added to active dropdown content
 				initClass: 'js-test', // Class added to `<html>` element when initiated
-				callbackBefore: function () { document.documentElement.classList.add('callback-before'); },
-				callbackAfter: function () { document.documentElement.classList.add('callback-after'); }
+				callback: function () { document.documentElement.classList.add('callback'); }
 			});
 			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
@@ -132,8 +131,7 @@ describe('Drop', function () {
 			expect(toggle.classList.contains('toggle-active')).toBe(true);
 			expect(menu.classList.contains('content-active')).toBe(true);
 			expect(doc.classList.contains('js-test')).toBe(true);
-			expect(doc.classList.contains('callback-before')).toBe(true);
-			expect(doc.classList.contains('callback-after')).toBe(true);
+			expect(doc.classList.contains('callback')).toBe(true);
 		});
 
 	});

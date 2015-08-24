@@ -1,5 +1,5 @@
 /**
- * Drop v6.1.4
+ * Drop v7.0.0
  * Simple, mobile-friendly dropdown menus, by Chris Ferdinandi.
  * http://github.com/cferdinandi/drop
  * 
@@ -32,8 +32,7 @@
 		toggleActiveClass: 'active',
 		contentActiveClass: 'active',
 		initClass: 'js-drop',
-		callbackBefore: function () {},
-		callbackAfter: function () {}
+		callback: function () {}
 	};
 
 
@@ -69,15 +68,42 @@
 	 * @param {Object} options User options
 	 * @returns {Object} Merged values of defaults and options
 	 */
-	var extend = function ( defaults, options ) {
+	var extend = function () {
+
+		// Variables
 		var extended = {};
-		forEach(defaults, function (value, prop) {
-			extended[prop] = defaults[prop];
-		});
-		forEach(options, function (value, prop) {
-			extended[prop] = options[prop];
-		});
+		var deep = false;
+		var i = 0;
+		var length = arguments.length;
+
+		// Check if a deep merge
+		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
+			deep = arguments[0];
+			i++;
+		}
+
+		// Merge the object into the extended object
+		var merge = function (obj) {
+			for ( var prop in obj ) {
+				if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
+					// If deep merge and property is an object, merge properties
+					if ( deep && Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
+						extended[prop] = buoy.extend( true, extended[prop], obj[prop] );
+					} else {
+						extended[prop] = obj[prop];
+					}
+				}
+			}
+		};
+
+		// Loop through each object and conduct a merge
+		for ( ; i < length; i++ ) {
+			var obj = arguments[i];
+			merge(obj);
+		}
+
 		return extended;
+
 	};
 
 	/**
@@ -86,15 +112,21 @@
 	 * @param  {Element} elem
 	 * @return {NodeList}
 	 */
-	var getSiblings = function (elem) {
+	var getSiblings = function ( elem ) {
+
+		// Variables
 		var siblings = [];
 		var sibling = elem.parentNode.firstChild;
+
+		// Loop through all sibling nodes
 		for ( ; sibling; sibling = sibling.nextSibling ) {
-			if ( sibling.nodeType == 1 && sibling != elem ) {
+			if ( sibling.nodeType === 1 && sibling !== elem ) {
 				siblings.push( sibling );
 			}
 		}
+
 		return siblings;
+
 	};
 
 	/**
@@ -103,25 +135,65 @@
 	 * @param  {String} selector The class or data attribute to look for
 	 * @return {Boolean|Element} False if no match
 	 */
-	var getClosest = function (elem, selector) {
+	var getClosest = function ( elem, selector ) {
 
+		// Variables
 		var firstChar = selector.charAt(0);
+		var supports = 'classList' in document.documentElement;
+		var attribute, value;
+
+		// If selector is a data attribute, split attribute from value
+		if ( firstChar === '[' ) {
+			selector = selector.substr(1, selector.length - 2);
+			attribute = selector.split( '=' );
+
+			if ( attribute.length > 1 ) {
+				value = true;
+				attribute[1] = attribute[1].replace( /"/g, '' ).replace( /'/g, '' );
+			}
+		}
 
 		// Get closest match
 		for ( ; elem && elem !== document; elem = elem.parentNode ) {
+
+			// If selector is a class
 			if ( firstChar === '.' ) {
-				if ( elem.classList.contains( selector.substr(1) ) ) {
-					return elem;
+				if ( supports ) {
+					if ( elem.classList.contains( selector.substr(1) ) ) {
+						return elem;
+					}
+				} else {
+					if ( new RegExp('(^|\\s)' + selector.substr(1) + '(\\s|$)').test( elem.className ) ) {
+						return elem;
+					}
 				}
-			} else if ( firstChar === '#' ) {
+			}
+
+			// If selector is an ID
+			if ( firstChar === '#' ) {
 				if ( elem.id === selector.substr(1) ) {
 					return elem;
 				}
-			} else if ( firstChar === '[' ) {
-				if ( elem.hasAttribute( selector.substr(1, selector.length - 2) ) ) {
-					return elem;
+			}
+
+			// If selector is a data attribute
+			if ( firstChar === '[' ) {
+				if ( elem.hasAttribute( attribute[0] ) ) {
+					if ( value ) {
+						if ( elem.getAttribute( attribute[0] ) === attribute[1] ) {
+							return elem;
+						}
+					} else {
+						return elem;
+					}
 				}
 			}
+
+			// If selector is a tag
+			if ( elem.tagName.toLowerCase() === selector ) {
+				return elem;
+			}
+
 		}
 
 		return null;
@@ -143,8 +215,6 @@
 		var toggleParent = toggle.parentNode;
 		var toggleSiblings = getSiblings(toggleParent);
 
-		settings.callbackBefore( toggle ); // Run callbacks before drop toggle
-
 		// Add/remove '.active' class from dropdown item
 		toggle.classList.toggle( settings.toggleActiveClass );
 		toggleMenu.classList.toggle( settings.contentActiveClass );
@@ -159,7 +229,7 @@
 			});
 		});
 
-		settings.callbackAfter( toggle ); // Run callbacks after drop toggle
+		settings.callback( toggle ); // Run callbacks after drop toggle
 
 	};
 
@@ -177,8 +247,6 @@
 
 		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent.length > 0 ) {
 
-			settings.callbackBefore(); // Run callbacks before drop close
-
 			// For each dropdown toggle, remove '.active' class
 			forEach(dropToggle, function (toggle) {
 				toggle.classList.remove( settings.toggleActiveClass );
@@ -194,7 +262,7 @@
 				content.classList.remove( settings.contentActiveClass );
 			});
 
-			settings.callbackAfter(); // Run callbacks after drop close
+			settings.callback(); // Run callbacks after drop close
 
 		}
 
