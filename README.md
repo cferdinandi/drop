@@ -110,7 +110,6 @@ If you would prefer, you can work with the development code in the `src` directo
 Make sure these are installed first.
 
 * [Node.js](http://nodejs.org)
-* [Ruby Sass](http://sass-lang.com/install)
 * [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
 
 ### Quick Start
@@ -138,8 +137,7 @@ drop.init({
 	toggleActiveClass: 'active', // Class added to active dropdown toggles
 	contentActiveClass: 'active', // Class added to active dropdown content
 	initClass: 'js-drop', // Class added to `<html>` element when initiated
-	callbackBefore: function ( toggle ) {}, // Function that's run before a dropdown is toggled
-	callbackAfter: function ( toggle ) {} // Function that's run after a dropdown is toggled
+	callback: function ( toggle ) {} // Function that's run after a dropdown is toggled
 });
 ```
 
