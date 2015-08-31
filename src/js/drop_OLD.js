@@ -1,10 +1,3 @@
-/*!
- * Drop v7.0.1: Simple, mobile-friendly dropdown menus
- * (c) 2015 Chris Ferdinandi
- * MIT License
- * http://github.com/cferdinandi/drop
- */
-
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define([], factory(root));
