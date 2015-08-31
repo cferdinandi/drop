@@ -1,0 +1,104 @@
+/*!
+ * Drop v7.0.1: Simple, mobile-friendly dropdown menus
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
+ * http://github.com/cferdinandi/drop
+ */
+
+/**
+ * Sets dropdown link to relative positioning
+ */
+/* line 4, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-basic {
+  position: relative;
+}
+
+/**
+ * Styling for expand/collapse icons
+ */
+/* line 13, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-basic > a .dropdown-show,
+.dropdown-basic > a .dropdown-hide,
+.js-drop .dropdown-basic > a.active .dropdown-show {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 19, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.js-drop .dropdown-basic > a .dropdown-show,
+.js-drop .dropdown-basic > a.active .dropdown-hide {
+  display: inline-block;
+  visibility: visible;
+}
+
+/**
+ * Styling for the dropdown content.
+ * Hides the content by default.
+ */
+/* line 28, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-menu-basic {
+  position: absolute;
+  top: 100%;
+  display: none;
+  visibility: hidden;
+  float: left;
+  min-width: 10em;
+  margin-top: 0.5em;
+  margin-left: 0;
+  text-align: left;
+  border: 0.0725em solid #b8b8b8;
+  background-color: #ffffff;
+  z-index: 1000;
+  border-radius: 0.0725em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/**
+ * Remove list-style and margin-left from dropdown menu lists
+ */
+/* line 50, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-menu-basic ul,
+.dropdown-menu-basic ol {
+  margin-left: 0;
+  list-style: none;
+}
+
+/**
+ * When a dropdown is active, display it.
+ */
+/* line 58, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-menu-basic.active {
+  display: block;
+  visibility: visible;
+  padding: 0.5em;
+}
+
+/**
+ * If dropdown link is near the right edge of the screen, shift the dropdown menu position to avoid content clipping.
+ */
+/* line 67, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-menu-basic.dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+/**
+ * Optional small screen styling for use with collapse-and-toggle navigation menus.
+ * @link http://cferdinandi.github.com/astro/
+ */
+@media (max-width: 40em) {
+  /**
+	 * Switch dropdown content to relative positioning.
+	 * Remove styling.
+	 */
+  /* line 82, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+  .js-drop .dropdown-menu-basic {
+    position: relative;
+    float: none;
+    min-width: 100%;
+    background-color: #f4f4f4;
+    border: none;
+    box-shadow: none;
+  }
+}

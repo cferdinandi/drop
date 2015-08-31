@@ -17,21 +17,16 @@ var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var package = require('./package.json');
 
-// Scripts and tests
+// Scripts
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var karma = require('gulp-karma');
 
 // Styles
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var minify = require('gulp-minify-css');
-
-// SVGs
-var svgmin = require('gulp-svgmin');
-var svgstore = require('gulp-svgstore');
 
 // Docs
 var markdown = require('gulp-markdown');
@@ -53,18 +48,6 @@ var paths = {
 		input: 'src/sass/**/*.{scss,sass}',
 		output: 'dist/css/'
 	},
-	svgs: {
-		input: 'src/svg/*',
-		output: 'dist/svg/'
-	},
-	static: 'src/static/**',
-	test: {
-		input: 'src/js/**/*.js',
-		karma: 'test/karma.conf.js',
-		spec: 'test/spec/**/*.js',
-		coverage: 'test/coverage/',
-		results: 'test/results/'
-	},
 	docs: {
 		input: 'src/docs/*.{html,md,markdown}',
 		output: 'docs/',
@@ -79,21 +62,20 @@ var paths = {
  */
 
 var banner = {
-	full :
-		'/**\n' +
-		' * <%= package.name %> v<%= package.version %>\n' +
-		' * <%= package.description %>, by <%= package.author.name %>.\n' +
-		' * <%= package.repository.url %>\n' +
-		' * \n' +
-		' * Free to use under the MIT License.\n' +
-		' * http://gomakethings.com/mit/\n' +
-		' */\n\n',
-	min :
-		'/**' +
-		' <%= package.name %> v<%= package.version %>, by Chris Ferdinandi' +
-		' | <%= package.repository.url %>' +
-		' | Licensed under MIT: http://gomakethings.com/mit/' +
-		' */\n'
+    full :
+        '/*!\n' +
+        ' * <%= package.name %> v<%= package.version %>: <%= package.description %>\n' +
+        ' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
+        ' * MIT License\n' +
+        ' * <%= package.repository.url %>\n' +
+        ' */\n\n',
+    min :
+        '/*!' +
+        ' <%= package.name %> v<%= package.version %>' +
+        ' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
+        ' | MIT License' +
+        ' | <%= package.repository.url %>' +
+        ' */\n'
 };
 
 
@@ -146,39 +128,6 @@ gulp.task('build:styles', ['clean:dist'], function() {
 		.pipe(gulp.dest(paths.styles.output));
 });
 
-// Generate SVG sprites
-gulp.task('build:svgs', ['clean:dist'], function () {
-	return gulp.src(paths.svgs.input)
-		.pipe(plumber())
-		.pipe(tap(function (file, t) {
-			if ( file.isDirectory() ) {
-				var name = file.relative + '.svg';
-				return gulp.src(file.path + '/*.svg')
-					.pipe(svgmin())
-					.pipe(svgstore({
-						fileName: name,
-						prefix: 'icon-',
-						inlineSvg: true
-					}))
-					.pipe(gulp.dest(paths.svgs.output));
-			}
-		}))
-		.pipe(svgmin())
-		.pipe(svgstore({
-			fileName: 'icons.svg',
-			prefix: 'icon-',
-			inlineSvg: true
-		}))
-		.pipe(gulp.dest(paths.svgs.output));
-});
-
-// Copy static files into output folder
-gulp.task('copy:static', ['clean:dist'], function() {
-	return gulp.src(paths.static)
-		.pipe(plumber())
-		.pipe(gulp.dest(paths.output));
-});
-
 // Lint scripts
 gulp.task('lint:scripts', function () {
 	return gulp.src(paths.scripts.input)
@@ -187,21 +136,11 @@ gulp.task('lint:scripts', function () {
 		.pipe(jshint.reporter('jshint-stylish'));
 });
 
-// Remove prexisting content from output and test folders
+// Remove prexisting content from output folder
 gulp.task('clean:dist', function () {
 	del.sync([
-		paths.output,
-		paths.test.coverage,
-		paths.test.results
+		paths.output
 	]);
-});
-
-// Run unit tests
-gulp.task('test:scripts', function() {
-	return gulp.src([paths.test.input].concat([paths.test.spec]))
-		.pipe(plumber())
-		.pipe(karma({ configFile: paths.test.karma }))
-		.on('error', function(err) { throw err; });
 });
 
 // Generate documentation
@@ -264,9 +203,7 @@ gulp.task('refresh', ['compile', 'docs'], function () {
 gulp.task('compile', [
 	'lint:scripts',
 	'clean:dist',
-	'copy:static',
 	'build:scripts',
-	'build:svgs',
 	'build:styles'
 ]);
 
@@ -278,19 +215,13 @@ gulp.task('docs', [
 	'copy:assets'
 ]);
 
-// Generate documentation
-gulp.task('tests', [
-	'test:scripts'
-]);
-
-// Compile files, generate docs, and run unit tests (default)
+// Compile files and generate docs (default)
 gulp.task('default', [
 	'compile',
-	'docs',
-	'tests'
+	'docs'
 ]);
 
-// Compile files, generate docs, and run unit tests when something changes
+// Compile files and generate docs when something changes
 gulp.task('watch', [
 	'listen',
 	'default'
