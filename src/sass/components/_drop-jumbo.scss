@@ -1,22 +1,23 @@
 /**
  * Styling for expand/collapse icons
  */
-.dropdown-basic > a .dropdown-show,
-.dropdown-basic > a .dropdown-hide,
-.js-drop .dropdown-basic > a.active .dropdown-show {
+
+.dropdown-jumbo > a .dropdown-show,
+.dropdown-jumbo > a .dropdown-hide,
+.drop .dropdown-jumbo > a.active .dropdown-show {
     display: none;
     visibility: hidden;
+    width: 0.5em;
 }
 
-.js-drop .dropdown-basic > a .dropdown-show,
-.js-drop .dropdown-basic > a.active .dropdown-hide {
+.drop .dropdown-jumbo > a .dropdown-show,
+.drop .dropdown-jumbo > a.active .dropdown-hide {
     display: inline-block;
     visibility: visible;
 }
 
 /**
- * Styling for the dropdown content.
- * Hides the content by default.
+ * Dropdown styles
  */
 .dropdown-menu-jumbo {
 	position: absolute;
@@ -29,47 +30,44 @@
 	text-align: left;
 	background-color: lighten( $color-gray-light, 6% );
 	z-index: 1000;
+
+	/**
+	 * Adjust layout for smaller viewports
+	 */
+	@media (max-width: $bp-medium) {
+		.drop & {
+			position: relative;
+			float: none;
+			border-radius: calc-em(4px);
+		}
+	}
+
+	/**
+	 * Show dropdown when active
+	 */
+	&.active {
+		display: block;
+		visibility: visible;
+		padding-top: calc-em(24px);
+		padding-bottom: calc-em(24px);
+
+		/**
+		 * Add padding to active dropdown content
+		 */
+		@media (max-width: $bp-medium) {
+			.drop & {
+				padding: calc-em(8px);
+			}
+		}
+	}
 }
 
 /**
- * When a dropdown is active, display it.
- */
-.dropdown-menu-jumbo.active {
-	display: block;
-	visibility: visible;
-	padding-top: calc-em(24px);
-	padding-bottom: calc-em(24px);
-}
-
-/**
- * Optional small screen styling for use with collapse-and-toggle navigation menus.
- * @link http://cferdinandi.github.com/astro/
+ * For use with the Kraken Grid.
+ * If using the .container class for dropdown content, give it a width of 100%.
  */
 @media (max-width: $bp-medium) {
-
-	/**
-	 * Switch dropdown content to relative positioning.
-	 * Add a border-radius.
-	 */
-	.js-drop .dropdown-menu-jumbo {
-		position: relative;
-		float: none;
-		border-radius: calc-em(4px);
-	}
-
-	/**
-	 * Add padding to active dropdown content
-	 */
-	.js-drop .dropdown-menu-jumbo.active {
-		padding: calc-em(8px);
-	}
-
-	/**
-	 * For use with the Kraken Grid.
-	 * If using the .container class for dropdown content, give it a width of 100%.
-	 */
-	.js-drop .dropdown-menu-jumbo .container {
+	.drop .dropdown-menu-jumbo .container {
 		width: 100%;
 	}
-
 }
