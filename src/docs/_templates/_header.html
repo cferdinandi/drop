@@ -9,7 +9,7 @@
 		<!-- stylesheets -->
 		<link rel="stylesheet" href="dist/css/drop-basic.css" type="text/css">
 		<link rel="stylesheet" href="dist/css/drop-jumbo.css" type="text/css">
-		<link rel="stylesheet" href="assets/astro-navbar.css" type="text/css">
+		<link rel="stylesheet" href="assets/astro-navbar.min.css" type="text/css">
 		<style type="text/css">
 			*,
 			*:before,
@@ -41,10 +41,22 @@
 				.grid-third {
 					width: 33.33333%;
 				}
-
 				.grid-half {
 					width: 50%;
 				}
+			}
+
+			.container:before,
+			.row:before,
+			.container:after,
+			.row:after {
+				display: table;
+				content: " ";
+			}
+
+			.container:after,
+			.row:after {
+				clear: both;
 			}
 		</style>
 	</head>

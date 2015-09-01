@@ -7,81 +7,81 @@
 
 
 /**
- * Styling for expand/collapse icons
+ * Expand/collapse icons
  */
-
 .dropdown-basic > a .dropdown-show,
 .dropdown-basic > a .dropdown-hide,
-.drop .dropdown-basic > a.active .dropdown-show {
-	display: none;
-	visibility: hidden;
-	width: 0.5em;
+.js-drop .dropdown-basic > a.active .dropdown-show {
+    display: none;
+    visibility: hidden;
+    width: 0.5em;
 }
 
-.drop .dropdown-basic > a .dropdown-show,
-.drop .dropdown-basic > a.active .dropdown-hide {
-	display: inline-block;
-	visibility: visible;
+.js-drop .dropdown-basic > a .dropdown-show,
+.js-drop .dropdown-basic > a.active .dropdown-hide {
+    display: inline-block;
+    visibility: visible;
+
+    @media (max-width: $bp-medium) {
+    	display: none;
+    	visibility: hidden;
+    }
 }
+
 
 /**
- * Dropdown styles
+ * Dropdown content
  */
 .dropdown-menu-basic {
-	position: absolute;
-	top: 100%;
-	display: none;
-	visibility: hidden;
-	float: left;
-	min-width: 10em;
-	margin-top: calc-em(8px);
-	margin-left: 0;
-	text-align: left;
-	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
 	background-color: $color-white;
-	z-index: 1000;
+	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
 	border-radius: calc-em(1px);
 	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
+	display: none;
+	float: left;
+	margin-top: calc-em(8px);
+	margin-left: 0;
+	min-width: 10em;
+	position: absolute;
+	text-align: left;
+	top: 100%;
+	visibility: hidden;
+	z-index: 1000;
 
-	/**
-	 * Switch dropdown content to relative positioning.
-	 * Remove styling.
-	 */
-	@media (max-width: $bp-medium) {
-		.drop & {
-			position: relative;
-			float: none;
-			min-width: 100%;
-			background-color: lighten( $color-gray-light, 6% );
-			border: none;
-			box-shadow: none;
-		}
-	}
-
-	/**
-	 * Adjust lists
-	 */
-	ul,
-	ol {
-		margin-left: 0;
-		list-style: none;
-	}
-
-	/**
-	 * Show when active
-	 */
 	&.active {
 		display: block;
-		visibility: visible;
 		padding: calc-em(8px);
+		visibility: visible;
+	}
+
+	&.dropdown-right {
+		left: auto;
+		right: 0;
+	}
+
+	ul,
+	ol {
+		list-style: none;
+		margin-left: 0;
 	}
 
 	/**
-	 * Align dropdown to the right
+	 * Switch up styling on small viewports
 	 */
-	&.dropdown-right {
-		right: 0;
-		left: auto;
+	@media (max-width: $bp-medium) {
+		.js-drop & {
+			border: none;
+			box-shadow: none;
+			display: block;
+			float: none;
+			min-width: 100%;
+			position: static;
+			visibility: visible;
+
+			&.active {
+				padding: 0;
+			}
+		}
 	}
 }

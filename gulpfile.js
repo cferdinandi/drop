@@ -17,11 +17,12 @@ var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var package = require('./package.json');
 
-// Scripts
+// Scripts and tests
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var karma = require('gulp-karma');
 
 // Styles
 var sass = require('gulp-sass');
@@ -48,6 +49,13 @@ var paths = {
 		input: 'src/sass/**/*.{scss,sass}',
 		output: 'dist/css/'
 	},
+	test: {
+		input: 'src/js/**/*.js',
+		karma: 'test/karma.conf.js',
+		spec: 'test/spec/**/*.js',
+		coverage: 'test/coverage/',
+		results: 'test/results/'
+	},
 	docs: {
 		input: 'src/docs/*.{html,md,markdown}',
 		output: 'docs/',
@@ -62,20 +70,20 @@ var paths = {
  */
 
 var banner = {
-    full :
-        '/*!\n' +
-        ' * <%= package.name %> v<%= package.version %>: <%= package.description %>\n' +
-        ' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
-        ' * MIT License\n' +
-        ' * <%= package.repository.url %>\n' +
-        ' */\n\n',
-    min :
-        '/*!' +
-        ' <%= package.name %> v<%= package.version %>' +
-        ' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
-        ' | MIT License' +
-        ' | <%= package.repository.url %>' +
-        ' */\n'
+	full :
+		'/*!\n' +
+		' * <%= package.name %> v<%= package.version %>: <%= package.description %>\n' +
+		' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
+		' * MIT License\n' +
+		' * <%= package.repository.url %>\n' +
+		' */\n\n',
+	min :
+		'/*!' +
+		' <%= package.name %> v<%= package.version %>' +
+		' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
+		' | MIT License' +
+		' | <%= package.repository.url %>' +
+		' */\n'
 };
 
 
@@ -136,11 +144,27 @@ gulp.task('lint:scripts', function () {
 		.pipe(jshint.reporter('jshint-stylish'));
 });
 
-// Remove prexisting content from output folder
+// Remove pre-existing content from output and test folders
 gulp.task('clean:dist', function () {
 	del.sync([
 		paths.output
 	]);
+});
+
+// Remove pre-existing content from text folders
+gulp.task('clean:test', function () {
+	del.sync([
+		paths.test.coverage,
+		paths.test.results
+	]);
+});
+
+// Run unit tests
+gulp.task('test:scripts', ['clean:test'], function() {
+	return gulp.src([paths.test.input].concat([paths.test.spec]))
+		.pipe(plumber())
+		.pipe(karma({ configFile: paths.test.karma }))
+		.on('error', function(err) { throw err; });
 });
 
 // Generate documentation
@@ -215,14 +239,20 @@ gulp.task('docs', [
 	'copy:assets'
 ]);
 
-// Compile files and generate docs (default)
+// Compile files, generate docs, and run unit tests (default)
 gulp.task('default', [
 	'compile',
 	'docs'
 ]);
 
-// Compile files and generate docs when something changes
+// Compile files, generate docs, and run unit tests when something changes
 gulp.task('watch', [
 	'listen',
 	'default'
+]);
+
+// Run unit tests
+gulp.task('test', [
+	'default',
+	'test:scripts'
 ]);

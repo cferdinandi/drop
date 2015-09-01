@@ -1,33 +1,42 @@
 /*!
- * Drop v8.0.0: Simple, mobile-friendly dropdown menus
+ * Drop v9.0.0: Simple, mobile-friendly dropdown menus
  * (c) 2015 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
  */
 
 /**
- * Styling for expand/collapse icons
+ * Expand/collapse icons
  */
 /* line 7, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
 .dropdown-jumbo > a .dropdown-show,
 .dropdown-jumbo > a .dropdown-hide,
-.drop .dropdown-jumbo > a.active .dropdown-show {
+.js-drop .dropdown-jumbo > a.active .dropdown-show {
   display: none;
   visibility: hidden;
   width: 0.5em;
 }
 
 /* line 14, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-.drop .dropdown-jumbo > a .dropdown-show,
-.drop .dropdown-jumbo > a.active .dropdown-hide {
+.js-drop .dropdown-jumbo > a .dropdown-show,
+.js-drop .dropdown-jumbo > a.active .dropdown-hide {
   display: inline-block;
   visibility: visible;
 }
 
+@media (max-width: 40em) {
+  /* line 14, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-drop .dropdown-jumbo > a .dropdown-show,
+  .js-drop .dropdown-jumbo > a.active .dropdown-hide {
+    display: none;
+    visibility: hidden;
+  }
+}
+
 /**
- * Dropdown styles
+ * Dropdown content
  */
-/* line 22, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+/* line 28, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
 .dropdown-menu-jumbo {
   position: absolute;
   display: none;
@@ -40,47 +49,38 @@
   background-color: #f4f4f4;
   z-index: 1000;
   /**
-	 * Adjust layout for smaller viewports
-	 */
-  /**
-	 * Show dropdown when active
+	 * Switch up styling on small viewports
 	 */
 }
 
-@media (max-width: 40em) {
-  /* line 38, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-  .drop .dropdown-menu-jumbo {
-    position: relative;
-    float: none;
-    border-radius: 0.25em;
-  }
-}
-
-/* line 48, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+/* line 40, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
 .dropdown-menu-jumbo.active {
   display: block;
-  visibility: visible;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
-  /**
-		 * Add padding to active dropdown content
+  visibility: visible;
+}
+
+@media (max-width: 40em) {
+  /* line 28, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .dropdown-menu-jumbo {
+    /**
+		 * For use with the Kraken Grid.
+		 * If using the .container class for dropdown content, give it a width of 100%.
 		 */
-}
-
-@media (max-width: 40em) {
-  /* line 58, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-  .drop .dropdown-menu-jumbo.active {
-    padding: 0.5em;
   }
-}
-
-/**
- * For use with the Kraken Grid.
- * If using the .container class for dropdown content, give it a width of 100%.
- */
-@media (max-width: 40em) {
-  /* line 70, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-  .drop .dropdown-menu-jumbo .container {
+  /* line 51, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-drop .dropdown-menu-jumbo {
+    background-color: transparent;
+    border-radius: 0.25em;
+    display: block;
+    float: none;
+    padding-left: 1em;
+    position: static;
+    visibility: visible;
+  }
+  /* line 65, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .dropdown-menu-jumbo .container {
     width: 100%;
   }
 }

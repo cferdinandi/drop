@@ -9,7 +9,7 @@
 		<!-- stylesheets -->
 		<link rel="stylesheet" href="dist/css/drop-basic.css" type="text/css">
 		<link rel="stylesheet" href="dist/css/drop-jumbo.css" type="text/css">
-		<link rel="stylesheet" href="assets/astro-navbar.css" type="text/css">
+		<link rel="stylesheet" href="assets/astro-navbar.min.css" type="text/css">
 		<style type="text/css">
 			*,
 			*:before,
@@ -41,10 +41,22 @@
 				.grid-third {
 					width: 33.33333%;
 				}
-
 				.grid-half {
 					width: 50%;
 				}
+			}
+
+			.container:before,
+			.row:before,
+			.container:after,
+			.row:after {
+				display: table;
+				content: " ";
+			}
+
+			.container:after,
+			.row:after {
+				clear: both;
 			}
 		</style>
 	</head>
@@ -63,12 +75,12 @@
 <h2 id="drop-basic">Drop Basic</h2>
 <nav class="nav-wrap-navbar nav-collapse">
     <a class="logo-navbar" href="#">Drop Basic</a>
-    <a class="nav-toggle-navbar js-astro-1" href="#">Menu &#9660;</a>
+    <a class="nav-toggle-navbar" data-nav-toggle="#nav-basic" href="#">Menu &#9660;</a>
     <div class="nav-menu-navbar" id="nav-basic">
         <ul class="nav-navbar">
             <li><a href="#">Home</a></li>
             <li class="dropdown-basic" data-dropdown>
-                <a href="FALLBACK-URL.com" data-dropdown-toggle>
+                <a href="FALLBACK-URL.com">
                     Dropdown 1 <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
                 </a>
                 <div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
@@ -82,7 +94,7 @@
             </li>
             <li><a href="#">About</a></li>
             <li class="dropdown-basic" data-dropdown>
-                <a href="url.com" data-dropdown-toggle>
+                <a href="url.com">
                     Contact <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
                 </a>
                 <div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
@@ -101,13 +113,13 @@
 <h2 id="drop-jumbo">Drop Jumbo</h2>
 <nav class="nav-wrap-navbar nav-collapse">
     <a class="logo-navbar" href="#">Drop Jumbo</a>
-    <a class="nav-toggle-navbar js-astro-2" href="#">Menu &#9660;</a>
+    <a class="nav-toggle-navbar" data-nav-toggle="#nav-jumbo" href="#">Menu &#9660;</a>
     <div class="nav-menu-navbar" id="nav-jumbo">
         <ul class="nav-navbar">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li class="dropdown-jumbo" data-dropdown>
-                <a href="url.com" data-dropdown-toggle>
+                <a href="url.com">
                     Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
                 </a>
                 <div class="dropdown-menu-jumbo" data-dropdown-menu>
@@ -124,7 +136,7 @@
                 </div>
             </li>
             <li class="dropdown-jumbo" data-dropdown>
-                <a href="url.com" data-dropdown-toggle>
+                <a href="url.com">
                     Another Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
                 </a>
                 <div class="dropdown-menu-jumbo" data-dropdown-menu>
@@ -154,11 +166,10 @@
 
 		<!-- Javascript -->
 		<script src="dist/js/drop.js"></script>
-		<script src="assets/astro.js"></script>
+		<script src="assets/astro.min.js"></script>
 		<script>
-			drop( '[data-dropdown]', '[data-dropdown-toggle]', '[data-dropdown-menu]' );
-			astro( '.js-astro-1', '#nav-basic' );
-			astro( '.js-astro-2', '#nav-jumbo' );
+			drop.init();
+			astro.init();
 		</script>
 
 
