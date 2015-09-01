@@ -1,23 +1,29 @@
 /**
- * Styling for expand/collapse icons
+ * Expand/collapse icons
  */
 
 .dropdown-jumbo > a .dropdown-show,
 .dropdown-jumbo > a .dropdown-hide,
-.drop .dropdown-jumbo > a.active .dropdown-show {
+.js-drop .dropdown-jumbo > a.active .dropdown-show {
     display: none;
     visibility: hidden;
     width: 0.5em;
 }
 
-.drop .dropdown-jumbo > a .dropdown-show,
-.drop .dropdown-jumbo > a.active .dropdown-hide {
+.js-drop .dropdown-jumbo > a .dropdown-show,
+.js-drop .dropdown-jumbo > a.active .dropdown-hide {
     display: inline-block;
     visibility: visible;
+
+    @media (max-width: $bp-medium) {
+    	display: none;
+    	visibility: hidden;
+    }
 }
 
+
 /**
- * Dropdown styles
+ * Dropdown content
  */
 .dropdown-menu-jumbo {
 	position: absolute;
@@ -31,43 +37,33 @@
 	background-color: lighten( $color-gray-light, 6% );
 	z-index: 1000;
 
-	/**
-	 * Adjust layout for smaller viewports
-	 */
-	@media (max-width: $bp-medium) {
-		.drop & {
-			position: relative;
-			float: none;
-			border-radius: calc-em(4px);
-		}
-	}
-
-	/**
-	 * Show dropdown when active
-	 */
 	&.active {
 		display: block;
-		visibility: visible;
 		padding-top: calc-em(24px);
 		padding-bottom: calc-em(24px);
+		visibility: visible;
+	}
+
+	/**
+	 * Switch up styling on small viewports
+	 */
+	@media (max-width: $bp-medium) {
+		.js-drop & {
+			background-color: transparent;
+			border-radius: calc-em(4px);
+			display: block;
+			float: none;
+			padding-left: calc-em(16px);
+			position: static;
+			visibility: visible;
+		}
 
 		/**
-		 * Add padding to active dropdown content
+		 * For use with the Kraken Grid.
+		 * If using the .container class for dropdown content, give it a width of 100%.
 		 */
-		@media (max-width: $bp-medium) {
-			.drop & {
-				padding: calc-em(8px);
-			}
+		.container {
+			width: 100%;
 		}
-	}
-}
-
-/**
- * For use with the Kraken Grid.
- * If using the .container class for dropdown content, give it a width of 100%.
- */
-@media (max-width: $bp-medium) {
-	.drop .dropdown-menu-jumbo .container {
-		width: 100%;
 	}
 }
