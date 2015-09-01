@@ -1,6 +1,6 @@
 {
 	"name": "Drop",
-	"version": "7.0.1",
+	"version": "8.0.0",
 	"description": "Simple, mobile-friendly dropdown menus",
 	"main": "./dist",
 	"author": {

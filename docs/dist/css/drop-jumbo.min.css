@@ -1,7 +1,7 @@
-/*! Drop v7.0.1 | (c) 2015 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/drop */
+/*! Drop v8.0.0 | (c) 2015 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/drop */
 /*!
- * Drop v7.0.1: Simple, mobile-friendly dropdown menus
+ * Drop v8.0.0: Simple, mobile-friendly dropdown menus
  * (c) 2015 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
- */.dropdown-basic>a .dropdown-hide,.dropdown-basic>a .dropdown-show,.js-drop .dropdown-basic>a.active .dropdown-show{display:none;visibility:hidden}.js-drop .dropdown-basic>a .dropdown-show,.js-drop .dropdown-basic>a.active .dropdown-hide{display:inline-block;visibility:visible}.dropdown-menu-jumbo{position:absolute;display:none;visibility:hidden;float:left;right:0;width:100%;margin-top:.5em;text-align:left;background-color:#f4f4f4;z-index:1000}.dropdown-menu-jumbo.active{display:block;visibility:visible;padding-top:1.5em;padding-bottom:1.5em}@media (max-width:40em){.js-drop .dropdown-menu-jumbo{position:relative;float:none;border-radius:.25em}.js-drop .dropdown-menu-jumbo.active{padding:.5em}.js-drop .dropdown-menu-jumbo .container{width:100%}}
+ */.drop .dropdown-jumbo>a.active .dropdown-show,.dropdown-jumbo>a .dropdown-hide,.dropdown-jumbo>a .dropdown-show{display:none;visibility:hidden;width:.5em}.drop .dropdown-jumbo>a .dropdown-show,.drop .dropdown-jumbo>a.active .dropdown-hide{display:inline-block;visibility:visible}.dropdown-menu-jumbo{position:absolute;display:none;visibility:hidden;float:left;right:0;width:100%;margin-top:.5em;text-align:left;background-color:#f4f4f4;z-index:1000}.dropdown-menu-jumbo.active{display:block;visibility:visible;padding-top:1.5em;padding-bottom:1.5em}@media (max-width:40em){.drop .dropdown-menu-jumbo{position:relative;float:none;border-radius:.25em}.drop .dropdown-menu-jumbo.active{padding:.5em}.drop .dropdown-menu-jumbo .container{width:100%}}

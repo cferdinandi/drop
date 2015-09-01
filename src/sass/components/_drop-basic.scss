@@ -1,29 +1,31 @@
 /**
- * Sets dropdown link to relative positioning
+ * Set dropdown link to relative positioning
  */
 .dropdown-basic {
 	position: relative;
 }
 
+
 /**
  * Styling for expand/collapse icons
  */
+
 .dropdown-basic > a .dropdown-show,
 .dropdown-basic > a .dropdown-hide,
-.js-drop .dropdown-basic > a.active .dropdown-show {
-    display: none;
-    visibility: hidden;
+.drop .dropdown-basic > a.active .dropdown-show {
+	display: none;
+	visibility: hidden;
+	width: 0.5em;
 }
 
-.js-drop .dropdown-basic > a .dropdown-show,
-.js-drop .dropdown-basic > a.active .dropdown-hide {
-    display: inline-block;
-    visibility: visible;
+.drop .dropdown-basic > a .dropdown-show,
+.drop .dropdown-basic > a.active .dropdown-hide {
+	display: inline-block;
+	visibility: visible;
 }
 
 /**
- * Styling for the dropdown content.
- * Hides the content by default.
+ * Dropdown styles
  */
 .dropdown-menu-basic {
 	position: absolute;
@@ -41,51 +43,45 @@
 	border-radius: calc-em(1px);
 	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-}
-
-/**
- * Remove list-style and margin-left from dropdown menu lists
- */
-.dropdown-menu-basic ul,
-.dropdown-menu-basic ol {
-	margin-left: 0;
-	list-style: none;
-}
-
-/**
- * When a dropdown is active, display it.
- */
-.dropdown-menu-basic.active {
-	display: block;
-	visibility: visible;
-	padding: calc-em(8px);
-}
-
-/**
- * If dropdown link is near the right edge of the screen, shift the dropdown menu position to avoid content clipping.
- */
-.dropdown-menu-basic.dropdown-right {
-  right: 0;
-  left: auto;
-}
-
-/**
- * Optional small screen styling for use with collapse-and-toggle navigation menus.
- * @link http://cferdinandi.github.com/astro/
- */
-@media (max-width: $bp-medium) {
 
 	/**
 	 * Switch dropdown content to relative positioning.
 	 * Remove styling.
 	 */
-	.js-drop .dropdown-menu-basic {
-		position: relative;
-		float: none;
-		min-width: 100%;
-		background-color: lighten( $color-gray-light, 6% );
-		border: none;
-		box-shadow: none;
+	@media (max-width: $bp-medium) {
+		.drop & {
+			position: relative;
+			float: none;
+			min-width: 100%;
+			background-color: lighten( $color-gray-light, 6% );
+			border: none;
+			box-shadow: none;
+		}
 	}
 
+	/**
+	 * Adjust lists
+	 */
+	ul,
+	ol {
+		margin-left: 0;
+		list-style: none;
+	}
+
+	/**
+	 * Show when active
+	 */
+	&.active {
+		display: block;
+		visibility: visible;
+		padding: calc-em(8px);
+	}
+
+	/**
+	 * Align dropdown to the right
+	 */
+	&.dropdown-right {
+		right: 0;
+		left: auto;
+	}
 }

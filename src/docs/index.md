@@ -2,12 +2,12 @@
 
 <nav class="nav-wrap-navbar nav-collapse">
 	<a class="logo-navbar" href="#">Drop Basic</a>
-	<a class="nav-toggle-navbar" data-nav-toggle="#nav-basic" href="#">Menu &#9660;</a>
+	<a class="nav-toggle-navbar js-astro-1" href="#">Menu &#9660;</a>
 	<div class="nav-menu-navbar" id="nav-basic">
 		<ul class="nav-navbar">
 			<li><a href="#">Home</a></li>
 			<li class="dropdown-basic" data-dropdown>
-				<a href="FALLBACK-URL.com">
+				<a href="FALLBACK-URL.com" data-dropdown-toggle>
 					Dropdown 1 <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
 				</a>
 				<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
@@ -21,7 +21,7 @@
 			</li>
 			<li><a href="#">About</a></li>
 			<li class="dropdown-basic" data-dropdown>
-				<a href="url.com">
+				<a href="url.com" data-dropdown-toggle>
 					Contact <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
 				</a>
 				<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
@@ -42,13 +42,13 @@
 
 <nav class="nav-wrap-navbar nav-collapse">
 	<a class="logo-navbar" href="#">Drop Jumbo</a>
-	<a class="nav-toggle-navbar" data-nav-toggle="#nav-jumbo" href="#">Menu &#9660;</a>
+	<a class="nav-toggle-navbar js-astro-2" href="#">Menu &#9660;</a>
 	<div class="nav-menu-navbar" id="nav-jumbo">
 		<ul class="nav-navbar">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
 			<li class="dropdown-jumbo" data-dropdown>
-				<a href="url.com">
+				<a href="url.com" data-dropdown-toggle>
 					Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
 				</a>
 				<div class="dropdown-menu-jumbo" data-dropdown-menu>
@@ -65,7 +65,7 @@
 				</div>
 			</li>
 			<li class="dropdown-jumbo" data-dropdown>
-				<a href="url.com">
+				<a href="url.com" data-dropdown-toggle>
 					Another Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
 				</a>
 				<div class="dropdown-menu-jumbo" data-dropdown-menu>
