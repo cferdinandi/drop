@@ -6,7 +6,7 @@
 	} else {
 		root.drop = factory(root);
 	}
-})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
 	'use strict';
 
@@ -15,6 +15,7 @@
 	//
 
 	var drop = {}; // Object for public APIs
+	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
 	var settings;
 
 	// Default settings
@@ -298,6 +299,9 @@
 	 * @param {Object} options User settings
 	 */
 	drop.init = function ( options ) {
+
+		// feature test
+		if ( !supports ) return;
 
 		// Destroy any existing initializations
 		drop.destroy();

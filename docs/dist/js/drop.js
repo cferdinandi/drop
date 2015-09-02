@@ -1,5 +1,5 @@
 /*!
- * Drop v9.1.0: Simple, mobile-friendly dropdown menus
+ * Drop v9.2.0: Simple, mobile-friendly dropdown menus
  * (c) 2015 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -13,7 +13,7 @@
 	} else {
 		root.drop = factory(root);
 	}
-})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
 	'use strict';
 
@@ -22,6 +22,7 @@
 	//
 
 	var drop = {}; // Object for public APIs
+	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
 	var settings;
 
 	// Default settings
@@ -305,6 +306,9 @@
 	 * @param {Object} options User settings
 	 */
 	drop.init = function ( options ) {
+
+		// feature test
+		if ( !supports ) return;
 
 		// Destroy any existing initializations
 		drop.destroy();
