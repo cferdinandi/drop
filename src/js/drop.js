@@ -15,7 +15,6 @@
 	//
 
 	var drop = {}; // Object for public APIs
-	var supports = !!document.querySelector && !!root.addEventListener; // Feature test
 	var settings;
 
 	// Default settings
@@ -299,9 +298,6 @@
 	 * @param {Object} options User settings
 	 */
 	drop.init = function ( options ) {
-
-		// feature test
-		if ( !supports ) return;
 
 		// Destroy any existing initializations
 		drop.destroy();

@@ -172,7 +172,7 @@ drop.destroy();
 
 ## Browser Compatibility
 
-Drop works in all modern browsers, and IE 9 and above.
+Drop works in all modern browsers, and IE 10 and above. You can push browser support back to IE 9 with the [classList.js polyfill](https://github.com/eligrey/classList.js/).
 
 Drop is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, users will get a basic link instead of a drop-down menu.
 
@@ -184,7 +184,7 @@ You should check for `document.querySelector`, `window.addEventListener`, and `d
 if (
 	'querySelector' in document &&
 	'addEventListener' in window &&
-	'classList' in document.createElement('_')
+	'classList' in document.createElement('_') // If you're not using the polyfill
 ) {
     drop.init();
 }
