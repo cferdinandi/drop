@@ -13,7 +13,7 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 
 ```html
 <!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
-<link rel="stylesheet" href="dist/css/drop-*-css.css">
+<link rel="stylesheet" href="dist/css/drop-*.css">
 <script src="dist/js/drop.js"></script>
 ```
 
