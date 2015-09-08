@@ -1,5 +1,5 @@
 /*!
- * Drop v9.2.0: Simple, mobile-friendly dropdown menus
+ * Drop v9.2.1: Simple, mobile-friendly dropdown menus
  * (c) 2015 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -275,7 +275,7 @@
 	var eventHandler = function (event) {
 		var toggle = event.target;
 		var menu = getClosest( toggle, settings.selectorMenu );
-		if ( menu && toggle !== document.documentElement && !getClosest( toggle.parentNode, settings.selectorDropdown ) ) {
+		if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorMenu ) ) {
 			// If dropdown menu, do nothing
 			return;
 		} else if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorDropdown ) ) {
