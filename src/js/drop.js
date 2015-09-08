@@ -268,7 +268,7 @@
 	var eventHandler = function (event) {
 		var toggle = event.target;
 		var menu = getClosest( toggle, settings.selectorMenu );
-		if ( menu && toggle !== document.documentElement && !getClosest( toggle.parentNode, settings.selectorDropdown ) ) {
+		if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorMenu ) ) {
 			// If dropdown menu, do nothing
 			return;
 		} else if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorDropdown ) ) {
