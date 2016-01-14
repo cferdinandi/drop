@@ -29,8 +29,6 @@ You also need to add a `.no-js-drop` class to any parent element of your dropdow
 	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 1
-			<span class="dropdown-show">+</span>
-			<span class="dropdown-hide">-</span>
 		</a>
 		<div class="dropdown-menu-*" data-dropdown-menu>
 			<ul>
@@ -44,8 +42,6 @@ You also need to add a `.no-js-drop` class to any parent element of your dropdow
 	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 2
-			<span class="dropdown-show">+</span>
-			<span class="dropdown-hide">-</span>
 		</a>
 		<div class="dropdown-menu-* dropdown-right" data-dropdown-menu>
 			<ul>
@@ -84,6 +80,12 @@ You can install Drop with your favorite package manager.
 * **NPM:** `npm install cferdinandi/drop`
 * **Bower:** `bower install https://github.com/cferdinandi/drop.git`
 * **Component:** `component install cferdinandi/drop`
+
+
+
+## Changing the show more/show less icons
+
+The +/- icons after the dropdown link are controlled using `a:after` selectors in the CSS/Sass files. Update as desired.
 
 
 
