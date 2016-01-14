@@ -1,31 +1,33 @@
 /**
- * Set dropdown link to relative positioning
+ * Dropdown links
  */
 .dropdown-basic {
 	position: relative;
-}
 
+	& > a:after {
+		content: "+";
+		display: inline-block;
+		margin-left: calc-em(4px);
+		width: calc-em(8px);
 
-/**
- * Expand/collapse icons
- */
-.dropdown-basic > a .dropdown-show,
-.dropdown-basic > a .dropdown-hide,
-.js-drop .dropdown-basic > a.active .dropdown-show {
-    display: none;
-    visibility: hidden;
-    width: 0.5em;
-}
+		.js-astro.js-drop & {
+			@media (max-width: $bp-medium) {
+				content: "";
+			}
+		}
+	}
 
-.js-drop .dropdown-basic > a .dropdown-show,
-.js-drop .dropdown-basic > a.active .dropdown-hide {
-    display: inline-block;
-    visibility: visible;
+	@media (max-width: $bp-medium) {
+		.js-astro.js-drop & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
 
-    @media (max-width: $bp-medium) {
-    	display: none;
-    	visibility: hidden;
-    }
+	.no-js-drop &:hover > a:after,
+	.js-drop & > a.active:after {
+		content: "\2013";
+	}
 }
 
 
@@ -40,24 +42,25 @@
 	box-sizing: border-box;
 	display: none;
 	float: left;
-	margin-top: calc-em(8px);
 	margin-left: 0;
 	min-width: 10em;
+	padding-top: calc-em(8px);
+	padding-bottom: calc-em(8px);
 	position: absolute;
+	right: 0;
 	text-align: left;
 	top: 100%;
 	visibility: hidden;
 	z-index: 1000;
 
-	&.active {
-		display: block;
-		padding: calc-em(8px);
-		visibility: visible;
+	.js-drop & {
+		margin-top: calc-em(8px);
 	}
 
-	&.dropdown-right {
-		left: auto;
-		right: 0;
+	.js-astro.js-drop & {
+		@media (max-width: $bp-medium) {
+			margin-top: 0;
+		}
 	}
 
 	ul,
@@ -66,22 +69,37 @@
 		margin-left: 0;
 	}
 
+	a {
+		display: block;
+		padding-left: calc-em(8px);
+		padding-right: calc-em(8px);
+	}
+
 	/**
-	 * Switch up styling on small viewports
+	 * Switch up styling on JS-supported small viewports
 	 */
 	@media (max-width: $bp-medium) {
-		.js-drop & {
+		.js-astro.js-drop & {
+			background-color: transparent;
 			border: none;
 			box-shadow: none;
 			display: block;
 			float: none;
-			min-width: 100%;
+			margin-left: calc-em(24px);
 			position: static;
 			visibility: visible;
 
 			&.active {
 				padding: 0;
 			}
+
+
 		}
+	}
+
+	.no-js-drop .dropdown-basic:hover &,
+	&.active {
+		display: block;
+		visibility: visible;
 	}
 }

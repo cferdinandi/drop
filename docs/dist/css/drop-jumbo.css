@@ -1,86 +1,100 @@
 /*!
- * Drop v9.2.1: Simple, mobile-friendly dropdown menus
- * (c) 2015 Chris Ferdinandi
+ * Drop v10.0.0: Simple, mobile-friendly dropdown menus
+ * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
  */
 
 /**
- * Expand/collapse icons
+ * Dropdown links
  */
-/* line 7, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-.dropdown-jumbo > a .dropdown-show,
-.dropdown-jumbo > a .dropdown-hide,
-.js-drop .dropdown-jumbo > a.active .dropdown-show {
-  display: none;
-  visibility: hidden;
+/* line 5, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+.dropdown-jumbo > a:after {
+  content: "+";
+  display: inline-block;
+  margin-left: 0.25em;
   width: 0.5em;
 }
 
-/* line 14, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-.js-drop .dropdown-jumbo > a .dropdown-show,
-.js-drop .dropdown-jumbo > a.active .dropdown-hide {
-  display: inline-block;
-  visibility: visible;
+@media (max-width: 40em) {
+  /* line 11, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-astro.js-drop .dropdown-jumbo > a:after {
+    content: "";
+  }
 }
 
 @media (max-width: 40em) {
-  /* line 14, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-  .js-drop .dropdown-jumbo > a .dropdown-show,
-  .js-drop .dropdown-jumbo > a.active .dropdown-hide {
-    display: none;
-    visibility: hidden;
+  /* line 19, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-astro.js-drop .dropdown-jumbo > a {
+    cursor: not-allowed;
+    pointer-events: none;
   }
+}
+
+/* line 25, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+.no-js-drop .dropdown-jumbo:hover > a:after,
+.js-drop .dropdown-jumbo > a.active:after {
+  content: "\2013";
 }
 
 /**
  * Dropdown content
  */
-/* line 28, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+/* line 35, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
 .dropdown-menu-jumbo {
-  position: absolute;
-  display: none;
-  visibility: hidden;
-  float: left;
-  right: 0;
-  width: 100%;
-  margin-top: 0.5em;
-  text-align: left;
   background-color: #f4f4f4;
+  display: none;
+  float: left;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  visibility: hidden;
+  width: 100%;
   z-index: 1000;
   /**
 	 * Switch up styling on small viewports
 	 */
 }
 
-/* line 40, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-.dropdown-menu-jumbo.active {
-  display: block;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  visibility: visible;
+/* line 48, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+.js-drop .dropdown-menu-jumbo {
+  margin-top: 0.5em;
 }
 
 @media (max-width: 40em) {
-  /* line 28, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  /* line 52, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-astro.js-drop .dropdown-menu-jumbo {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 40em) {
+  /* line 35, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
   .dropdown-menu-jumbo {
     /**
 		 * For use with the Kraken Grid.
 		 * If using the .container class for dropdown content, give it a width of 100%.
 		 */
   }
-  /* line 51, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
-  .js-drop .dropdown-menu-jumbo {
+  /* line 62, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  .js-astro.js-drop .dropdown-menu-jumbo {
     background-color: transparent;
-    border-radius: 0.25em;
     display: block;
     float: none;
-    padding-left: 1em;
+    margin-left: 1.5em;
     position: static;
     visibility: visible;
   }
-  /* line 65, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+  /* line 75, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
   .dropdown-menu-jumbo .container {
     width: 100%;
   }
+}
+
+/* line 80, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-jumbo.scss */
+.no-js-drop .dropdown-jumbo:hover .dropdown-menu-jumbo, .dropdown-menu-jumbo.active {
+  display: block;
+  visibility: visible;
 }

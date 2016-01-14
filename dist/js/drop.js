@@ -1,6 +1,6 @@
 /*!
- * Drop v9.2.1: Simple, mobile-friendly dropdown menus
- * (c) 2015 Chris Ferdinandi
+ * Drop v10.0.0: Simple, mobile-friendly dropdown menus
+ * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
  */
@@ -32,6 +32,7 @@
 		toggleActiveClass: 'active',
 		contentActiveClass: 'active',
 		initClass: 'js-drop',
+		noJSClass: 'no-js-drop',
 		callback: function () {}
 	};
 
@@ -315,6 +316,12 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
+
+		// Remove noJS class to deactivate base styles
+		var noJS = document.querySelector( '.' + settings.noJSClass );
+		if ( noJS ) {
+			noJS.classList.remove( settings.noJSClass );
+		}
 
 		// Add class to HTML element to activate conditional CSS
 		document.documentElement.classList.add( settings.initClass );
