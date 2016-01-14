@@ -2,7 +2,7 @@
 	"name": "Drop",
 	"version": "10.0.0",
 	"description": "Simple, mobile-friendly dropdown menus",
-	"main": "./dist",
+	"main": "./dist/js/drop.min.js",
 	"author": {
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"
