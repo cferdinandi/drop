@@ -1,24 +1,31 @@
 /**
- * Expand/collapse icons
+ * Dropdown links
  */
+.dropdown-jumbo {
+	& > a:after {
+		content: "+";
+		display: inline-block;
+		margin-left: calc-em(4px);
+		width: calc-em(8px);
 
-.dropdown-jumbo > a .dropdown-show,
-.dropdown-jumbo > a .dropdown-hide,
-.js-drop .dropdown-jumbo > a.active .dropdown-show {
-    display: none;
-    visibility: hidden;
-    width: 0.5em;
-}
+		.js-astro.js-drop & {
+			@media (max-width: $bp-medium) {
+				content: "";
+			}
+		}
+	}
 
-.js-drop .dropdown-jumbo > a .dropdown-show,
-.js-drop .dropdown-jumbo > a.active .dropdown-hide {
-    display: inline-block;
-    visibility: visible;
+	@media (max-width: $bp-medium) {
+		.js-astro.js-drop & > a {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
 
-    @media (max-width: $bp-medium) {
-    	display: none;
-    	visibility: hidden;
-    }
+	.no-js-drop &:hover > a:after,
+	.js-drop & > a.active:after {
+		content: "\2013";
+	}
 }
 
 
@@ -26,34 +33,37 @@
  * Dropdown content
  */
 .dropdown-menu-jumbo {
-	position: absolute;
-	display: none;
-	visibility: hidden;
-	float: left;
-	right: 0;
-	width: 100%;
-	margin-top: calc-em(8px);
-	text-align: left;
 	background-color: lighten( $color-gray-light, 6% );
+	display: none;
+	float: left;
+	padding-top: calc-em(24px);
+	padding-bottom: calc-em(24px);
+	position: absolute;
+	right: 0;
+	text-align: left;
+	visibility: hidden;
+	width: 100%;
 	z-index: 1000;
 
-	&.active {
-		display: block;
-		padding-top: calc-em(24px);
-		padding-bottom: calc-em(24px);
-		visibility: visible;
+	.js-drop & {
+		margin-top: calc-em(8px);
+	}
+
+	.js-astro.js-drop & {
+		@media (max-width: $bp-medium) {
+			margin-top: 0;
+		}
 	}
 
 	/**
 	 * Switch up styling on small viewports
 	 */
 	@media (max-width: $bp-medium) {
-		.js-drop & {
+		.js-astro.js-drop & {
 			background-color: transparent;
-			border-radius: calc-em(4px);
 			display: block;
 			float: none;
-			padding-left: calc-em(16px);
+			margin-left: calc-em(24px);
 			position: static;
 			visibility: visible;
 		}
@@ -65,5 +75,11 @@
 		.container {
 			width: 100%;
 		}
+	}
+
+	.no-js-drop .dropdown-jumbo:hover &,
+	&.active {
+		display: block;
+		visibility: visible;
 	}
 }

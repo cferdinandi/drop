@@ -1,50 +1,51 @@
 /*!
- * Drop v9.2.1: Simple, mobile-friendly dropdown menus
- * (c) 2015 Chris Ferdinandi
+ * Drop v10.0.0: Simple, mobile-friendly dropdown menus
+ * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
  */
 
 /**
- * Set dropdown link to relative positioning
+ * Dropdown links
  */
 /* line 4, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
 .dropdown-basic {
   position: relative;
 }
 
-/**
- * Expand/collapse icons
- */
-/* line 14, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-.dropdown-basic > a .dropdown-show,
-.dropdown-basic > a .dropdown-hide,
-.js-drop .dropdown-basic > a.active .dropdown-show {
-  display: none;
-  visibility: hidden;
+/* line 7, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-basic > a:after {
+  content: "+";
+  display: inline-block;
+  margin-left: 0.25em;
   width: 0.5em;
 }
 
-/* line 21, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-.js-drop .dropdown-basic > a .dropdown-show,
-.js-drop .dropdown-basic > a.active .dropdown-hide {
-  display: inline-block;
-  visibility: visible;
+@media (max-width: 40em) {
+  /* line 13, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .dropdown-basic > a:after {
+    content: "";
+  }
 }
 
 @media (max-width: 40em) {
   /* line 21, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-  .js-drop .dropdown-basic > a .dropdown-show,
-  .js-drop .dropdown-basic > a.active .dropdown-hide {
-    display: none;
-    visibility: hidden;
+  .js-astro.js-drop .dropdown-basic > a {
+    cursor: not-allowed;
+    pointer-events: none;
   }
+}
+
+/* line 27, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.no-js-drop .dropdown-basic:hover > a:after,
+.js-drop .dropdown-basic > a.active:after {
+  content: "\2013";
 }
 
 /**
  * Dropdown content
  */
-/* line 35, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+/* line 37, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
 .dropdown-menu-basic {
   background-color: #ffffff;
   border: 0.0725em solid #b8b8b8;
@@ -53,52 +54,67 @@
   box-sizing: border-box;
   display: none;
   float: left;
-  margin-top: 0.5em;
   margin-left: 0;
   min-width: 10em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   position: absolute;
+  right: 0;
   text-align: left;
   top: 100%;
   visibility: hidden;
   z-index: 1000;
   /**
-	 * Switch up styling on small viewports
+	 * Switch up styling on JS-supported small viewports
 	 */
 }
 
-/* line 52, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-.dropdown-menu-basic.active {
-  display: block;
-  padding: 0.5em;
-  visibility: visible;
+/* line 56, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.js-drop .dropdown-menu-basic {
+  margin-top: 0.5em;
 }
 
-/* line 58, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-.dropdown-menu-basic.dropdown-right {
-  left: auto;
-  right: 0;
+@media (max-width: 40em) {
+  /* line 60, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .dropdown-menu-basic {
+    margin-top: 0;
+  }
 }
 
-/* line 64, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+/* line 66, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
 .dropdown-menu-basic ul,
 .dropdown-menu-basic ol {
   list-style: none;
   margin-left: 0;
 }
 
+/* line 72, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.dropdown-menu-basic a {
+  display: block;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
 @media (max-width: 40em) {
-  /* line 73, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-  .js-drop .dropdown-menu-basic {
+  /* line 82, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .dropdown-menu-basic {
+    background-color: transparent;
     border: none;
     box-shadow: none;
     display: block;
     float: none;
-    min-width: 100%;
+    margin-left: 1.5em;
     position: static;
     visibility: visible;
   }
-  /* line 82, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
-  .js-drop .dropdown-menu-basic.active {
+  /* line 92, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+  .js-astro.js-drop .dropdown-menu-basic.active {
     padding: 0;
   }
+}
+
+/* line 100, /Users/cferdinandi/Sites/drop/src/sass/components/_drop-basic.scss */
+.no-js-drop .dropdown-basic:hover .dropdown-menu-basic, .dropdown-menu-basic.active {
+  display: block;
+  visibility: visible;
 }

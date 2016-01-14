@@ -21,13 +21,14 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 
 Replace the `*` with `basic` or `jumbo` to match the version of Drop that you're using. Add a `[data-dropdown]` attribute to the dropdown element, and a `[data-dropdown-menu]` attribute to the dropdown menu. You can pass in different selectors in [the configuration settings](#options-and-settings).
 
+You also need to add a `.no-js-drop` class to any parent element of your dropdown. This allows a "display on hover" fallback before your JavaScript file loads.
+
 ```html
+<nav class="no-js-drop">
 ...
 	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 1
-			<span class="dropdown-show">+</span>
-			<span class="dropdown-hide">-</span>
 		</a>
 		<div class="dropdown-menu-*" data-dropdown-menu>
 			<ul>
@@ -41,8 +42,6 @@ Replace the `*` with `basic` or `jumbo` to match the version of Drop that you're
 	<li class="dropdown-*" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 2
-			<span class="dropdown-show">+</span>
-			<span class="dropdown-hide">-</span>
 		</a>
 		<div class="dropdown-menu-* dropdown-right" data-dropdown-menu>
 			<ul>
@@ -53,15 +52,14 @@ Replace the `*` with `basic` or `jumbo` to match the version of Drop that you're
 		</div>
 	</li>
 ...
+</nav>
 ```
 
 With Drop Basic, if a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping. In Drop Jumbo, you can wrap `dropdown-menu` content in whatever grid system you'd like. Not sure where to start? Try using [Kraken](http://cferdinandi.github.io/kraken/).
 
-#### Fallback URLs
+#### noJS Fallback
 
-Drop uses modern JavaScript API's that aren't supported by older browsers (including IE 8 and lower). If a browser lacks support, the dropdown menu won't work.
-
-Specifying a backup URL ensures that people can always access your content, even on less capable browsers. When JavaScript is supported, Drop will prevent the backup URL from redirecting people away from the current page.
+Drop uses modern JavaScript API's that aren't supported by older browsers (including IE 9 and lower). Before your JavaScript file loads, or if a browser lacks support, Drop displays dropdown menu content on hover instead of on click/tap. This ensures that users can always access your dropdown content.
 
 ### 3. Initialize Drop.
 
@@ -82,6 +80,12 @@ You can install Drop with your favorite package manager.
 * **NPM:** `npm install cferdinandi/drop`
 * **Bower:** `bower install https://github.com/cferdinandi/drop.git`
 * **Component:** `component install cferdinandi/drop`
+
+
+
+## Changing the show more/show less icons
+
+The +/- icons after the dropdown link are controlled using `a:after` selectors in the CSS/Sass files. Update as desired.
 
 
 
@@ -123,6 +127,7 @@ drop.init({
 	toggleActiveClass: 'active', // Class added to active dropdown toggles
 	contentActiveClass: 'active', // Class added to active dropdown content
 	initClass: 'js-drop', // Class added to `<html>` element when initiated
+	noJSClass: 'no-js-drop', // noJS fallback class to remove once initiated
 	callback: function ( toggle ) {} // Function that's run after a dropdown is toggled
 });
 ```

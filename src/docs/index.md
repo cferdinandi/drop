@@ -8,7 +8,7 @@
 			<li><a href="#">Home</a></li>
 			<li class="dropdown-basic" data-dropdown>
 				<a href="FALLBACK-URL.com">
-					Dropdown 1 <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
+					Dropdown 1
 				</a>
 				<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
 					<ul>
@@ -22,7 +22,7 @@
 			<li><a href="#">About</a></li>
 			<li class="dropdown-basic" data-dropdown>
 				<a href="url.com">
-					Contact <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
+					Contact
 				</a>
 				<div class="dropdown-menu-basic dropdown-right" data-dropdown-menu>
 					<ul>
@@ -49,7 +49,7 @@
 			<li><a href="#">About</a></li>
 			<li class="dropdown-jumbo" data-dropdown>
 				<a href="url.com">
-					Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
+					Dropdown
 				</a>
 				<div class="dropdown-menu-jumbo" data-dropdown-menu>
 					<div class="container">
@@ -66,7 +66,7 @@
 			</li>
 			<li class="dropdown-jumbo" data-dropdown>
 				<a href="url.com">
-					Another Dropdown <span class="dropdown-show">+</span><span class="dropdown-hide">-</span>
+					Another Dropdown
 				</a>
 				<div class="dropdown-menu-jumbo" data-dropdown-menu>
 					<div class="container">
