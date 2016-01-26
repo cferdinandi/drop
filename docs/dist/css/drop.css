@@ -1,5 +1,5 @@
 /*!
- * Drop v11.0.0: Simple, mobile-friendly dropdown menus
+ * Drop v11.0.1: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -9,12 +9,12 @@
  * Dropdown links
  */
 /* line 4, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-basic {
+.dropdown {
   position: relative;
 }
 
 /* line 7, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-basic > a:after {
+.dropdown > a:after {
   content: "+";
   display: inline-block;
   margin-left: 0.25em;
@@ -23,31 +23,31 @@
 
 @media (max-width: 40em) {
   /* line 13, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro .dropdown-basic > a:after {
+  .js-astro .dropdown > a:after {
     content: "";
   }
 }
 
 @media (max-width: 40em) {
   /* line 21, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro .dropdown-basic > a {
+  .js-astro .dropdown > a {
     cursor: not-allowed;
     pointer-events: none;
   }
 }
 
 /* line 27, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-basic:focus > a:after,
-.dropdown-basic:hover > a:after,
-.dropdown-basic.active > a:after {
+.dropdown:focus > a:after,
+.dropdown:hover > a:after,
+.dropdown.active > a:after {
   content: "\2013";
 }
 
 @media (max-width: 40em) {
   /* line 33, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro .dropdown-basic:focus > a:after, .js-astro
-  .dropdown-basic:hover > a:after, .js-astro
-  .dropdown-basic.active > a:after {
+  .js-astro .dropdown:focus > a:after, .js-astro
+  .dropdown:hover > a:after, .js-astro
+  .dropdown.active > a:after {
     content: "";
   }
 }
@@ -56,7 +56,7 @@
  * Dropdown content
  */
 /* line 44, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-menu-basic {
+.dropdown-menu {
   background-color: #ffffff;
   border: 0;
   border-radius: 0.0725em;
@@ -81,23 +81,23 @@
 }
 
 /* line 64, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-menu-basic ul,
-.dropdown-menu-basic ol {
+.dropdown-menu ul,
+.dropdown-menu ol {
   list-style: none;
   margin-left: 0;
 }
 
 /* line 70, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-menu-basic a {
+.dropdown-menu a {
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
 /* line 76, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.dropdown-basic:focus .dropdown-menu-basic,
-.dropdown-basic:hover .dropdown-menu-basic,
-.dropdown-basic.active .dropdown-menu-basic {
+.dropdown:focus .dropdown-menu,
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
   border: 0.0725em solid #b8b8b8;
   clip: auto;
   height: auto;
@@ -109,25 +109,25 @@
 }
 
 /* line 88, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-.js-drop .dropdown-basic:focus .dropdown-menu-basic, .js-drop
-.dropdown-basic:hover .dropdown-menu-basic, .js-drop
-.dropdown-basic.active .dropdown-menu-basic {
+.js-drop .dropdown:focus .dropdown-menu, .js-drop
+.dropdown:hover .dropdown-menu, .js-drop
+.dropdown.active .dropdown-menu {
   margin-top: 0.5em;
 }
 
 @media (max-width: 40em) {
   /* line 92, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro.js-drop .dropdown-basic:focus .dropdown-menu-basic, .js-astro.js-drop
-  .dropdown-basic:hover .dropdown-menu-basic, .js-astro.js-drop
-  .dropdown-basic.active .dropdown-menu-basic {
+  .js-astro.js-drop .dropdown:focus .dropdown-menu, .js-astro.js-drop
+  .dropdown:hover .dropdown-menu, .js-astro.js-drop
+  .dropdown.active .dropdown-menu {
     margin-top: 0;
   }
 }
 
 @media (max-width: 40em) {
   /* line 103, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro .dropdown-menu-basic,
-  .js-astro .dropdown-basic.active .dropdown-menu-basic {
+  .js-astro .dropdown-menu,
+  .js-astro .dropdown.active .dropdown-menu {
     background-color: transparent;
     border: 0;
     box-shadow: none;

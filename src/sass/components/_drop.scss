@@ -1,7 +1,7 @@
 /**
  * Dropdown links
  */
-.dropdown-basic {
+.dropdown {
 	position: relative;
 
 	& > a:after {
@@ -41,7 +41,7 @@
 /**
  * Dropdown content
  */
-.dropdown-menu-basic {
+.dropdown-menu {
 	background-color: $color-white;
 	border: 0;
 	border-radius: calc-em(1px);
@@ -73,9 +73,9 @@
 		padding-right: calc-em(8px);
 	}
 
-	.dropdown-basic:focus &,
-	.dropdown-basic:hover &,
-	.dropdown-basic.active & {
+	.dropdown:focus &,
+	.dropdown:hover &,
+	.dropdown.active & {
 		border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
 		clip: auto;
 		height: auto;
@@ -101,7 +101,7 @@
 	 */
 	@media (max-width: $bp-medium) {
 		.js-astro &,
-		.js-astro .dropdown-basic.active & {
+		.js-astro .dropdown.active & {
 			background-color: transparent;
 			border: 0;
 			box-shadow: none;

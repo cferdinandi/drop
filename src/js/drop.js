@@ -173,10 +173,9 @@
 	 * @param {Object} options Custom settings
 	 * @public
 	 */
-	drop.closeDrops = function ( options ) {
+	drop.closeDrops = function () {
 
-		// Selectors and variables
-		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
+		// Get dropdowns
 		var drops = document.querySelectorAll( settings.selector );
 
 		// Close all the dropdowns
