@@ -12,7 +12,7 @@ describe('Drop', function () {
 			'<ul>' +
 				'<li class="dropdown" data-dropdown>' +
 					'<a href="#">Dropdown 1</a>' +
-					'<div class="dropdown-menu" data-dropdown-menu>' +
+					'<div class="dropdown-menu">' +
 						'<ul>' +
 							'<li><a href="#">Item 1</a></li>' +
 							'<li><a href="#">Item 2</a></li>' +
@@ -22,7 +22,7 @@ describe('Drop', function () {
 				'</li>' +
 				'<li class="dropdown" data-dropdown>' +
 					'<a href="#">Dropdown 2</a>' +
-					'<div class="dropdown-menu dropdown-right" data-dropdown-menu>' +
+					'<div class="dropdown-menu dropdown-right">' +
 						'<ul>' +
 							'<li><a href="#">Item 1</a></li>' +
 							'<li><a href="#">Item 2</a></li>' +
@@ -109,27 +109,23 @@ describe('Drop', function () {
 
 	describe('Should merge user options into defaults', function () {
 
-		var toggle, toggleParent, menu, doc;
+		var toggle, toggleParent, doc;
 
 		beforeEach(function () {
 			injectElem();
 			drop.init({
-				toggleActiveClass: 'toggle-active', // Class added to active dropdown toggles
-				contentActiveClass: 'content-active', // Class added to active dropdown content
+				activeClass: 'toggle-active', // Class added to active dropdown toggles
 				initClass: 'js-test', // Class added to `<html>` element when initiated
 				callback: function () { document.documentElement.classList.add('callback'); }
 			});
 			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
-			menu = toggle.nextElementSibling;
 			doc = document.documentElement;
 		});
 
 		it('User options should be merged into defaults', function () {
-			trigger('click', toggle);
-			expect(toggle.classList.contains('toggle-active')).toBe(true);
-			expect(toggle.classList.contains('toggle-active')).toBe(true);
-			expect(menu.classList.contains('content-active')).toBe(true);
+			trigger('mouseover', toggle);
+			expect(toggleParent.classList.contains('toggle-active')).toBe(true);
 			expect(doc.classList.contains('js-test')).toBe(true);
 			expect(doc.classList.contains('callback')).toBe(true);
 		});
@@ -141,39 +137,30 @@ describe('Drop', function () {
 	// Events
 	//
 
-	describe('Should toggle expand and collapse on click', function () {
+	describe('Should open dropdown on hover or focus', function () {
 
-		var toggle, toggleParent, menu;
+		var toggle, toggleParent;
 
 		beforeEach(function () {
 			injectElem();
 			drop.init();
 			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
-			menu = toggle.nextElementSibling;
 		});
 
-		it('Toggle, toggle parent, and menu should have ".active" class on click', function () {
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(true);
+		it('Toggle should have ".active" class on :hover', function () {
+			trigger('mouseover', toggle);
 			expect(toggleParent.classList.contains('active')).toBe(true);
-			expect(menu.classList.contains('active')).toBe(true);
 		});
 
-		it('Toggle, toggle parent, and menu should not have ".active" class if toggle is clicked again', function () {
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(true);
+		it('Toggle should have ".active" class on :focus', function () {
+			trigger('focusin', toggle);
 			expect(toggleParent.classList.contains('active')).toBe(true);
-			expect(menu.classList.contains('active')).toBe(true);
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(false);
-			expect(toggleParent.classList.contains('active')).toBe(false);
-			expect(menu.classList.contains('active')).toBe(false);
 		});
 
 	});
 
-	describe('Should close dropdown when body or another dropdown is clicked', function () {
+	describe('Should close dropdown when another dropdown is opened or outside dropdown is clicked', function () {
 
 		var toggles;
 
@@ -183,40 +170,26 @@ describe('Drop', function () {
 			toggles = document.querySelectorAll('[data-dropdown] > a');
 		});
 
-		it('First dropdown should close when second dropdown is clicked', function () {
-			trigger('click', toggles[0]);
-			expect(toggles[0].classList.contains('active')).toBe(true);
+		it('First dropdown should close when second dropdown is opened', function () {
+			trigger('mouseover', toggles[0]);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);
-			trigger('click', toggles[1]);
-			expect(toggles[1].classList.contains('active')).toBe(true);
+			trigger('mouseover', toggles[1]);
 			expect(toggles[1].parentNode.classList.contains('active')).toBe(true);
-			expect(toggles[1].nextElementSibling.classList.contains('active')).toBe(true);
-			expect(toggles[0].classList.contains('active')).toBe(false);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(false);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(false);
 		});
 
 		it('Dropdown should close when body is clicked', function () {
-			trigger('click', toggles[0]);
-			expect(toggles[0].classList.contains('active')).toBe(true);
+			trigger('mouseover', toggles[0]);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);
 			trigger('click', document.documentElement);
-			expect(toggles[0].classList.contains('active')).toBe(false);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(false);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(false);
 		});
 
 		it('Dropdown should stay open when menu content is clicked', function () {
-			trigger('click', toggles[0]);
-			expect(toggles[0].classList.contains('active')).toBe(true);
+			trigger('mouseover', toggles[0]);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);
 			trigger('click', document.querySelector('.dropdown-menu li'));
-			expect(toggles[0].classList.contains('active')).toBe(true);
 			expect(toggles[0].parentNode.classList.contains('active')).toBe(true);
-			expect(toggles[0].nextElementSibling.classList.contains('active')).toBe(true);
 		});
 
 	});
@@ -226,64 +199,64 @@ describe('Drop', function () {
 	// APIs
 	//
 
-	describe('Should toggle from public API', function () {
+	describe('Should open dropdown from public API', function () {
 
-		var toggle, toggleParent, menu;
+		var toggle;
+
+		beforeEach(function () {
+			injectElem();
+			toggle = document.querySelector('[data-dropdown]');
+			drop.openDrop(toggle, null);
+		});
+
+		it('Toggle should have ".active" class', function () {
+			expect(toggle.classList.contains('active')).toBe(true);
+		});
+
+	});
+
+	describe('Should close dropdown from public API', function () {
+
+		var toggle, toggleParent;
 
 		beforeEach(function () {
 			injectElem();
 			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
-			menu = toggle.nextElementSibling;
-			drop.toggleDrop(toggle, null, null);
 		});
 
-		it('Toggle, toggle parent, and menu should have ".active" class when toggled', function () {
-			expect(toggle.classList.contains('active')).toBe(true);
+		it('Toggle should have ".active" class on :hover', function () {
+			trigger('mouseover', toggle);
 			expect(toggleParent.classList.contains('active')).toBe(true);
-			expect(menu.classList.contains('active')).toBe(true);
 		});
 
-		it('Toggle, toggle parent, and menu should not have ".active" class when toggled again', function () {
-			expect(toggle.classList.contains('active')).toBe(true);
-			expect(toggleParent.classList.contains('active')).toBe(true);
-			expect(menu.classList.contains('active')).toBe(true);
-			drop.toggleDrop(toggle, null, null);
-			expect(toggle.classList.contains('active')).toBe(false);
+		it('Toggle should not have ".active" class after calling closeDrops()', function () {
+			drop.closeDrops();
 			expect(toggleParent.classList.contains('active')).toBe(false);
-			expect(menu.classList.contains('active')).toBe(false);
 		});
 
 	});
 
 	describe('Should remove initialized plugin', function () {
 
-		var toggle, toggleParent, menu, doc;
+		var toggle, toggleParent, doc;
 
 		beforeEach(function () {
 			injectElem();
 			drop.init();
 			toggle = document.querySelector('[data-dropdown] > a');
 			toggleParent = toggle.parentNode;
-			menu = toggle.nextElementSibling;
 			doc = document.documentElement;
 		});
 
 		it('Drop should be uninitialized', function () {
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(true);
+			trigger('mouseover', toggle);
 			expect(toggleParent.classList.contains('active')).toBe(true);
-			expect(menu.classList.contains('active')).toBe(true);
 			expect(doc.classList.contains('js-drop')).toBe(true);
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(false);
-			expect(toggleParent.classList.contains('active')).toBe(false);
-			expect(menu.classList.contains('active')).toBe(false);
 			drop.destroy();
-			trigger('click', toggle);
-			expect(toggle.classList.contains('active')).toBe(false);
 			expect(toggleParent.classList.contains('active')).toBe(false);
-			expect(menu.classList.contains('active')).toBe(false);
+			trigger('mouseover', toggle);
+			expect(toggleParent.classList.contains('active')).toBe(false);
 			expect(doc.classList.contains('js-drop')).toBe(false);
 		});
 

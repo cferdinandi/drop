@@ -1,5 +1,5 @@
 /*!
- * Drop v10.0.0: Simple, mobile-friendly dropdown menus
+ * Drop v11.0.0: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -27,12 +27,9 @@
 
 	// Default settings
 	var defaults = {
-		selectorDropdown: '[data-dropdown]',
-		selectorMenu: '[data-dropdown-menu]',
-		toggleActiveClass: 'active',
-		contentActiveClass: 'active',
+		selector: '[data-dropdown]',
+		activeClass: 'active',
 		initClass: 'js-drop',
-		noJSClass: 'no-js-drop',
 		callback: function () {}
 	};
 
@@ -108,29 +105,6 @@
 	};
 
 	/**
-	 * Get siblings of an element
-	 * @private
-	 * @param  {Element} elem
-	 * @return {NodeList}
-	 */
-	var getSiblings = function ( elem ) {
-
-		// Variables
-		var siblings = [];
-		var sibling = elem.parentNode.firstChild;
-
-		// Loop through all sibling nodes
-		for ( ; sibling; sibling = sibling.nextSibling ) {
-			if ( sibling.nodeType === 1 && sibling !== elem ) {
-				siblings.push( sibling );
-			}
-		}
-
-		return siblings;
-
-	};
-
-	/**
 	 * Get closest DOM element up the tree that contains a class or data attribute
 	 * @param  {Element} elem The base element
 	 * @param  {String} selector The class or data attribute to look for
@@ -202,90 +176,97 @@
 	};
 
 	/**
-	 * Toggle a dropdown menu
+	 * Close all dropdown menus
+	 * @param {Object} options Custom settings
 	 * @public
-	 * @param  {Element} toggle Element that triggered the expand or collapse
-	 * @param  {Object} settings
-	 * @param  {Event} event
 	 */
-	drop.toggleDrop = function ( toggle, options, event ) {
+	drop.closeDrops = function ( options ) {
 
 		// Selectors and variables
 		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
-		var toggleMenu = toggle.nextElementSibling;
-		var toggleParent = toggle.parentNode;
-		var toggleSiblings = getSiblings(toggleParent);
+		var drops = document.querySelectorAll( settings.selector );
 
-		// Add/remove '.active' class from dropdown item
-		toggle.classList.toggle( settings.toggleActiveClass );
-		toggleMenu.classList.toggle( settings.contentActiveClass );
-		toggleParent.classList.toggle( settings.toggleActiveClass );
-
-		// For each toggle, remove the active class
-		forEach(toggleSiblings, function (sibling) {
-			var siblingContent = sibling.children;
-			sibling.classList.remove( settings.toggleActiveClass );
-			forEach(siblingContent, function (content) {
-				content.classList.remove( settings.contentActiveClass );
-			});
+		// Close all the dropdowns
+		forEach(drops, function (drop) {
+			drop.classList.remove( settings.activeClass );
 		});
-
-		settings.callback( toggle ); // Run callbacks after drop toggle
 
 	};
 
 	/**
-	 * Close all dropdown menus
+	 * Open a dropdown menu
 	 * @public
-	 * @param  {Object} settings
+	 * @param  {Element} toggle  Element that triggered the expand or collapse
+	 * @param  {Object}  options Custom settings
 	 */
-	drop.closeDrops = function () {
+	drop.openDrop = function ( toggle, options ) {
 
 		// Selectors and variables
-		var dropToggle = document.querySelectorAll( settings.selectorDropdown + ' > a.' + settings.toggleActiveClass );
-		var dropWrapper = document.querySelectorAll( settings.selectorDropdown + '.' + settings.toggleActiveClass);
-		var dropContent = document.querySelectorAll( settings.selectorMenu + '.' + settings.contentActiveClass );
+		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
 
-		if ( dropToggle.length > 0 || dropWrapper.length > 0 || dropContent.length > 0 ) {
+		// Close any open dropdown menus
+		drop.closeDrops();
 
-			// For each dropdown toggle, remove '.active' class
-			forEach(dropToggle, function (toggle) {
-				toggle.classList.remove( settings.toggleActiveClass );
-			});
+		// Open the toggled dropdown menu
+		toggle.classList.add( settings.activeClass );
 
-			// For each dropdown toggle wrapper, remove '.active' class
-			forEach(dropWrapper, function (wrapper) {
-				wrapper.classList.remove( settings.toggleActiveClass );
-			});
-
-			// For each dropdown content area, remove '.active' class
-			forEach(dropContent, function (content) {
-				content.classList.remove( settings.contentActiveClass );
-			});
-
-			settings.callback(); // Run callbacks after drop close
-
-		}
+		// Run callbacks after drop toggle
+		settings.callback( toggle );
 
 	};
 
 	/**
 	 * Handle toggle and document click events
+	 * @param {Event} event
 	 * @private
 	 */
-	var eventHandler = function (event) {
+	var clickHandler = function (event) {
+
+		// Variables
 		var toggle = event.target;
-		var menu = getClosest( toggle, settings.selectorMenu );
-		if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorMenu ) ) {
+		var menu = getClosest( toggle, settings.selector );
+
+		if ( menu ) {
 			// If dropdown menu, do nothing
 			return;
-		} else if ( toggle !== document.documentElement && getClosest( toggle, settings.selectorDropdown ) ) {
-			// If dropdown toggle element, toggle dropdown menu
-			event.preventDefault();
-			drop.toggleDrop(toggle, settings);
 		} else {
 			// If document body, close open dropdown menus
 			drop.closeDrops();
+		}
+
+	};
+
+	var focusHandler = function (event) {
+
+		// Variables
+		var target = event.target;
+		var toggle = getClosest( target, settings.selector );
+
+		// If focused element isn't dropdown, close all dropdowns and end
+		if ( !toggle ) {
+			drop.closeDrops();
+			return;
+		}
+
+		// If focused element is currently active dropdown, end
+		if ( toggle.classList.contains( settings.activeClass ) ) {
+			return;
+		}
+
+		// Otherwise, activate the dropdown
+		drop.openDrop(toggle, settings);
+
+	};
+
+	var hoverHandler = function (event) {
+
+		// Variables
+		var target = event.target;
+		var toggle = getClosest( target, settings.selector );
+
+		// If a dropdown menu, activate it
+		if ( toggle && !toggle.classList.contains( settings.activeClass ) ) {
+			drop.openDrop(toggle, settings); // Open this dropdown
 		}
 	};
 
@@ -294,11 +275,23 @@
 	 * @public
 	 */
 	drop.destroy = function () {
+
 		if ( !settings ) return;
+
+		// Remove init class
 		document.documentElement.classList.remove( settings.initClass );
-		document.removeEventListener('click', eventHandler, false);
+
+		// Remove event listeners
+		document.removeEventListener('click', clickHandler, false);
+		document.removeEventListener('focusin', focusHandler, false);
+		document.removeEventListener('mouseover', hoverHandler, false);
+
+		// Close all dropdowns
 		drop.closeDrops();
+
+		// Reset variables
 		settings = null;
+
 	};
 
 	/**
@@ -316,18 +309,15 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
-
-		// Remove noJS class to deactivate base styles
-		var noJS = document.querySelector( '.' + settings.noJSClass );
-		if ( noJS ) {
-			noJS.classList.remove( settings.noJSClass );
-		}
+		var toggles = document.querySelectorAll( settings.selector + ' > a' );
 
 		// Add class to HTML element to activate conditional CSS
 		document.documentElement.classList.add( settings.initClass );
 
-		// Listen for all click events
-		document.addEventListener('click', eventHandler, false);
+		// Event listeners
+		document.addEventListener('click', clickHandler, false);
+		document.addEventListener('focusin', focusHandler, false);
+		document.addEventListener('mouseover', hoverHandler, false);
 
 	};
 

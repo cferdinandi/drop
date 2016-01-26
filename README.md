@@ -12,25 +12,21 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 ### 1. Include Drop on your site.
 
 ```html
-<!-- Replace the * with 'basic' or 'jumbo', depending on which you choose -->
-<link rel="stylesheet" href="dist/css/drop-*.css">
+<link rel="stylesheet" href="dist/css/drop.css">
 <script src="dist/js/drop.js"></script>
 ```
 
 ### 2. Add the markup to your HTML.
 
-Replace the `*` with `basic` or `jumbo` to match the version of Drop that you're using. Add a `[data-dropdown]` attribute to the dropdown element, and a `[data-dropdown-menu]` attribute to the dropdown menu. You can pass in different selectors in [the configuration settings](#options-and-settings).
-
-You also need to add a `.no-js-drop` class to any parent element of your dropdown. This allows a "display on hover" fallback before your JavaScript file loads.
+Add a `[data-dropdown]` attribute to the dropdown element. You can pass in different selectors in [the configuration settings](#options-and-settings). If a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping.
 
 ```html
-<nav class="no-js-drop">
 ...
-	<li class="dropdown-*" data-dropdown>
+	<li class="dropdown" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 1
 		</a>
-		<div class="dropdown-menu-*" data-dropdown-menu>
+		<div class="dropdown-menu" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -39,11 +35,11 @@ You also need to add a `.no-js-drop` class to any parent element of your dropdow
 		</div>
 	</li>
 
-	<li class="dropdown-*" data-dropdown>
+	<li class="dropdown" data-dropdown>
 		<a href="FALLBACK-URL.com">
 			Dropdown 2
 		</a>
-		<div class="dropdown-menu-* dropdown-right" data-dropdown-menu>
+		<div class="dropdown-menu dropdown-right" data-dropdown-menu>
 			<ul>
 				<li><a href="#">Item 1</a></li>
 				<li><a href="#">Item 2</a></li>
@@ -52,14 +48,7 @@ You also need to add a `.no-js-drop` class to any parent element of your dropdow
 		</div>
 	</li>
 ...
-</nav>
 ```
-
-With Drop Basic, if a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping. In Drop Jumbo, you can wrap `dropdown-menu` content in whatever grid system you'd like. Not sure where to start? Try using [Kraken](http://cferdinandi.github.io/kraken/).
-
-#### noJS Fallback
-
-Drop uses modern JavaScript API's that aren't supported by older browsers (including IE 9 and lower). Before your JavaScript file loads, or if a browser lacks support, Drop displays dropdown menu content on hover instead of on click/tap. This ensures that users can always access your dropdown content.
 
 ### 3. Initialize Drop.
 
@@ -120,14 +109,9 @@ You can pass options and callbacks into Drop through the `init()` function:
 
 ```javascript
 drop.init({
-	selectorDropdown: '[data-dropdown]', // Selector for the dropdown (must be a valid CSS selector)
-	selectorMenu: '[data-dropdown-menu]', // Selector for the dropdown menu (must be a valid CSS selector)
-	toggleClass: 'dropdown', // Class used for the dropdown <li> element
-	contentClass: 'dropdown-menu', // Class used for the dropdown content <div>
-	toggleActiveClass: 'active', // Class added to active dropdown toggles
-	contentActiveClass: 'active', // Class added to active dropdown content
+	selector: '[data-dropdown]', // Selector for the dropdown (must be a valid CSS selector)
+	activeClass: 'active', // Class added to active dropdown toggles
 	initClass: 'js-drop', // Class added to `<html>` element when initiated
-	noJSClass: 'no-js-drop', // noJS fallback class to remove once initiated
 	callback: function ( toggle ) {} // Function that's run after a dropdown is toggled
 });
 ```
@@ -136,14 +120,13 @@ drop.init({
 
 You can also call Drop's toggle dropdown event in your own scripts.
 
-#### toggleDrop()
-Expand or collapse a dropdown menu.
+#### openDrop()
+Open a dropdown menu.
 
 ```javascript
-drop.toggleDrop(
+drop.openDrop(
 	toggle, // Link node that toggles the dropdown action. ex. document.querySelector('#toggle')
-	options, // Classes and callbacks. Same options as those passed into the init() function.
-	event // Optional, if a DOM event was triggered.
+	options, // Classes and callbacks. Same options as those passed into the init() function
 );
 ```
 
@@ -151,11 +134,19 @@ drop.toggleDrop(
 
 ```javascript
 var toggle = document.querySelector('#toggle');
-drop.toggleDrop( toggle );
+drop.openDrop( toggle );
 ```
 
 #### closeDrops()
 Close all open dropdown menus.
+
+```javascript
+drop.closeDrops(
+	options, // Classes and callbacks. Same options as those passed into the init() function
+);
+```
+
+**Example**
 
 ```javascript
 drop.closeDrops();
@@ -173,7 +164,7 @@ drop.destroy();
 
 Drop works in all modern browsers, and IE 10 and above. You can push browser support back to IE 9 with the [classList.js polyfill](https://github.com/eligrey/classList.js/).
 
-Drop is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, users will get a basic link instead of a drop-down menu.
+Drop is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, users still have full access to the dropdown menus but lose the "stays open after hover" functionality.
 
 
 
