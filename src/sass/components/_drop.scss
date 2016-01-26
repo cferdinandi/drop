@@ -10,7 +10,7 @@
 		margin-left: calc-em(4px);
 		width: calc-em(8px);
 
-		.js-astro.js-drop & {
+		.js-astro & {
 			@media (max-width: $bp-medium) {
 				content: "";
 			}
@@ -18,15 +18,22 @@
 	}
 
 	@media (max-width: $bp-medium) {
-		.js-astro.js-drop & > a {
+		.js-astro & > a {
 			cursor: not-allowed;
 			pointer-events: none;
 		}
 	}
 
-	.no-js-drop &:hover > a:after,
-	.js-drop & > a.active:after {
+	&:focus > a:after,
+	&:hover > a:after,
+	&.active > a:after {
 		content: "\2013";
+
+		@media (max-width: $bp-medium) {
+			.js-astro & {
+				content: "";
+			}
+		}
 	}
 }
 
@@ -36,32 +43,23 @@
  */
 .dropdown-menu-basic {
 	background-color: $color-white;
-	border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+	border: 0;
 	border-radius: calc-em(1px);
 	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	display: none;
+	clip: rect(0 0 0 0);
 	float: left;
-	margin-left: 0;
+	height: 1px;
+	margin: -1px;
 	min-width: 10em;
-	padding-top: calc-em(8px);
-	padding-bottom: calc-em(8px);
+	overflow: hidden;
+	padding: 0;
 	position: absolute;
 	right: 0;
 	text-align: left;
 	top: 100%;
-	visibility: hidden;
+	width: 1px;
 	z-index: 1000;
-
-	.js-drop & {
-		margin-top: calc-em(8px);
-	}
-
-	.js-astro.js-drop & {
-		@media (max-width: $bp-medium) {
-			margin-top: 0;
-		}
-	}
 
 	ul,
 	ol {
@@ -75,31 +73,46 @@
 		padding-right: calc-em(8px);
 	}
 
+	.dropdown-basic:focus &,
+	.dropdown-basic:hover &,
+	.dropdown-basic.active & {
+		border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		padding-top: calc-em(8px);
+		padding-bottom: calc-em(8px);
+		width: auto;
+
+		.js-drop & {
+			margin-top: calc-em(8px);
+		}
+
+		.js-astro.js-drop & {
+			@media (max-width: $bp-medium) {
+				margin-top: 0;
+			}
+		}
+	}
+
 	/**
 	 * Switch up styling on JS-supported small viewports
 	 */
 	@media (max-width: $bp-medium) {
-		.js-astro.js-drop & {
+		.js-astro &,
+		.js-astro .dropdown-basic.active & {
 			background-color: transparent;
-			border: none;
+			border: 0;
 			box-shadow: none;
-			display: block;
+			clip: auto;
 			float: none;
-			margin-left: calc-em(24px);
+			height: auto;
+			margin: 0 0 calc-em(24px);
+			overflow: visible;
+			padding: 0;
 			position: static;
-			visibility: visible;
-
-			&.active {
-				padding: 0;
-			}
-
-
+			width: auto;
 		}
-	}
-
-	.no-js-drop .dropdown-basic:hover &,
-	&.active {
-		display: block;
-		visibility: visible;
 	}
 }
