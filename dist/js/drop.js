@@ -1,5 +1,5 @@
 /*!
- * Drop v11.0.0: Simple, mobile-friendly dropdown menus
+ * Drop v11.0.1: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -180,10 +180,9 @@
 	 * @param {Object} options Custom settings
 	 * @public
 	 */
-	drop.closeDrops = function ( options ) {
+	drop.closeDrops = function () {
 
-		// Selectors and variables
-		var settings = extend( settings || defaults, options || {} );  // Merge user options with defaults
+		// Get dropdowns
 		var drops = document.querySelectorAll( settings.selector );
 
 		// Close all the dropdowns
