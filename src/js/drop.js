@@ -16,6 +16,7 @@
 
 	var drop = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
+	var isTouch = 'ontouchstart' in document; // Check for touch support
 	var settings;
 
 	// Default settings
@@ -259,6 +260,11 @@
 		// If a dropdown menu, activate it
 		if ( toggle && !toggle.classList.contains( settings.activeClass ) ) {
 			drop.openDrop(toggle, settings); // Open this dropdown
+
+			// Prevent default on touch devices
+			if ( isTouch ) {
+				event.preventDefault();
+			}
 		}
 	};
 
@@ -310,6 +316,9 @@
 		document.addEventListener('click', clickHandler, false);
 		document.addEventListener('focusin', focusHandler, false);
 		document.addEventListener('mouseover', hoverHandler, false);
+		if ( isTouch ) {
+			document.addEventListener('touchstart', hoverHandler, false);
+		}
 
 	};
 
