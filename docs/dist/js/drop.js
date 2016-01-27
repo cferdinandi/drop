@@ -29,6 +29,7 @@
 	// Default settings
 	var defaults = {
 		selector: '[data-dropdown]',
+		menu: '[data-dropdown-menu]',
 		activeClass: 'active',
 		initClass: 'js-drop',
 		callback: function () {}
@@ -263,13 +264,14 @@
 		// Variables
 		var target = event.target;
 		var toggle = getClosest( target, settings.selector );
+		var menu = getClosest( target, settings.menu );
 
 		// If a dropdown menu, activate it
 		if ( toggle && !toggle.classList.contains( settings.activeClass ) ) {
 			drop.openDrop(toggle, settings); // Open this dropdown
 
 			// Prevent default on touch devices
-			if ( isTouch ) {
+			if ( isTouch && !menu ) {
 				event.preventDefault();
 			}
 		}
