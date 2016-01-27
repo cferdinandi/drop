@@ -1,5 +1,5 @@
 /*!
- * Drop v11.0.2: Simple, mobile-friendly dropdown menus
+ * Drop v11.0.3: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -28,15 +28,7 @@
   }
 }
 
-@media (max-width: 40em) {
-  /* line 21, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
-  .js-astro .dropdown > a {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* line 27, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 20, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown:focus > a:after,
 .dropdown:hover > a:after,
 .dropdown.active > a:after {
@@ -44,7 +36,7 @@
 }
 
 @media (max-width: 40em) {
-  /* line 33, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  /* line 26, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
   .js-astro .dropdown:focus > a:after, .js-astro
   .dropdown:hover > a:after, .js-astro
   .dropdown.active > a:after {
@@ -55,7 +47,7 @@
 /**
  * Dropdown content
  */
-/* line 44, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 37, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown-menu {
   background-color: #ffffff;
   border: 0;
@@ -80,21 +72,21 @@
 	 */
 }
 
-/* line 64, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 57, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown-menu ul,
 .dropdown-menu ol {
   list-style: none;
   margin-left: 0;
 }
 
-/* line 70, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 63, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown-menu a {
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
-/* line 76, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 69, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown:focus .dropdown-menu,
 .dropdown:hover .dropdown-menu,
 .dropdown.active .dropdown-menu {
@@ -108,7 +100,7 @@
   width: auto;
 }
 
-/* line 88, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 81, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .js-drop .dropdown:focus .dropdown-menu, .js-drop
 .dropdown:hover .dropdown-menu, .js-drop
 .dropdown.active .dropdown-menu {
@@ -116,7 +108,7 @@
 }
 
 @media (max-width: 40em) {
-  /* line 92, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  /* line 85, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
   .js-astro.js-drop .dropdown:focus .dropdown-menu, .js-astro.js-drop
   .dropdown:hover .dropdown-menu, .js-astro.js-drop
   .dropdown.active .dropdown-menu {
@@ -125,7 +117,7 @@
 }
 
 @media (max-width: 40em) {
-  /* line 103, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  /* line 96, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
   .js-astro .dropdown-menu,
   .js-astro .dropdown.active .dropdown-menu {
     background-color: transparent;
