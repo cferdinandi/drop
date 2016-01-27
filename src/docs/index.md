@@ -10,7 +10,7 @@
 				<a href="FALLBACK-URL.com">
 					Dropdown 1
 				</a>
-				<div class="dropdown-menu dropdown-right">
+				<div class="dropdown-menu dropdown-right" data-dropdown-menu>
 					<ul>
 						<li><a href="#">Item 1</a></li>
 						<li><a href="#">Item 2</a></li>
@@ -24,7 +24,7 @@
 				<a href="url.com">
 					Contact
 				</a>
-				<div class="dropdown-menu dropdown-right">
+				<div class="dropdown-menu dropdown-right" data-dropdown-menu>
 					<ul>
 						<li><a href="#">Item 1</a></li>
 						<li><a href="#">Item 2</a></li>
