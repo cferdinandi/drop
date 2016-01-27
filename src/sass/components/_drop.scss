@@ -17,13 +17,6 @@
 		}
 	}
 
-	@media (max-width: $bp-medium) {
-		.js-astro & > a {
-			cursor: not-allowed;
-			pointer-events: none;
-		}
-	}
-
 	&:focus > a:after,
 	&:hover > a:after,
 	&.active > a:after {
