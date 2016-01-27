@@ -10,12 +10,12 @@
 				<a href="FALLBACK-URL.com">
 					Dropdown 1
 				</a>
-				<div class="dropdown-menu dropdown-right" data-dropdown-menu>
+				<div class="dropdown-menu dropdown-right">
 					<ul>
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
-						<li><a href="#">Item 4</a></li>
+						<li><a href="#1">Item 1</a></li>
+						<li><a href="#2">Item 2</a></li>
+						<li><a href="#3">Item 3</a></li>
+						<li><a href="#4">Item 4</a></li>
 					</ul>
 				</div>
 			</li>
@@ -24,11 +24,11 @@
 				<a href="url.com">
 					Contact
 				</a>
-				<div class="dropdown-menu dropdown-right" data-dropdown-menu>
+				<div class="dropdown-menu dropdown-right">
 					<ul>
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 2</a></li>
-						<li><a href="#">Item 3</a></li>
+						<li><a href="#1">Item 1</a></li>
+						<li><a href="#2">Item 2</a></li>
+						<li><a href="#3">Item 3</a></li>
 					</ul>
 				</div>
 			</li>
