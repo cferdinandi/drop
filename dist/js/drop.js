@@ -1,5 +1,5 @@
 /*!
- * Drop v11.0.3: Simple, mobile-friendly dropdown menus
+ * Drop v11.1.0: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop

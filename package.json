@@ -1,6 +1,6 @@
 {
 	"name": "Drop",
-	"version": "11.0.3",
+	"version": "11.1.0",
 	"description": "Simple, mobile-friendly dropdown menus",
 	"main": "./dist/js/drop.min.js",
 	"author": {

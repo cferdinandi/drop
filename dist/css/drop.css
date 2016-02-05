@@ -1,5 +1,5 @@
 /*!
- * Drop v11.0.3: Simple, mobile-friendly dropdown menus
+ * Drop v11.1.0: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -58,7 +58,7 @@
   float: left;
   height: 1px;
   margin: -1px;
-  min-width: 10em;
+  min-width: 12em;
   overflow: hidden;
   padding: 0;
   position: absolute;
