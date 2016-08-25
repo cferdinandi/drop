@@ -1,5 +1,5 @@
 /*!
- * Drop v11.1.0: Simple, mobile-friendly dropdown menus
+ * Drop v11.2.0: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -58,7 +58,7 @@
   float: left;
   height: 1px;
   margin: -1px;
-  min-width: 12em;
+  min-width: 100%;
   overflow: hidden;
   padding: 0;
   position: absolute;
@@ -72,21 +72,28 @@
 	 */
 }
 
-/* line 57, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+@media (min-width: 40em) {
+  /* line 37, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  .dropdown-menu {
+    min-width: 12em;
+  }
+}
+
+/* line 61, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown-menu ul,
 .dropdown-menu ol {
   list-style: none;
   margin-left: 0;
 }
 
-/* line 63, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 67, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown-menu a {
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
-/* line 69, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 73, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .dropdown:focus .dropdown-menu,
 .dropdown:hover .dropdown-menu,
 .dropdown.active .dropdown-menu {
@@ -100,7 +107,7 @@
   width: auto;
 }
 
-/* line 81, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+/* line 85, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
 .js-drop .dropdown:focus .dropdown-menu, .js-drop
 .dropdown:hover .dropdown-menu, .js-drop
 .dropdown.active .dropdown-menu {
@@ -108,7 +115,7 @@
 }
 
 @media (max-width: 40em) {
-  /* line 85, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  /* line 89, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
   .js-astro.js-drop .dropdown:focus .dropdown-menu, .js-astro.js-drop
   .dropdown:hover .dropdown-menu, .js-astro.js-drop
   .dropdown.active .dropdown-menu {
@@ -117,7 +124,7 @@
 }
 
 @media (max-width: 40em) {
-  /* line 96, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
+  /* line 100, /Users/cferdinandi/Sites/drop/src/sass/components/_drop.scss */
   .js-astro .dropdown-menu,
   .js-astro .dropdown.active .dropdown-menu {
     background-color: transparent;
