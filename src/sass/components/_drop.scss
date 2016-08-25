@@ -44,7 +44,7 @@
 	float: left;
 	height: 1px;
 	margin: -1px;
-	min-width: 12em;
+	min-width: 100%;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
@@ -53,6 +53,10 @@
 	top: 100%;
 	width: 1px;
 	z-index: 1000;
+
+	@media (min-width: $bp-medium) {
+		min-width: 12em;
+	}
 
 	ul,
 	ol {
