@@ -1,5 +1,5 @@
 /*!
- * Drop v11.2.0: Simple, mobile-friendly dropdown menus
+ * Drop v11.3.1: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -321,7 +321,7 @@
 
 		// Event listeners
 		document.addEventListener('click', clickHandler, false);
-		document.addEventListener('focusin', focusHandler, false);
+		document.addEventListener('focus', focusHandler, true);
 		document.addEventListener('mouseover', hoverHandler, false);
 		if ( isTouch ) {
 			document.addEventListener('touchstart', hoverHandler, false);

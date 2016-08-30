@@ -154,7 +154,7 @@ describe('Drop', function () {
 		});
 
 		it('Toggle should have ".active" class on :focus', function () {
-			trigger('focusin', toggle);
+			trigger('focus', toggle);
 			expect(toggleParent.classList.contains('active')).toBe(true);
 		});
 
