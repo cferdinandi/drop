@@ -314,7 +314,7 @@
 
 		// Event listeners
 		document.addEventListener('click', clickHandler, false);
-		document.addEventListener('focusin', focusHandler, false);
+		document.addEventListener('focus', focusHandler, true);
 		document.addEventListener('mouseover', hoverHandler, false);
 		if ( isTouch ) {
 			document.addEventListener('touchstart', hoverHandler, false);
