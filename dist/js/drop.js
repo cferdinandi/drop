@@ -1,5 +1,5 @@
 /*!
- * Drop v11.3.1: Simple, mobile-friendly dropdown menus
+ * Drop v11.4.0: Simple, mobile-friendly dropdown menus
  * (c) 2016 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/drop
@@ -13,7 +13,7 @@
 	} else {
 		root.drop = factory(root);
 	}
-})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
+})(typeof global !== 'undefined' ? global : this.window || this.global, (function (root) {
 
 	'use strict';
 
@@ -187,9 +187,9 @@
 		var drops = document.querySelectorAll( settings.selector );
 
 		// Close all the dropdowns
-		forEach(drops, function (drop) {
+		forEach(drops, (function (drop) {
 			drop.classList.remove( settings.activeClass );
-		});
+		}));
 
 	};
 
@@ -336,4 +336,4 @@
 
 	return drop;
 
-});
+}));
