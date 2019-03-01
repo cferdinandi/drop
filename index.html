@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drop</title>
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="dist/drop.css">
+	<style type="text/css">
+		nav a {
+			text-decoration: none;
+		}
+
+		.list-inline {
+			list-style: none;
+			margin-left: -0.5em;
+			margin-right: -0.5em;
+			padding: 0;
+		}
+
+		.list-inline > li {
+			display: block;
+			margin-left: 0.5em;
+			margin-right: 0.5em;
+		}
+
+		@media (min-width: 40em) {
+			.list-inline > li {
+				display: inline-block;
+			}
+		}
+
+		/**
+		 * @bugfix Prevent webkit from removing list semantics
+		 * 1. Add a non-breaking space
+		 * 2. Make sure it doesn't mess up the DOM flow
+		 */
+		.list-inline > li:before {
+			content: "\200B"; /* 1 */
+			position: absolute; /* 2 */
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Drop</h1>
+
+	<nav>
+		<ul class="list-inline">
+			<li>
+				<details class="dropdown">
+					<summary>This has dropdown items</summary>
+					<ul>
+						<li><a href="#hi">Hi</a></li>
+						<li><a href="#universe">Universe</a></li>
+					</ul>
+				</details>
+			</li>
+			<li><a href="#hello">Hello</a></li>
+			<li><a href="#world">World</a></li>
+			<li>
+				<details class="dropdown dropdown-right">
+					<summary>This has dropdown items, too</summary>
+					<ul>
+						<li><a href="#hermoine">Hermione</a></li>
+						<li><a href="#harry">Harry Potter</a></li>
+					</ul>
+				</details>
+			</li>
+		</ul>
+	</nav>
+
+</body>
+</html>

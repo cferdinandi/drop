@@ -1,15 +1,14 @@
 # Drop [![Build Status](https://travis-ci.org/cferdinandi/drop.svg)](https://travis-ci.org/cferdinandi/drop)
-Simple, mobile-friendly dropdown menus.
+A small CSS component that turns browser-native `<details>` elements into dropdown menus.
 
-[Download Drop](https://github.com/cferdinandi/drop/archive/master.zip) / [View the demo](http://cferdinandi.github.io/drop/)
+**[View the demo on CodePen &rarr;*](https://codepen.io/cferdinandi/pen/oVbKaK)**
 
-
-<hr>
-
-### Want to learn how to write your own vanilla JS plugins? Check out ["The Vanilla JS Guidebook"](https://gomakethings.com/vanilla-js-guidebook/) and level-up as a web developer. 🚀
 
 <hr>
 
+### Interested in doing more with browser-native methods and APIs? Check out my [Vanilla JS Pocket Guides](https://vanillajsguides.com/) or join the [Vanilla JS Academy](https://vanillajsacademy.com) and level-up as a web developer. 🚀
+
+<hr>
 
 
 ## Getting Started
@@ -18,70 +17,75 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 
 ### 1. Include Drop on your site.
 
+In addition to a small CSS file, you should include [a `<details>` element polyfill](https://github.com/javan/details-element-polyfill) to add support to IE and Edge.
+
+**Direct Download**
+
+You can [download the files directly from GitHub](https://github.com/cferdinandi/drop/archive/master.zip).
+
 ```html
-<link rel="stylesheet" href="dist/css/drop.css">
-<script src="dist/js/drop.js"></script>
+<link rel="stylesheet" type="text/css" href="path/to/drop.min.css">
+<script src="path/to/details-element-polyfill.js"></script>
 ```
+
+**CDN**
+
+You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/drop/dist/). I recommend linking to a specific version number or version range to prevent major updates from breaking your site. Smooth Scroll uses semantic versioning.
+
+```html
+<!-- Always get the latest version -->
+<!-- Not recommended for production sites! -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop/dist/drop.min.css"></script>
+
+<!-- Get minor updates and patch fixes within a major version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12/dist/drop.min.css"></script>
+
+<!-- Get patch fixes within a minor version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0/dist/drop.min.css"></script>
+
+<!-- Get a specific version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0.0/dist/drop.min.css"></script>
+```
+
+[And here's a CDN for the polyfill.](https://cdn.jsdelivr.net/gh/javan/details-element-polyfill/dist/)
 
 ### 2. Add the markup to your HTML.
 
-Add a `[data-dropdown]` attribute to the dropdown element. You can pass in different selectors in [the configuration settings](#options-and-settings). If a dropdown menu is close to the right edge, add the `.dropdown-right` class to avoid text clipping.
+Create a standard `<details>` element, and add the `.dropdown` class. It can stand on its own, or be wrapped in a list item (`<li>`) as part of a bigger navigation menu.
+
+The text inside the `<summary>` element is what toggles the dropdown. Add an unordered list (`<ul>`) with your dropdown items.
 
 ```html
-...
-	<li class="dropdown" data-dropdown>
-		<a href="FALLBACK-URL.com">
-			Dropdown 1
-		</a>
-		<div class="dropdown-menu" data-dropdown-menu>
-			<ul>
-				<li><a href="#">Item 1</a></li>
-				<li><a href="#">Item 2</a></li>
-				<li><a href="#">Item 3</a></li>
-			</ul>
-		</div>
-	</li>
-
-	<li class="dropdown" data-dropdown>
-		<a href="FALLBACK-URL.com">
-			Dropdown 2
-		</a>
-		<div class="dropdown-menu dropdown-right" data-dropdown-menu>
-			<ul>
-				<li><a href="#">Item 1</a></li>
-				<li><a href="#">Item 2</a></li>
-				<li><a href="#">Item 3</a></li>
-			</ul>
-		</div>
-	</li>
-...
+<details class="dropdown">
+	<summary>This has dropdown items</summary>
+	<ul>
+		<li><a href="#hi">Hi</a></li>
+		<li><a href="#universe">Universe</a></li>
+	</ul>
+</details>
 ```
 
-### 3. Initialize Drop.
-
-In the footer of your page, after the content, initialize Drop. And that's it, you're done. Nice work!
+If the dropdown is in a navigation and will appear close to the right side of the viewport where it's content might get clipped, add the `dropdown-right` class to shift it's positioning.
 
 ```html
-<script>
-	drop.init();
-</script>
+<details class="dropdown dropdown-right">
+	<summary>This has dropdown items, too</summary>
+	<ul>
+		<li><a href="#hermoine">Hermione</a></li>
+		<li><a href="#harry">Harry Potter</a></li>
+	</ul>
+</details>
 ```
 
+And that's it, you're done. Nice work!
 
-
-## Installing with Package Managers
-
-You can install Drop with your favorite package manager.
-
-* **NPM:** `npm install cferdinandi/drop`
-* **Bower:** `bower install https://github.com/cferdinandi/drop.git`
-* **Component:** `component install cferdinandi/drop`
+**[Explore a demo on CodePen &rarr;]**
 
 
 
-## Changing the show more/show less icons
+## Customizing
 
-The +/- icons after the dropdown link are controlled using `a:after` selectors in the CSS/Sass files. Update as desired.
+Drop includes very minimal styling. You're encouraged to add your own styles to match your theme and layout, including changing the color of the text and dropdown menu links.
 
 
 
@@ -101,82 +105,23 @@ Make sure these are installed first.
 2. Run `npm install` to install required files.
 3. When it's done installing, run one of the task runners to get going:
 	* `gulp` manually compiles files.
-	* `gulp watch` automatically compiles files and applies changes using [LiveReload](http://livereload.com/).
+	* `gulp watch` automatically compiles files when changes are made and applies changes using [LiveReload](http://livereload.com/).
 
 
 
-## Options and Settings
+## Migrating to Drop 12 from Older Versions
 
-Drop includes smart defaults and works right out of the box. But if you want to customize things, it also has a robust API that provides multiple ways for you to adjust the default options and settings.
+Drop 12 completely ditches the old JavaScript plugin and markup in favor of the browser-native `<details>` element. You'll need to recreate your markup using the new pattern.
 
-### Global Settings
-
-You can pass options and callbacks into Drop through the `init()` function:
-
-```javascript
-drop.init({
-	selector: '[data-dropdown]', // Selector for the dropdown (must be a valid CSS selector)
-	activeClass: 'active', // Class added to active dropdown toggles
-	initClass: 'js-drop', // Class added to `<html>` element when initiated
-	callback: function ( toggle ) {} // Function that's run after a dropdown is toggled
-});
-```
-
-### Use Drop events in your own scripts
-
-You can also call Drop's toggle dropdown event in your own scripts.
-
-#### openDrop()
-Open a dropdown menu.
-
-```javascript
-drop.openDrop(
-	toggle, // Link node that toggles the dropdown action. ex. document.querySelector('#toggle')
-	options, // Classes and callbacks. Same options as those passed into the init() function
-);
-```
-
-**Example**
-
-```javascript
-var toggle = document.querySelector('#toggle');
-drop.openDrop( toggle );
-```
-
-#### closeDrops()
-Close all open dropdown menus.
-
-```javascript
-drop.closeDrops(
-	options, // Classes and callbacks. Same options as those passed into the init() function
-);
-```
-
-**Example**
-
-```javascript
-drop.closeDrops();
-```
-
-#### destroy()
-Destroy the current `drop.init()`. This is called automatically during the init function to remove any existing initializations.
-
-```javascript
-drop.destroy();
-```
 
 
 ## Browser Compatibility
 
-Drop works in all modern browsers, and IE 10 and above. You can push browser support back to IE 9 with the [classList.js polyfill](https://github.com/eligrey/classList.js/).
+Drop has the same support as the `<details>` element. That means that it works in all modern browsers, but not IE or Edge. In unsupported, the content will always be expanded.
 
-Drop is built with modern JavaScript APIs, and uses progressive enhancement. If the JavaScript file fails to load, or if your site is viewed on older and less capable browsers, users still have full access to the dropdown menus but lose the "stays open after hover" functionality.
+### Polyfill
 
-
-
-## How to Contribute
-
-Please review the  [contributing guidelines](CONTRIBUTING.md).
+You can add Edge and IE support with the lightweight [`<details>` element polyfill](https://github.com/javan/details-element-polyfill). Once Edge migrates to Blink, it will support the element natively.
 
 
 

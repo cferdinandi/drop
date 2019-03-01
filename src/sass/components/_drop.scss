@@ -1,115 +1,64 @@
 /**
- * Dropdown links
+ * Add box sizing to all the things
+ */
+.dropdown * {
+	box-sizing: border-box;
+}
+
+/**
+ * Style the clickable text
+ * Add your own styles to match other navigation items
+ */
+.dropdown > summary {
+	cursor: pointer;
+	/* Customize from here down */
+	color: blue;
+}
+
+/**
+ * Position the dropdown content
  */
 .dropdown {
+	display: inline-block;
 	position: relative;
+}
 
-	& > a:after {
-		content: "+";
-		display: inline-block;
-		margin-left: calc-em(4px);
-		width: calc-em(8px);
+.dropdown > ul {
+	background-color: $color-white;
+	border: 1px solid darken($color-gray-light, 9%);
+	border-radius: 0.25em;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	min-width: 19em;
+	position: absolute;
+	top: 1.5em;
+	z-index: 999;
+}
 
-		.js-astro & {
-			@media (max-width: $bp-medium) {
-				content: "";
-			}
-		}
-	}
+.dropdown-right > ul {
+	right: 0;
+}
 
-	&:focus > a:after,
-	&:hover > a:after,
-	&.active > a:after {
-		content: "\2013";
+/**
+ * Style the dropdown menu links
+ */
+.dropdown > ul > li > a {
+	display: inline-block;
+	padding: 0.3125em 0.5em;
+	width: 100%;
 
-		@media (max-width: $bp-medium) {
-			.js-astro & {
-				content: "";
-			}
-		}
+	&:hover {
+		background-color: $color-gray-lighter;
 	}
 }
 
-
 /**
- * Dropdown content
+ * @bugfix Prevent webkit from removing list semantics
+ * 1. Add a non-breaking space
+ * 2. Make sure it doesn't mess up the DOM flow
  */
-.dropdown-menu {
-	background-color: $color-white;
-	border: 0;
-	border-radius: calc-em(1px);
-	box-shadow: 0 calc-em(4px) calc-em(8px) rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-	clip: rect(0 0 0 0);
-	float: left;
-	height: 1px;
-	margin: -1px;
-	min-width: 100%;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	right: 0;
-	text-align: left;
-	top: 100%;
-	width: 1px;
-	z-index: 1000;
-
-	@media (min-width: $bp-medium) {
-		min-width: 12em;
-	}
-
-	ul,
-	ol {
-		list-style: none;
-		margin-left: 0;
-	}
-
-	a {
-		display: block;
-		padding-left: calc-em(8px);
-		padding-right: calc-em(8px);
-	}
-
-	.dropdown:focus &,
-	.dropdown:hover &,
-	.dropdown.active & {
-		border: calc-em(1px) solid lighten( $color-gray-dark, 22% );
-		clip: auto;
-		height: auto;
-		margin: 0;
-		overflow: visible;
-		padding-top: calc-em(8px);
-		padding-bottom: calc-em(8px);
-		width: auto;
-
-		.js-drop & {
-			margin-top: calc-em(8px);
-		}
-
-		.js-astro.js-drop & {
-			@media (max-width: $bp-medium) {
-				margin-top: 0;
-			}
-		}
-	}
-
-	/**
-	 * Switch up styling on JS-supported small viewports
-	 */
-	@media (max-width: $bp-medium) {
-		.js-astro &,
-		.js-astro .dropdown.active & {
-			background-color: transparent;
-			border: 0;
-			box-shadow: none;
-			clip: auto;
-			float: none;
-			height: auto;
-			margin: 0 0 calc-em(24px);
-			overflow: visible;
-			padding: 0;
-			position: static;
-			width: auto;
-		}
-	}
+.dropdown > ul > li:before {
+	content: "\200B"; /* 1 */
+	position: absolute; /* 2 */
 }
