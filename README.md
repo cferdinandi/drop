@@ -1,7 +1,7 @@
 # Drop [![Build Status](https://travis-ci.org/cferdinandi/drop.svg)](https://travis-ci.org/cferdinandi/drop)
 A small CSS component that turns browser-native `<details>` elements into dropdown menus.
 
-**[View the demo on CodePen &rarr;*](https://codepen.io/cferdinandi/pen/oVbKaK)**
+**[View the demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/oVbKaK)**
 
 
 <hr>
