@@ -79,7 +79,7 @@ If the dropdown is in a navigation and will appear close to the right side of th
 
 And that's it, you're done. Nice work!
 
-**[Explore a demo on CodePen &rarr;]**
+**[Explore a demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/oVbKaK)**
 
 
 
