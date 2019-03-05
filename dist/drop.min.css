@@ -1,2 +1,2 @@
-/*! Drop v12.0.0 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/drop */
+/*! Drop v12.1.0 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/drop */
 .dropdown *{box-sizing:border-box}.dropdown>summary{cursor:pointer;color:blue}.dropdown{display:inline-block;position:relative}.dropdown>ul{background-color:#fff;border:1px solid #cecece;border-radius:.25em;list-style:none;margin:0;padding:0;min-width:19em;position:absolute;top:1.5em;z-index:1}.dropdown-right>ul{right:0}.dropdown>ul>li>a{display:inline-block;padding:.3125em .5em;width:100%}.dropdown>ul>li>a:hover{background-color:#f7f7f7}.dropdown>ul>li:before{content:"\200B";position:absolute}

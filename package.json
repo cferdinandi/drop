@@ -1,6 +1,6 @@
 {
 	"name": "Drop",
-	"version": "12.0.0",
+	"version": "12.1.0",
 	"description": "Simple, mobile-friendly dropdown menus",
 	"main": "./dist/drop.min.css",
 	"author": {

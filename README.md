@@ -35,16 +35,16 @@ You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/drop
 ```html
 <!-- Always get the latest version -->
 <!-- Not recommended for production sites! -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop/dist/drop.min.css"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cferdinandi/drop/dist/drop.min.css">
 
 <!-- Get minor updates and patch fixes within a major version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12/dist/drop.min.css"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12/dist/drop.min.css">
 
 <!-- Get patch fixes within a minor version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0/dist/drop.min.css"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0/dist/drop.min.css">
 
 <!-- Get a specific version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0.0/dist/drop.min.css"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12.0.0/dist/drop.min.css">
 ```
 
 [And here's a CDN for the polyfill.](https://cdn.jsdelivr.net/gh/javan/details-element-polyfill/dist/)
@@ -80,6 +80,41 @@ If the dropdown is in a navigation and will appear close to the right side of th
 And that's it, you're done. Nice work!
 
 **[Explore a demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/oVbKaK)**
+
+
+
+## Dropdown Groups
+
+By default, the behavior of one dropdown menu does not affect the other.
+
+If you want all other dropdown menus in a group to close when one is opened, add the included `drop.js` script.
+
+```html
+<!-- Direct Download -->
+<script src="path/to/drop.min.js"></script>
+
+<!-- CDN -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/drop@12/dist/js/drop.min.js"></script>
+```
+
+Then, instantiate it by passing in the parent element for your dropdown group (or a selector). If you changed the class for your dropdown menus, pass that in as a second argument.
+
+```js
+var dropdownGroup = new Drop('#my-nav');
+
+// Using a different class
+var otherDropdownGroup = new Drop('#another-nav', '.dropdown-alt');
+```
+
+**[Explore dropdown groups on CodePen &rarr;](https://codepen.io/cferdinandi/pen/pYNbOY)**
+
+### Canceling a dropdown group
+
+You can cancel this functionality with the `destroy()` method.
+
+```js
+dropdownGroup.destroy();
+```
 
 
 
