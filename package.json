@@ -1,5 +1,5 @@
 {
-	"name": "Drop",
+	"name": "dropjs",
 	"version": "12.1.0",
 	"description": "Simple, mobile-friendly dropdown menus",
 	"main": "./dist/drop.min.css",
