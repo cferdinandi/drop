@@ -51,6 +51,14 @@ You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/drop
 
 [And here's a CDN for the polyfill.](https://cdn.jsdelivr.net/gh/javan/details-element-polyfill/dist/)
 
+**NPM**
+
+You can also use NPM (or your favorite package manager).
+
+```bash
+npm install dropjs
+```
+
 ### 2. Add the markup to your HTML.
 
 Create a standard `<details>` element, and add the `.dropdown` class. It can stand on its own, or be wrapped in a list item (`<li>`) as part of a bigger navigation menu.
