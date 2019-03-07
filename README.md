@@ -3,6 +3,8 @@ A small CSS component that turns browser-native `<details>` elements into dropdo
 
 **[View the demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/oVbKaK)**
 
+[Getting Started](#getting-started) | [Dropdown Groups](#dropdown-groups) | [Customizing](#customizing) | [What's new?](#whats-new) | [Browser Compatibility](#browser-compatibility) | [License](#license)
+
 
 <hr>
 
@@ -124,27 +126,7 @@ Drop includes very minimal styling. You're encouraged to add your own styles to 
 
 
 
-## Working with the Source Files
-
-If you would prefer, you can work with the development code in the `src` directory using the included [Gulp build system](http://gulpjs.com/). This compiles, lints, and minifies code.
-
-### Dependencies
-Make sure these are installed first.
-
-* [Node.js](http://nodejs.org)
-* [Gulp](http://gulpjs.com) `sudo npm install -g gulp`
-
-### Quick Start
-
-1. In bash/terminal/command line, `cd` into your project directory.
-2. Run `npm install` to install required files.
-3. When it's done installing, run one of the task runners to get going:
-	* `gulp` manually compiles files.
-	* `gulp watch` automatically compiles files when changes are made and applies changes using [LiveReload](http://livereload.com/).
-
-
-
-## Migrating to Drop 12 from Older Versions
+## What's new?
 
 Drop 12 completely ditches the old JavaScript plugin and markup in favor of the browser-native `<details>` element. You'll need to recreate your markup using the new pattern.
 
